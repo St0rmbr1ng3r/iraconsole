@@ -1,0 +1,22 @@
+{% extends 'principal.html' %}
+
+{% block titulo %} Perfil de Usuario {% endblock %}
+
+
+
+{% block contenido %}
+
+<h1>PERFIL DE USUARIO</h1>
+
+
+{{ user.username }}
+<br>
+{{ user.first_name}}
+<br>
+{{ user.last_name }}
+<br>
+{{ user.email }}
+<br>
+{{ user.last_login }}
+<br>
+{%endblock%}

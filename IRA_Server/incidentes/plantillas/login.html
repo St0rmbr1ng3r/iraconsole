@@ -1,0 +1,46 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+
+
+<body>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+
+            <div class="fadeIn first">
+                <img src="../static/img/IRA_Logo.png" id="icon" alt="Logo_IRA" />
+            </div>
+
+             <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" id="login" class="fadeIn second" name="usuario" placeholder="Usuario">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña">
+
+                {% for message in messages %}
+                <p style="color: crimson;">{{message}}</p>
+                {% endfor %}
+                <input type="submit" class="fadeIn fourth" value="Ingresar">
+            
+            </form>
+        
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Olvido su contraseña?</a>
+          </div>
+      
+        </div>
+      </div>
+</body>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        &copy; Copyright 2021 Jorge Martelli
+      </div>
+    </div>
+  </footer>
+

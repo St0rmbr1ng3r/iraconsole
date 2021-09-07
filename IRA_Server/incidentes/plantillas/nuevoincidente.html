@@ -1,0 +1,91 @@
+{% extends 'principal.html' %}
+
+{% block titulo %} Nuevo Incidente {% endblock %}
+
+{% load bootstrap %}
+
+{% block contenido %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-8">
+      <form action="" method=POST> 
+        {% csrf_token %}
+      
+        <!-- DROPDOWN ORÍGEN DEL INCIDENTE -->
+        <div class="mb-3 col-6">
+          {{ formulario.id_origen|bootstrap }}
+        </div>
+
+        <!-- DROPDOWN TIPO DE INCIDENTE -->
+        <div class="mb-3 col-6">
+          {{ formulario.id_tipo|bootstrap }}
+        </div>
+
+        <!-- CUADRO PARA DESCRIPCIÓN DEL INCIDENTE-->
+        <div class="mb-3 col-8">
+          {{ formulario.desc_inc|bootstrap }}
+          <label for="descripcioninncidente" class="form-label">Máximo 200 Caracteres</label>
+        </div>
+
+        <!-- DROPDOWN ETAPA DEL INCIDENTE -->
+        <div class="mb-3 col-6">
+          {{ formulario.id_etapa|bootstrap }}
+        </div>
+
+        <!-- DROPDOWN CLIENTES -->
+        <div class="mb-3 col-6">
+          {{ formulario.cli_afectados|bootstrap }}
+        </div>
+
+        <!-- DROPDOWN PROVEEDOR -->
+        <div class="mb-3 col-6">
+          {{ formulario.prov_involucrado|bootstrap }}
+        </div>
+
+        <!-- DROPDOWN ACTIVOS -->
+        <div class="mb-3 col-6">
+          {{ formulario.act_afectados|bootstrap }}
+        </div>
+
+        <!-- CHECKBOX AMBIENTES -->
+        <div class="mb-3 col-6">
+          {{ formulariomulti.ambiente|bootstrap }}
+        </div>
+
+        <!-- CHECKBOX UBICACIONES -->
+        <div class="mb-3 col-6">
+          {{ formulariomulti.ubicacion|bootstrap }}
+        </div>
+
+        <!-- CHECKBOX SERVICIOS -->
+        <div class="mb-3 col-6">
+          {{ formulariomulti.servicio|bootstrap }}
+        </div>
+
+        <!-- DROPDOWN IMPACTO -->
+        <div class="mb-3 col-6">
+          {{ formulario.id_impacto|bootstrap }}
+        </div>
+
+        <!-- DROPDOWN URGENCIA -->
+        <div class="mb-3 col-6">
+          {{ formulario.id_urgencia|bootstrap }}
+        </div>            
+
+
+        <!-- DROPDOWN URGENCIA -->
+        <div class="mb-3 col-6">
+          {{ formulario.id_severidad|bootstrap }}
+        </div>  
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col">
+    </div>
+    
+  </div>
+</div>
+{%endblock%}
