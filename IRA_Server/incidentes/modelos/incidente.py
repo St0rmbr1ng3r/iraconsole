@@ -7,7 +7,7 @@ class Activos(models.Model):
     desc_activo = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'activos'
 
 
@@ -16,7 +16,7 @@ class Ambientes(models.Model):
     desc_ambiente = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'ambientes'
 
 class Comentarios(models.Model):
@@ -27,7 +27,7 @@ class Comentarios(models.Model):
     mensaje = models.CharField(max_length=200)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'comentarios'
 
 
@@ -36,7 +36,7 @@ class Criticidadesservicios(models.Model):
     desc_criticidad_serv = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'criticidadesservicios'
 
 
@@ -46,7 +46,7 @@ class Detallesambientes(models.Model):
     id_ambiente = models.IntegerField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'detallesambientes'
 
 
@@ -56,7 +56,7 @@ class Detallesservicios(models.Model):
     id_servicio = models.IntegerField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'detallesservicios'
 
 
@@ -66,7 +66,7 @@ class Detallesubicacion(models.Model):
     id_ubicacion = models.IntegerField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'detallesubicacion'
 
 
@@ -79,7 +79,7 @@ class Documentos(models.Model):
     ts_documento = models.DateTimeField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'documentos'
 
 
@@ -88,7 +88,7 @@ class Estados(models.Model):
     desc_estado = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'estados'
 
 
@@ -97,7 +97,7 @@ class Etapas(models.Model):
     desc_etapa = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'etapas'
 
 
@@ -106,7 +106,7 @@ class Impactos(models.Model):
     desc_impacto = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'impactos'
 
 
@@ -130,7 +130,7 @@ class Incidentes(models.Model):
     ts_cierre = models.DateTimeField(blank=True, null=True)
    
     class Meta:
-        managed = True
+        managed = False
         db_table = 'incidentes'
 
 
@@ -139,7 +139,7 @@ class Origenes(models.Model):
     desc_origen = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'origenes'
 
 
@@ -149,7 +149,7 @@ class Servicios(models.Model):
     id_criticidad = models.IntegerField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'servicios'
 
 
@@ -158,7 +158,7 @@ class Severidades(models.Model):
     desc_severidad = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'severidades'
 
 
@@ -167,7 +167,7 @@ class Tiposincidentes(models.Model):
     desc_tipo = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'tiposincidentes'
 
 
@@ -176,7 +176,7 @@ class Ubicaciones(models.Model):
     desc_ubicacion = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'ubicaciones'
 
 
@@ -185,7 +185,7 @@ class Urgencias(models.Model):
     desc_urgencia = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'urgencias'
 
 class Multicheck(models.Model):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .modelos.incidente import *
-
+'''
 #REGISTRO DE MODELOS
 admin.site.register(Activos)
 admin.site.register(Ambientes)
@@ -17,3 +17,4 @@ admin.site.register(Severidades)
 admin.site.register(Tiposincidentes)
 admin.site.register(Ubicaciones)
 admin.site.register(Urgencias)
+'''

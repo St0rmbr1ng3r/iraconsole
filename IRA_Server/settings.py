@@ -80,13 +80,26 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ira',
+        'USER': 'root',
+        'PASSWORD': 'Qualfon1TS!',
+        'HOST': 'ls-d3072feec941ecde2248e3ad7549d9a0b18b411a.cv4vdjxf72aw.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
+    }
+}
+
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ira',
         'USER': 'ira',
         'PASSWORD': 'Qualfon1TS!',
         'HOST': '192.168.0.111',
         'PORT': '3306',
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
