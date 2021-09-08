@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class IncidentesConfig(AppConfig):
-    name = 'incidentes'
+    name = 'IRA_Server.incidentes'
