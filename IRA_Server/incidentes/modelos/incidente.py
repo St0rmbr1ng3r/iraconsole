@@ -224,7 +224,7 @@ class NuevoIncidente(models.Model):
         print(args)
 
         cursorGuardarIncidente=connection.cursor()
-        cursorGuardarIncidente.execute('call GuardarNuevoIncidente()',args)
+        cursorGuardarIncidente.execute('call GuardarNuevoIncidente()',[args])
         resGuardarIncidente=cursorGuardarIncidente.fetchall()
         print("resGuardarIncidente: ",resGuardarIncidente)
         connection.close()
