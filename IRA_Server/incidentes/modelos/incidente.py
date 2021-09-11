@@ -208,7 +208,6 @@ class IncidentesActivos(models.Model):
 class NuevoIncidente(models.Model):
 
     def test(self, formulario):
-        id_estado = formulario['id_estado']
         id_etapa = formulario['id_etapa']
         id_tipo = formulario['id_tipo']
         id_origen = formulario['id_origen']
@@ -220,8 +219,7 @@ class NuevoIncidente(models.Model):
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
 
-        print(id_estado,
-				id_etapa,
+        print(id_etapa,
 				id_tipo,
 				id_origen,
 				desc_inc,
@@ -232,6 +230,6 @@ class NuevoIncidente(models.Model):
 				id_urgencia,
 				id_severidad)
 
-        args=[id_estado, id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad]
+        args=[id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad]
 
         print(args)
