@@ -209,7 +209,6 @@ class NuevoIncidente(models.Model):
 
     def guardar_incidente(self, formulario):
 
-        print(formulario)
         id_etapa = formulario['id_etapa']
         id_tipo = formulario['id_tipo']
         id_origen = formulario['id_origen']
@@ -220,12 +219,13 @@ class NuevoIncidente(models.Model):
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
-        #id_severidad = '2'
-        args=[id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad, 0,]
+        args=[id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
         cursorGuardarIncidente=connection.cursor()
-        #cursorGuardarIncidente.execute('call GuardarNuevoIncidente()',args)
         resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
-        #resGuardarIncidente=cursorGuardarIncidente.fetchall()
-        print("resGuardarIncidente: ",resGuardarIncidente[10])
+
+        cursorGuardarIncidente.execute('call GetOrigenes()')
+        res = cursorGuardarIncidente.fetchall()
+        nuevo_id = res[0][0]
         connection.close()
+        print(nuevo_id)
