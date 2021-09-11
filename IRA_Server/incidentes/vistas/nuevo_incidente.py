@@ -19,9 +19,10 @@ def crear_incidente(request):
         if formulario.is_valid():
             if formulariomulti.is_valid():
                 ni = NuevoIncidente()
-                ni.guardar_incidente(formulario.cleaned_data, formulariomulti.cleaned_data)
-
-                return redirect('dashboard')
+                if ni.guardar_incidente(formulario.cleaned_data, formulariomulti.cleaned_data) =1:
+                    return redirect('nuevo')
+                else:
+                    return redirect('dashboard')
             else:
                 print (formulariomulti.errors)
         else:

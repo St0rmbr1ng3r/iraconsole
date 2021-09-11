@@ -208,6 +208,7 @@ class IncidentesActivos(models.Model):
 class NuevoIncidente(models.Model):
 
     def guardar_incidente(self, formulario, formulariomulti):
+
         #SE COMIENZA GUARDANDO LA PARTE CENTRAL DEL INCIDENTE Y LUEGO LOS DETALLES
         id_etapa = formulario['id_etapa']
         id_tipo = formulario['id_tipo']
@@ -218,30 +219,45 @@ class NuevoIncidente(models.Model):
         act_afectados = formulario['act_afectados']
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
-        id_severidad = formulario['id_severidad']
+        #id_severidad = formulario['id_severidad']
         id_severidad = 'parametro malo'
         args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
         cursorGuardarIncidente=connection.cursor()
-        resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
-        print(resGuardarIncidente)
+        
+        try:
+            resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
+            connection.close()
+        except:
+            print("Error guardando incidente principal")
+            return 1
+        else:
+            cursorUltimoIncidente=connection.cursor()
+            try:
+                cursorUltimoIncidente.execute('call GetUltimoIncidente()')
+                res = cursorUltimoIncidente.fetchall()
+                connection.close()
+                nuevo_id = res[0][0] #PARA UTILIZAR EN LA REDIRECCION AL DETALLE
+                print(nuevo_id)
+            except:
+                print("Error al obtener el ultimo ID de incidente")
+                return 1
+            else:
+                #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
 
-        cursorUltimoIncidente=connection.cursor()
-        cursorUltimoIncidente.execute('call GetUltimoIncidente()')
-        res = cursorUltimoIncidente.fetchall()
-        nuevo_id = res[0][0] #PARA UTILIZAR EN LA REDIRECCION AL DETALLE
-        connection.close()
-        print(nuevo_id)
-    
-        #formulariomulti
-        #GuardarDetalleNuevoIncidente
+                ambiente = formulariomulti['ambiente']
+                ubicacion = formulariomulti['ubicacion']
+                servicio = formulariomulti['servicio']
 
-        #CARGA DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
-
-        ambiente = formulariomulti['ambiente']
-        ubicacion = formulariomulti['ubicacion']
-        servicio = formulariomulti['servicio']
-
-        print(ambiente,ubicacion,servicio)
-        print(type(ambiente),type(ubicacion),type(servicio))
+                cursorCargaDetalle = connection.cursor()
+                try:
+                    for a in ambiente:
+                        args = [nuevo_id,a,]
+                        cursorGuardarDetalle.callproc('GuardarDetalleNuevoIncidente', args)
+                    connection.close()
+                except:
+                    print("Error al obtener el ultimo ID de incidente")
+                    return 1
+                else:
+                
 
