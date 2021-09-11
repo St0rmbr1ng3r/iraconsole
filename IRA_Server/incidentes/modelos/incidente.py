@@ -207,7 +207,7 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-    def test(self, *args):
+    def test(self, formulario):
         id_estado = foramulario.clean_data['id_estado']
         id_etapa = foramulario.clean_data['id_etapa']
         id_tipo = foramulario.clean_data['id_tipo']
