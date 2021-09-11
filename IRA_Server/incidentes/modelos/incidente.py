@@ -258,6 +258,6 @@ class NuevoIncidente(models.Model):
                 except:
                     print("Error al obtener el ultimo ID de incidente")
                     return 1
-                else:
+
                 
 
