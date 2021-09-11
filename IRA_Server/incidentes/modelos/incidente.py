@@ -255,7 +255,7 @@ class NuevoIncidente(models.Model):
                         cursorGuardarDetalle.callproc('GuardarDetalleNuevoIncidente', args)
                     connection.close()
                 except:
-                    print("Error al obtener el ultimo ID de incidente")
+                    print("Error al guardar detalles de ambientes")
                     return 1
 
                 
