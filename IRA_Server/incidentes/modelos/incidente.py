@@ -227,6 +227,6 @@ class NuevoIncidente(models.Model):
         cursorUltimoIncidente=connection.cursor()
         cursorUltimoIncidente.execute('call GetUltimoIncidente()')
         res = cursorUltimoIncidente.fetchall()
-        nuevo_id = res
+        nuevo_id = res[0][0]
         connection.close()
         print(nuevo_id)
