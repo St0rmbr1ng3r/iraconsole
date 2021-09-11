@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from ..modelos.incidente import Incidentes
+from ..modelos.incidente import Incidentes, NuevoIncidente
 from django.db import connection
 from ..form import FormNuevoIncidente
 import datetime
@@ -18,7 +18,8 @@ def crear_incidente(request):
 
         if formulario.is_valid():
             if formulariomulti.is_valid():
-
+                ni = NuevoIncidente()
+                ni.test(formulario)
                 print (formulario)
 
                 return redirect('dashboard')

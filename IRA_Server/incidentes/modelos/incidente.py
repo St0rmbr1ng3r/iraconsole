@@ -204,20 +204,30 @@ class IncidentesActivos(models.Model):
 #   NUEVO MODELO PARA GUARDAR INCIDENTES
 #################################################
 
-'''
+
 class NuevoIncidente(models.Model):
-    id_estado = models.IntegerField()
-	id_etapa = models.IntegerField()
-	id_tipo = models.IntegerField()
-	id_origen = models.IntegerField()
-	desc_inc = models.CharField(max_length=200)
-	cli_afectados = models.IntegerField()
-	prov_involucrado = models.IntegerField()
-	act_afectados = models.IntegerField()
-	id_impacto = models.IntegerField()
-	id_urgencia = models.IntegerField()
-	id_severidad = models.IntegerField()
 
-    #def guardar_incidente():
+    def test(formulario):
+        id_estado = foramulario.clean_data['id_estado']
+        id_etapa = foramulario.clean_data['id_etapa']
+        id_tipo = foramulario.clean_data['id_tipo']
+        id_origen = foramulario.clean_data['id_origen']
+        desc_inc = foramulario.clean_data['desc_inc']
+        cli_afectados = foramulario.clean_data['cli_afectados']
+        prov_involucrado = foramulario.clean_data['prov_involucrado']
+        act_afectados = foramulario.clean_data['act_afectados']
+        id_impacto = foramulario.clean_data['id_impacto']
+        id_urgencia = foramulario.clean_data['id_urgencia']
+        id_severidad = foramulario.clean_data['id_severidad']
 
-'''
+        print(id_estado,
+				id_etapa,
+				id_tipo,
+				id_origen,
+				desc_inc,
+				cli_afectados,
+				prov_involucrado,
+				act_afectados,
+				id_impacto,
+				id_urgencia,
+				id_severidad)
