@@ -18,7 +18,7 @@ class Ambientes(models.Model):
     class Meta:
         managed = False
         db_table = 'ambientes'
-        
+
 
 class Comentarios(models.Model):
     id_comentario = models.IntegerField()
@@ -199,3 +199,22 @@ class IncidentesActivos(models.Model):
     cursorIncActivos.execute('call GetIncidentesActivosListado()')
     resIncActivos=cursorIncActivos.fetchall()
     connection.close()
+
+#################################################
+#   NUEVO MODELO PARA GUARDAR INCIDENTES
+#################################################
+
+class NuevoIncidente(models.Model):
+    id_estado = models.IntegerField()
+	id_etapa  = models.IntegerField()
+	id_tipo  = models.IntegerField()
+	id_origen = models.IntegerField()
+	desc_inc = models.CharField(max_length=200)
+	cli_afectados =models.IntegerField()
+	prov_involucrado = models.IntegerField()
+	act_afectados = models.IntegerField()
+	id_impacto = models.IntegerField()
+	id_urgencia = models.IntegerField()
+	id_severidad = models.IntegerField()
+
+    def guardar_incidente():
