@@ -248,10 +248,11 @@ class NuevoIncidente(models.Model):
                 ubicacion = formulariomulti['ubicacion']
                 servicio = formulariomulti['servicio']
 
-                cursorCargaDetalle = connection.cursor()
+                cursorGuardarDetalle = connection.cursor()
                 try:
                     for a in ambiente:
                         args = [nuevo_id,a,]
+                        print(args)
                         cursorGuardarDetalle.callproc('GuardarDetalleNuevoIncidente', args)
                     connection.close()
                 except:
