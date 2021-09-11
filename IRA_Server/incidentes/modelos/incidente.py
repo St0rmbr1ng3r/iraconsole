@@ -204,9 +204,8 @@ class IncidentesActivos(models.Model):
 #   NUEVO MODELO PARA GUARDAR INCIDENTES
 #################################################
 
-
+'''
 class NuevoIncidente(models.Model):
-
     id_estado = models.IntegerField()
 	id_etapa = models.IntegerField()
 	id_tipo = models.IntegerField()
@@ -221,3 +220,4 @@ class NuevoIncidente(models.Model):
 
     #def guardar_incidente():
 
+'''
