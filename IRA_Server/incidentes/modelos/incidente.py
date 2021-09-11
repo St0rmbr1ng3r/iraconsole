@@ -219,8 +219,7 @@ class NuevoIncidente(models.Model):
         act_afectados = formulario['act_afectados']
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
-        #id_severidad = formulario['id_severidad']
-        id_severidad = 'parametro malo'
+        id_severidad = formulario['id_severidad']
         args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
         cursorGuardarIncidente=connection.cursor()
