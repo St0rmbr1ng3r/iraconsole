@@ -18,7 +18,10 @@ def crear_incidente(request):
 
         if formulario.is_valid():
             if formulariomulti.is_valid():
-                print('REQUEST COMPLETO ES VALIDO: ', request.POST)
+                print (formulariomulti.cleaned_data['ambiente'])
+                print (type(formulariomulti.cleaned_data['ambiente']))
+
+                return redirect('dashboard')
             else:
                 print('FALLO VALIDACION') 
                 print (formulario.errors)
