@@ -18,7 +18,7 @@ def crear_incidente(request):
 
         if formulario.is_valid():
             if formulariomulti.is_valid():
-                ni = NuevoIncidente()
+                #ni = NuevoIncidente()
 
                 print (formulario)
 

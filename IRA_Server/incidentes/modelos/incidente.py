@@ -217,4 +217,4 @@ class NuevoIncidente(models.Model):
 	id_urgencia = models.IntegerField()
 	id_severidad = models.IntegerField()
 
-    def guardar_incidente():
+    #def guardar_incidente():
