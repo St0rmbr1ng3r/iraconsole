@@ -208,17 +208,17 @@ class IncidentesActivos(models.Model):
 class NuevoIncidente(models.Model):
 
     def test(self, formulario):
-        id_estado = foramulario.clean_data['id_estado']
-        id_etapa = foramulario.clean_data['id_etapa']
-        id_tipo = foramulario.clean_data['id_tipo']
-        id_origen = foramulario.clean_data['id_origen']
-        desc_inc = foramulario.clean_data['desc_inc']
-        cli_afectados = foramulario.clean_data['cli_afectados']
-        prov_involucrado = foramulario.clean_data['prov_involucrado']
-        act_afectados = foramulario.clean_data['act_afectados']
-        id_impacto = foramulario.clean_data['id_impacto']
-        id_urgencia = foramulario.clean_data['id_urgencia']
-        id_severidad = foramulario.clean_data['id_severidad']
+        id_estado = formulario.clean_data['id_estado']
+        id_etapa = formulario.clean_data['id_etapa']
+        id_tipo = formulario.clean_data['id_tipo']
+        id_origen = formulario.clean_data['id_origen']
+        desc_inc = formulario.clean_data['desc_inc']
+        cli_afectados = formulario.clean_data['cli_afectados']
+        prov_involucrado = formulario.clean_data['prov_involucrado']
+        act_afectados = formulario.clean_data['act_afectados']
+        id_impacto = formulario.clean_data['id_impacto']
+        id_urgencia = formulario.clean_data['id_urgencia']
+        id_severidad = formulario.clean_data['id_severidad']
 
         print(id_estado,
 				id_etapa,
@@ -231,3 +231,7 @@ class NuevoIncidente(models.Model):
 				id_impacto,
 				id_urgencia,
 				id_severidad)
+
+        args=[id_estado, id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad]
+
+        print(args)
