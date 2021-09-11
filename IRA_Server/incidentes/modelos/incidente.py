@@ -224,9 +224,10 @@ class NuevoIncidente(models.Model):
         args=[id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
         print(args)
-
+        
         cursorGuardarIncidente=connection.cursor()
-        cursorGuardarIncidente.execute('call GuardarNuevoIncidente()',args)
-        resGuardarIncidente=cursorGuardarIncidente.fetchall()
-        print("resGuardarIncidente: ",resGuardarIncidente)
+        #cursorGuardarIncidente.execute('call GuardarNuevoIncidente()',args)
+        resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
+        #resGuardarIncidente=cursorGuardarIncidente.fetchall()
+        print("resGuardarIncidente: ",resGuardarIncidente[1])
         connection.close()
