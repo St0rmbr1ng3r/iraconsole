@@ -207,7 +207,7 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-    def test(self, formulario):
+    def guardar_incidentes(self, formulario):
 
         print(formulario)
         id_etapa = formulario['id_etapa']
