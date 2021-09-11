@@ -207,7 +207,7 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-    def guardar_incidente(self, formulario):
+    def guardar_incidente(self, formulario, formulariomulti):
 
         id_etapa = formulario['id_etapa']
         id_tipo = formulario['id_tipo']
@@ -219,7 +219,7 @@ class NuevoIncidente(models.Model):
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
-        args=[id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
+        args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
         cursorGuardarIncidente=connection.cursor()
         resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
@@ -227,6 +227,18 @@ class NuevoIncidente(models.Model):
         cursorUltimoIncidente=connection.cursor()
         cursorUltimoIncidente.execute('call GetUltimoIncidente()')
         res = cursorUltimoIncidente.fetchall()
-        nuevo_id = res[0][0]
+        nuevo_id = res[0][0] #PARA UTILIZAR EN LA REDIRECCION AL DETALLE
         connection.close()
         print(nuevo_id)
+    
+        #formulariomulti
+        #GuardarDetalleNuevoIncidente
+
+        print("FORMULARIO MULTI COMO LLEGA: ",formulariomulti)
+
+        ambiente = formulariomulti['ambiente']
+        ubicacion = formulariomulti['ubicacion']
+        servicio = formulariomulti['servicio']
+
+        print(ambiente,ubicacion,servicio)
+        print(type(ambiente),type(ubicacion),type(servicio))
