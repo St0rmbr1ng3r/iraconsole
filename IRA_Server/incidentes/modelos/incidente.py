@@ -18,6 +18,7 @@ class Ambientes(models.Model):
     class Meta:
         managed = False
         db_table = 'ambientes'
+        
 
 class Comentarios(models.Model):
     id_comentario = models.IntegerField()

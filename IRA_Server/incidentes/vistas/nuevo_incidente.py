@@ -23,8 +23,6 @@ def crear_incidente(request):
 
                 return redirect('dashboard')
             else:
-                print('FALLO VALIDACION') 
-                print (formulario.errors)
                 print (formulariomulti.errors)
         else:
             print (formulario.errors)
