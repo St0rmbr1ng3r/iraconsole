@@ -208,17 +208,17 @@ class IncidentesActivos(models.Model):
 class NuevoIncidente(models.Model):
 
     def test(self, formulario):
-        id_estado = formulario.clean_data['id_estado']
-        id_etapa = formulario.clean_data['id_etapa']
-        id_tipo = formulario.clean_data['id_tipo']
-        id_origen = formulario.clean_data['id_origen']
-        desc_inc = formulario.clean_data['desc_inc']
-        cli_afectados = formulario.clean_data['cli_afectados']
-        prov_involucrado = formulario.clean_data['prov_involucrado']
-        act_afectados = formulario.clean_data['act_afectados']
-        id_impacto = formulario.clean_data['id_impacto']
-        id_urgencia = formulario.clean_data['id_urgencia']
-        id_severidad = formulario.clean_data['id_severidad']
+        id_estado = formulario['id_estado']
+        id_etapa = formulario['id_etapa']
+        id_tipo = formulario['id_tipo']
+        id_origen = formulario['id_origen']
+        desc_inc = formulario['desc_inc']
+        cli_afectados = formulario['cli_afectados']
+        prov_involucrado = formulario['prov_involucrado']
+        act_afectados = formulario['act_afectados']
+        id_impacto = formulario['id_impacto']
+        id_urgencia = formulario['id_urgencia']
+        id_severidad = formulario['id_severidad']
 
         print(id_estado,
 				id_etapa,
