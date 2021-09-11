@@ -208,7 +208,7 @@ class IncidentesActivos(models.Model):
 class NuevoIncidente(models.Model):
 
     def guardar_incidente(self, formulario, formulariomulti):
-
+        #SE COMIENZA GUARDANDO LA PARTE CENTRAL DEL INCIDENTE Y LUEGO LOS DETALLES
         id_etapa = formulario['id_etapa']
         id_tipo = formulario['id_tipo']
         id_origen = formulario['id_origen']
@@ -219,10 +219,12 @@ class NuevoIncidente(models.Model):
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
+        id_severidad = 'parametro malo'
         args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
         cursorGuardarIncidente=connection.cursor()
         resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
+        print(resGuardarIncidente)
 
         cursorUltimoIncidente=connection.cursor()
         cursorUltimoIncidente.execute('call GetUltimoIncidente()')
@@ -234,7 +236,7 @@ class NuevoIncidente(models.Model):
         #formulariomulti
         #GuardarDetalleNuevoIncidente
 
-        print("FORMULARIO MULTI COMO LLEGA: ",formulariomulti)
+        #CARGA DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
 
         ambiente = formulariomulti['ambiente']
         ubicacion = formulariomulti['ubicacion']
@@ -242,3 +244,4 @@ class NuevoIncidente(models.Model):
 
         print(ambiente,ubicacion,servicio)
         print(type(ambiente),type(ubicacion),type(servicio))
+
