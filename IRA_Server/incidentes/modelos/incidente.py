@@ -225,8 +225,8 @@ class NuevoIncidente(models.Model):
         resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
 
         cursorUltimoIncidente=connection.cursor()
-        cursorUltimoIncidente.execute('call GetOrigenes()')
+        cursorUltimoIncidente.execute('call GetUltimoIncidente()')
         res = cursorUltimoIncidente.fetchall()
-        nuevo_id = res[0]
+        nuevo_id = res
         connection.close()
         print(nuevo_id)
