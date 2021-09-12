@@ -48,7 +48,6 @@ class DashboardTop(models.Model):
     contServicio=[]
     for o in resServicios:
         contServicio.append([o[0],o[1],o[2]])
-        print("Hola")
     connection.close()
 
     ###############################
