@@ -227,7 +227,7 @@ class NuevoIncidente(models.Model):
         try:
             cursorDetalleUbicacion = connection.cursor()
             for u in ubicacion:
-                args = [nuevo_id,a,]
+                args = [nuevo_id,u,]
                 print(args)
                 resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleAmbiente', args)
             connection.close()
@@ -240,7 +240,7 @@ class NuevoIncidente(models.Model):
         try:
             cursorDetalleServicio = connection.cursor()
             for s in servicio:
-                args = [nuevo_id,a,]
+                args = [nuevo_id,s,]
                 print(args)
                 resDetalleServicio = cursorDetalleServicio.callproc('GuardarDetalleAmbiente', args)
             connection.close()
