@@ -297,8 +297,10 @@ class NuevoIncidente(models.Model):
 class DetalleIncidente(models.Model):
     def buscar_incidente(self, id_inc):      
         try:
+            print("Ingreso al Try")
             cursorDetalleIncidente = connection.cursor()
             args = [id_inc]
+            print("ARGS: ",args)
             cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
             for result in cursorDetalleIncidente.stored_results():
                 records = result.fetchall()
@@ -309,6 +311,7 @@ class DetalleIncidente(models.Model):
                     print('------------------------------------')
                     for record in records:
                         print(record[0],record[1],record[2])
+                    return 0
         except:
             print("Error al traer detalle de incidente")
             return 1
