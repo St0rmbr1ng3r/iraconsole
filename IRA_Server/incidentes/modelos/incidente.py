@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import ModelForm
+#from django.forms import ModelForm
 from django.db import connection
 
 class Activos(models.Model):
@@ -18,7 +18,6 @@ class Ambientes(models.Model):
     class Meta:
         managed = False
         db_table = 'ambientes'
-
 
 class Comentarios(models.Model):
     id_comentario = models.IntegerField()
@@ -208,14 +207,10 @@ class IncidentesActivos(models.Model):
 class NuevoIncidente(models.Model):
 
     def guardar_detalle_ambiente(self, ambiente, nuevo_id):      
-        print("ingreso a funcion")
-        print(nuevo_id)
         try:
             cursorDetalleAmbiente = connection.cursor()
-            print("ingreso al try")
             for a in ambiente:
                 args = [nuevo_id,a,]
-                print(args)
                 resDetalleAmbiente = cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
             connection.close()
             return 0
@@ -228,7 +223,6 @@ class NuevoIncidente(models.Model):
             cursorDetalleUbicacion = connection.cursor()
             for u in ubicacion:
                 args = [nuevo_id,u,]
-                print(args)
                 resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleUbicacion', args)
             connection.close()
             return 0
@@ -241,7 +235,6 @@ class NuevoIncidente(models.Model):
             cursorDetalleServicio = connection.cursor()
             for s in servicio:
                 args = [nuevo_id,s,]
-                print(args)
                 resDetalleServicio = cursorDetalleServicio.callproc('GuardarDetalleServicio', args)
             connection.close()
             return 0
@@ -301,6 +294,3 @@ class NuevoIncidente(models.Model):
                 else:
                     return 1
                 
-
-
-   
