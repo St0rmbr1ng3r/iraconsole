@@ -9,28 +9,27 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Total</th>
-            <th scope="col">Activos</th>
-            <th scope="col">#</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Total</th>
-            <th scope="col">Activos</th>
-            <th scope="col">#</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Total</th>
-            <th scope="col">Activos</th>
-            <th scope="col">#</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Total</th>
-            <th scope="col">Activos</th>
+            <th scope="col">ID Incidente</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Etapa</th>
+            <th scope="col">Tipo de Incidente</th>
+            <th scope="col">Origen de la Notificación</th>
+            <th scope="col">Descripción del Incidente</th>
+            <th scope="col">Clientes Afectados</th>
+            <th scope="col">Proveedores Involucrados</th>
+            <th scope="col">% de Activos Afectados</th>
+            <th scope="col">Impacto</th>
+            <th scope="col">Urgencia</th>
+            <th scope="col">Severidad</th>
+            <th scope="col">Comentarios</th>
+            <th scope="col">Documentos</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col">Fecha de Cierre</th>
         </tr>
     </thead>
     <tbody>
             {% for d in detalle %}
             <tr class="table"></tr>
-            <th scope="row">{{forloop.counter}}</th>
                 <td>{{d.0}}</td>
                 <td>{{d.1}}</td>
                 <td>{{d.2}}</td>
