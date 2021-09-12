@@ -8,5 +8,7 @@ def cargar_incidente(request):
     if request.method == 'GET':
         print("REQUEST")
         print(request)
+        id_inc=request.GET.get('id_inc', '0')
+        print("ID INCIDENTE: ",id_inc)
         contexto = {}
         return render(request, "detalle_incidente.html", contexto)
