@@ -301,7 +301,7 @@ class DetalleIncidente(models.Model):
             args = [id_inc,]
             resDetalleAmbiente = cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
             connection.close()
-            print("RESULTADO DEL PROC: ",resDetalleAmbiente[0])
+            print("RESULTADO DEL PROC: ",resDetalleAmbiente[1])
             return 0
         except:
             print("Error al traer detalle de incidente")
