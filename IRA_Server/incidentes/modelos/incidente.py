@@ -300,9 +300,10 @@ class DetalleIncidente(models.Model):
         try:
             cursorDetalleIncidente = connection.cursor()
             args = [id_inc,]
-            resDetalleAmbiente = cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
+            cursorDetalleIncidente.execute('GetDetalleIncidente(id_inc)')
+            resDetalleAmbiente = cursorDetalleIncidente.fetchall()
             connection.close()
-            print(resDetalleAmbiente)
+            print("RESULTADO DEL PROC: ",resDetalleAmbiente)
             return 0
         except:
             print("Error al traer detalle de incidente")
