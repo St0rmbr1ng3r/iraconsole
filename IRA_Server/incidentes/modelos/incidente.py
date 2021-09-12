@@ -309,6 +309,7 @@ class DetalleIncidente(models.Model):
     def buscar_detalle_incidente(self, id_inc):
         detallesMultiples = []
         print("PRIMERA: ",detallesMultiples)
+        print("ID INCIDENTE: ", id_inc)
         try:
             cursorDetalleAmbienteInc = connection.cursor()
             args = [int(id_inc)]
