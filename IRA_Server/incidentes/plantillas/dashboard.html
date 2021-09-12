@@ -55,12 +55,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                                {% for s in servicio %}
+                                {% for a in ambiente %}
                                 <tr class="table">
                                     <th scope="row">{{forloop.counter}}</th>
-                                    <td>{{s.0}}</td>
-                                    <td id="tdnumerico">{{s.1}}</td>
-                                    <td id="tdnumerico">{{s.2}}</td>
+                                    <td>{{a.0}}</td>
+                                    <td id="tdnumerico">{{a.1}}</td>
+                                    <td id="tdnumerico">{{a.2}}</td>
                                 </tr>
                                 {% endfor %}
                         </tbody>
