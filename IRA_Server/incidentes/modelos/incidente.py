@@ -207,9 +207,44 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
+     def guardar_detalle_ambiente(ambiente):          
+        try:
+            cursorDetalleAmbiente = connection.cursor()
+            for a in ambiente:
+                args = [nuevo_id,a,]
+                print(args)
+                cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
+            connection.close()
+        except:
+            print("Error al guardar detalles de ambientes")
+            return 1
+ 
+    def guardar_detalle_ubicacion(ubicacion):          
+        try:
+            cursorDetalleUbicacion = connection.cursor()
+            for u in ubicacion:
+                args = [nuevo_id,a,]
+                print(args)
+                cursorDetalleUbicacion.callproc('GuardarDetalleAmbiente', args)
+            connection.close()
+        except:
+            print("Error al guardar detalles de ubicaciones")
+            return 1
+
+    def guardar_detalle_servicio(servicio):          
+        try:
+            cursorDetalleServicio = connection.cursor()
+            for s in servicio:
+                args = [nuevo_id,a,]
+                print(args)
+                cursorDetalleServicio.callproc('GuardarDetalleAmbiente', args)
+            connection.close()
+        except:
+            print("Error al guardar detalles de servicios")
+            return 1
+
     def guardar_incidente(self, formulario, formulariomulti):
 
-        #SE COMIENZA GUARDANDO LA PARTE CENTRAL DEL INCIDENTE Y LUEGO LOS DETALLES
         id_etapa = formulario['id_etapa']
         id_tipo = formulario['id_tipo']
         id_origen = formulario['id_origen']
@@ -220,44 +255,46 @@ class NuevoIncidente(models.Model):
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
-        args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
 
-        cursorGuardarIncidente=connection.cursor()
+        nuevo_id = 0
+
+        ambiente = formulariomulti['ambiente']
+        ubicacion = formulariomulti['ubicacion']
+        servicio = formulariomulti['servicio']
         
+        #SE COMIENZA GUARDANDO LA PARTE CENTRAL DEL INCIDENTE Y LUEGO LOS DETALLES
         try:
+            cursorGuardarIncidente=connection.cursor()
+            args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
             resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
             connection.close()
         except:
             print("Error guardando incidente principal")
             return 1
         else:
-            cursorUltimoIncidente=connection.cursor()
             try:
+                #OBTENGO EL ID DEL NUEVO INCIDENTE
+                cursorUltimoIncidente=connection.cursor()
                 cursorUltimoIncidente.execute('call GetUltimoIncidente()')
                 res = cursorUltimoIncidente.fetchall()
+                nuevo_id = res[0][0] 
                 connection.close()
-                nuevo_id = res[0][0] #PARA UTILIZAR EN LA REDIRECCION AL DETALLE
-                print(nuevo_id)
             except:
                 print("Error al obtener el ultimo ID de incidente")
                 return 1
             else:
                 #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
-
-                ambiente = formulariomulti['ambiente']
-                ubicacion = formulariomulti['ubicacion']
-                servicio = formulariomulti['servicio']
-
-                cursorGuardarDetalle = connection.cursor()
-                try:
-                    for a in ambiente:
-                        args = [nuevo_id,a,]
-                        print(args)
-                        cursorGuardarDetalle.callproc('GuardarDetalleNuevoIncidente', args)
-                    connection.close()
-                except:
-                    print("Error al guardar detalles de ambientes")
+                if guardar_detalle_ambiente(ambiente):
+                    if guardar_detalle_ubicacion(ubicacion):
+                        if guardar_detalle_servicio(servicio):
+                            return 0
+                        else:
+                            return 1
+                    else:
+                        return 1
+                else:
                     return 1
-
                 
 
+
+   
