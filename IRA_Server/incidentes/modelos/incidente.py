@@ -210,8 +210,11 @@ class NuevoIncidente(models.Model):
     nuevo_id = 0 #VARIABLE QUE SE UTILIZARA PARA CARGAR LOS DETALLES Y REDIRIGIR AL DETALLE DEL NUEVO INCIDENTE
 
     def guardar_detalle_ambiente(self, ambiente):      
+        print("ingreso a funcion")
+        print(nuevo_id)
         try:
             cursorDetalleAmbiente = connection.cursor()
+            print("ingreso al try")
             for a in ambiente:
                 args = [nuevo_id,a,]
                 print(args)
