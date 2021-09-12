@@ -207,7 +207,7 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-     def guardar_detalle_ambiente(ambiente):          
+    def guardar_detalle_ambiente(ambiente):          
         try:
             cursorDetalleAmbiente = connection.cursor()
             for a in ambiente:
