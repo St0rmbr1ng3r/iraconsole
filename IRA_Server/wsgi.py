@@ -18,6 +18,7 @@ application = get_wsgi_application()
 
 import os
 import sys
+import incidentes
 sys.path.append('/opt/bitnami/Apps/iraconsole/')
 os.environ.setdefault("PYTHON_EGG_CACHE", "/opt/bitnami/Apps/iraconsole/IRA_Server/egg_cache")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "IRA_Server.settings")
