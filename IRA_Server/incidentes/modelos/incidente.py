@@ -305,3 +305,35 @@ class DetalleIncidente(models.Model):
         except:
             print("Error al traer detalle de incidente")
             return 1
+
+    def buscar_detalle_incidente(self, id_inc):
+        detallesMultiples = []
+        print("PRIMERA: ",detallesMultiples)
+        try:
+            cursorDetalleAmbienteInc = connection.cursor()
+            args = [int(id_inc)]
+            cursorDetalleAmbienteInc.callproc('GetDetalleAmbiente',args)
+            detallesMultiples.append(cursorDetalleAmbienteInc.fetchall())
+            print("PRIMER ELEMENTO ", detallesMultiples)
+            try:
+                cursorDetalleUbicacionInc = connection.cursor()
+                args = [int(id_inc)]
+                cursorDetalleUbicacionInc.callproc('GetDetalleUbicacion',args)
+                detallesMultiples.append(cursorDetalleUbicacionInc.fetchall())
+                print("SEGUNDO ELEMENTO ", detallesMultiples)
+                try:
+                    cursorDetalleServicioInc = connection.cursor()
+                    args = [int(id_inc)]
+                    cursorDetalleServicioInc.callproc('GetDetalleServicio',args)
+                    detallesMultiples.append(cursorDetalleServicioInc.fetchall())
+                    print("TERCER ELEMENTO ", detallesMultiples)
+                    return detallesMultiples
+                except:
+                    print("FALLO SERVICIOS")
+                    return 1
+            except:
+                print("FALLO UBICACION")
+                return 1
+        except:
+            print("FALLO AMBIENTE")
+            return 1
