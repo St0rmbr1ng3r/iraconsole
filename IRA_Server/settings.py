@@ -87,20 +87,6 @@ DATABASES = {
     }
 }
 
-'''
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ira',
-        'USER': 'ira',
-        'PASSWORD': 'Qualfon1TS!',
-        'HOST': '192.168.0.111',
-        'PORT': '3306',
-    }
-}
-'''
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -125,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
