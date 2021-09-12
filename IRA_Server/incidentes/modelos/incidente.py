@@ -294,6 +294,7 @@ class NuevoIncidente(models.Model):
                 else:
                     return 1
                 
+<<<<<<< HEAD
 class DetalleIncidente(models.Model):
     def buscar_incidente(self, id_inc):      
         try:
@@ -341,3 +342,5 @@ class DetalleIncidente(models.Model):
         except:
             print("FALLO AMBIENTE")
             return 1
+=======
+>>>>>>> faefcd1 (Modulo de Nuevo Incidente y redireccion al dashboard 12-09 JM)
