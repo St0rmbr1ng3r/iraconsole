@@ -207,7 +207,7 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-    def guardar_detalle_ambiente(ambiente):          
+    def guardar_detalle_ambiente(self, ambiente):          
         try:
             cursorDetalleAmbiente = connection.cursor()
             for a in ambiente:
@@ -219,7 +219,7 @@ class NuevoIncidente(models.Model):
             print("Error al guardar detalles de ambientes")
             return 1
  
-    def guardar_detalle_ubicacion(ubicacion):          
+    def guardar_detalle_ubicacion(self, ubicacion):          
         try:
             cursorDetalleUbicacion = connection.cursor()
             for u in ubicacion:
@@ -231,7 +231,7 @@ class NuevoIncidente(models.Model):
             print("Error al guardar detalles de ubicaciones")
             return 1
 
-    def guardar_detalle_servicio(servicio):          
+    def guardar_detalle_servicio(self, servicio):          
         try:
             cursorDetalleServicio = connection.cursor()
             for s in servicio:
