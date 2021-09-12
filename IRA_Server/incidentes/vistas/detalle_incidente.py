@@ -29,8 +29,6 @@ def cargar_incidente(request):
         else:
             descripciones.append("Mayor a 25%")
 
-        print(descripciones)
-
         print(multiples)
 
         contexto = {'detalle':detalle, 'descripciones':descripciones}

@@ -313,19 +313,22 @@ class DetalleIncidente(models.Model):
             cursorDetalleAmbienteInc = connection.cursor()
             args = [int(id_inc)]
             cursorDetalleAmbienteInc.callproc('GetDetalleAmbiente',args)
-            detallesMultiples.append(cursorDetalleAmbienteInc.fetchall())
+            resultado=cursorDetalleAmbienteInc.fetchall()
+            detallesMultiples.append(resultado)
             print("PRIMER ELEMENTO ", detallesMultiples)
             try:
                 cursorDetalleUbicacionInc = connection.cursor()
                 args = [int(id_inc)]
                 cursorDetalleUbicacionInc.callproc('GetDetalleUbicacion',args)
-                detallesMultiples.append(cursorDetalleUbicacionInc.fetchall())
+                resultado=cursorDetalleUbicacionInc.fetchall()
+                detallesMultiples.append(resultado)
                 print("SEGUNDO ELEMENTO ", detallesMultiples)
                 try:
                     cursorDetalleServicioInc = connection.cursor()
                     args = [int(id_inc)]
                     cursorDetalleServicioInc.callproc('GetDetalleServicio',args)
-                    detallesMultiples.append(cursorDetalleServicioInc.fetchall())
+                    resultado=cursorDetalleServicioInc.fetchall()
+                    detallesMultiples.append(resultado)
                     print("TERCER ELEMENTO ", detallesMultiples)
                     return detallesMultiples
                 except:
