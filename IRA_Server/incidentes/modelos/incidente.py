@@ -215,6 +215,7 @@ class NuevoIncidente(models.Model):
                 print(args)
                 cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
             connection.close()
+            return 0
         except:
             print("Error al guardar detalles de ambientes")
             return 1
@@ -227,6 +228,7 @@ class NuevoIncidente(models.Model):
                 print(args)
                 cursorDetalleUbicacion.callproc('GuardarDetalleAmbiente', args)
             connection.close()
+            return 0
         except:
             print("Error al guardar detalles de ubicaciones")
             return 1
@@ -239,6 +241,7 @@ class NuevoIncidente(models.Model):
                 print(args)
                 cursorDetalleServicio.callproc('GuardarDetalleAmbiente', args)
             connection.close()
+            return 0
         except:
             print("Error al guardar detalles de servicios")
             return 1
@@ -284,9 +287,9 @@ class NuevoIncidente(models.Model):
                 return 1
             else:
                 #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
-                if self.guardar_detalle_ambiente(ambiente):
-                    if self.guardar_detalle_ubicacion(ubicacion):
-                        if self.guardar_detalle_servicio(servicio):
+                if self.guardar_detalle_ambiente(ambiente) == 0:
+                    if self.guardar_detalle_ubicacion(ubicacion) == 0:
+                        if self.guardar_detalle_servicio(servicio) == 0:
                             return 0
                         else:
                             return 1
