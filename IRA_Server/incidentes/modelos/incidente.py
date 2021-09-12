@@ -302,7 +302,7 @@ class DetalleIncidente(models.Model):
             resDetalleAmbiente = cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
             connection.close()
             print("RESULTADO DEL PROC: ",resDetalleAmbiente[0])
-            return resDetalleAmbiente
+            return 0
         except:
             print("Error al traer detalle de incidente")
             return 1
