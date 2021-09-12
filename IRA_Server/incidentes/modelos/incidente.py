@@ -299,19 +299,13 @@ class DetalleIncidente(models.Model):
         try:
             print("Ingreso al Try")
             cursorDetalleIncidente = connection.cursor()
+            print("Conexion hecha")
             args = [id_inc]
-            print("ARGS: ",args)
-            cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
-            for result in cursorDetalleIncidente.stored_results():
-                records = result.fetchall()
-                if len(records) == 0:
-                    print('No Hay Resultados')
-                    return 1
-                else:
-                    print('------------------------------------')
-                    for record in records:
-                        print(record[0],record[1],record[2])
-                    return 0
+            cursorDetalleIncidente.callproc('GetDetalleIncidente', [2])
+            print("Se ejecuto query")
+            result=cursorDetalleIncidente.fetchall()
+            print(result)
+            return result
         except:
             print("Error al traer detalle de incidente")
             return 1
