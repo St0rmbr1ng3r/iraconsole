@@ -207,7 +207,9 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-    def guardar_detalle_ambiente(self, ambiente):          
+    nuevo_id = 0 #VARIABLE QUE SE UTILIZARA PARA CARGAR LOS DETALLES Y REDIRIGIR AL DETALLE DEL NUEVO INCIDENTE
+
+    def guardar_detalle_ambiente(self, ambiente):      
         try:
             cursorDetalleAmbiente = connection.cursor()
             for a in ambiente:
@@ -258,8 +260,6 @@ class NuevoIncidente(models.Model):
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
-
-        nuevo_id = 0
 
         ambiente = formulariomulti['ambiente']
         ubicacion = formulariomulti['ubicacion']
