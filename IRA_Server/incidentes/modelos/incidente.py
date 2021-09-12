@@ -295,12 +295,11 @@ class NuevoIncidente(models.Model):
                     return 1
                 
 class DetalleIncidente(models.Model):
-    print("lkj")
     def buscar_incidente(self, id_inc):      
         try:
             cursorDetalleIncidente = connection.cursor()
             args = [id_inc,]
-            cursorDetalleIncidente.execute('GetDetalleIncidente(id_inc)')
+            cursorDetalleIncidente.execute('GetDetalleIncidente(%s)',[id_inc])
             resDetalleAmbiente = cursorDetalleIncidente.fetchall()
             connection.close()
             print("RESULTADO DEL PROC: ",resDetalleAmbiente)
