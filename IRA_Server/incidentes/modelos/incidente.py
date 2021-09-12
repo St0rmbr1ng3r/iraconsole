@@ -298,11 +298,17 @@ class DetalleIncidente(models.Model):
     def buscar_incidente(self, id_inc):      
         try:
             cursorDetalleIncidente = connection.cursor()
-            args = [2,]
-            resDetalleAmbiente = cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
-            connection.close()
-            print("RESULTADO DEL PROC: ",resDetalleAmbiente[0])
-            return 0
+            args = [id_inc]
+            cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
+            for result in cursorDetalleIncidente.stored_results():
+                records = result.fetchall()
+                if len(records) == 0:
+                    print('No Hay Resultados')
+                    return 1
+                else:
+                    print('------------------------------------')
+                    for record in records:
+                        print(record[0],record[1],record[2])
         except:
             print("Error al traer detalle de incidente")
             return 1

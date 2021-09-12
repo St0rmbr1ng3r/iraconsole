@@ -15,5 +15,5 @@ def cargar_incidente(request):
         di = DetalleIncidente()
         detalle=di.buscar_incidente(id_inc)
         print("DETALLE DE INC: ",detalle)
-        contexto = {detalle:'detalle'}
+        contexto = {'detalle':detalle}
         return render(request, "detalle_incidente.html", contexto)
