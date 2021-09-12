@@ -47,7 +47,7 @@ class DashboardTop(models.Model):
     resServicios=cursorServicios.fetchall()
     contServicio=[]
     for o in resServicios:
-        contServicio.append([o[0],o[1]])
+        contServicio.append([o[0],o[1],o[2]])
     connection.close()
 
     ###############################
@@ -59,7 +59,7 @@ class DashboardTop(models.Model):
     resUbicacion=cursorUbicacion.fetchall()
     contUbicacion=[]
     for o in resUbicacion:
-        contUbicacion.append([o[0],o[1]])
+        contUbicacion.append([o[0],o[1],o[2]])
     connection.close()
 
     ###############################
@@ -83,7 +83,7 @@ class DashboardTop(models.Model):
     resTipos=cursorTipos.fetchall()
     contTipo=[]
     for o in resTipos:
-        contTipo.append([o[0],o[1]])
+        contTipo.append([o[0],o[1],o[2]])
     connection.close()
 
     ###############################
@@ -95,5 +95,5 @@ class DashboardTop(models.Model):
     resOrigenes=cursorOrigenes.fetchall()
     contOrigen=[]
     for o in resOrigenes:
-        contOrigen.append([o[0],o[1]])
+        contOrigen.append([o[0],o[1],o[2]])
     connection.close()
