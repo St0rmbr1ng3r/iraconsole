@@ -6,26 +6,53 @@
 
 <h1>DETALLE INCIDENTE</h1>
 
-{% for d in detalle %}
-<tr class="table"></tr>
-<th scope="row">{{forloop.counter}}</th>
-    <td>{{d.0}}</td>
-    <td>{{d.1}}</td>
-    <td>{{d.2}}</td>
-    <td>{{d.3}}</td>
-    <td>{{d.4}}</td>
-    <td>{{d.5}}</td>
-    <td>{{d.6}}</td>
-    <td>{{d.7}}</td>
-    <td>{{d.8}}</td>
-    <td>{{d.9}}</td>
-    <td>{{d.10}}</td>
-    <td>{{d.11}}</td>
-    <td>{{d.12}}</td>
-    <td>{{d.13}}</td>
-    <td>{{d.14}}</td>
-    <td>{{d.15}}</td>
-</tr>
-{% endfor %}
+
 
 {%endblock%}
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Total</th>
+            <th scope="col">Activos</th>
+            <th scope="col">#</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Total</th>
+            <th scope="col">Activos</th>
+            <th scope="col">#</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Total</th>
+            <th scope="col">Activos</th>
+            <th scope="col">#</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Total</th>
+            <th scope="col">Activos</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for d in detalle %}
+            <tr class="table"></tr>
+            <th scope="row">{{forloop.counter}}</th>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.5}}</td>
+                <td>{{d.6}}</td>
+                <td>{{d.7}}</td>
+                <td>{{d.8}}</td>
+                <td>{{d.9}}</td>
+                <td>{{d.10}}</td>
+                <td>{{d.11}}</td>
+                <td>{{d.12}}</td>
+                <td>{{d.13}}</td>
+                <td>{{d.14}}</td>
+                <td>{{d.15}}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
