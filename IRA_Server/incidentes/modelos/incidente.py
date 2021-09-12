@@ -300,8 +300,8 @@ class DetalleIncidente(models.Model):
             print("Ingreso al Try")
             cursorDetalleIncidente = connection.cursor()
             print("Conexion hecha")
-            args = [id_inc]
-            cursorDetalleIncidente.callproc('GetDetalleIncidente', [2])
+            args = [int(id_inc)]
+            cursorDetalleIncidente.callproc('GetDetalleIncidente',args)
             print("Se ejecuto query")
             result=cursorDetalleIncidente.fetchall()
             print(result)

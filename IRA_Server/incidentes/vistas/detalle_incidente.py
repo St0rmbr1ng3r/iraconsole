@@ -7,13 +7,10 @@ from ..modelos.incidente import DetalleIncidente
 def cargar_incidente(request):
 
     if request.method == 'GET':
-        print("REQUEST")
-        print(request)
         id_inc=request.GET.get('id_inc', '0')
-        print("ID INCIDENTE: ",id_inc)
-
         di = DetalleIncidente()
-        detalle=di.buscar_incidente(id_inc)
+        detalle = di.buscar_incidente(id_inc)
         print("DETALLE DE INC: ",detalle)
+        print(detalle[14])
         contexto = {'detalle':detalle}
         return render(request, "detalle_incidente.html", contexto)
