@@ -207,9 +207,7 @@ class IncidentesActivos(models.Model):
 
 class NuevoIncidente(models.Model):
 
-    nuevo_id = 0 #VARIABLE QUE SE UTILIZARA PARA CARGAR LOS DETALLES Y REDIRIGIR AL DETALLE DEL NUEVO INCIDENTE
-
-    def guardar_detalle_ambiente(self, ambiente):      
+    def guardar_detalle_ambiente(self, ambiente, nuevo_id):      
         print("ingreso a funcion")
         print(nuevo_id)
         try:
@@ -225,7 +223,7 @@ class NuevoIncidente(models.Model):
             print("Error al guardar detalles de ambientes")
             return 1
  
-    def guardar_detalle_ubicacion(self, ubicacion):          
+    def guardar_detalle_ubicacion(self, ubicacion, nuevo_id):          
         try:
             cursorDetalleUbicacion = connection.cursor()
             for u in ubicacion:
@@ -238,7 +236,7 @@ class NuevoIncidente(models.Model):
             print("Error al guardar detalles de ubicaciones")
             return 1
 
-    def guardar_detalle_servicio(self, servicio):          
+    def guardar_detalle_servicio(self, servicio, nuevo_id):          
         try:
             cursorDetalleServicio = connection.cursor()
             for s in servicio:
@@ -263,6 +261,8 @@ class NuevoIncidente(models.Model):
         id_impacto = formulario['id_impacto']
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
+
+        nuevo_id = 0
 
         ambiente = formulariomulti['ambiente']
         ubicacion = formulariomulti['ubicacion']
@@ -290,9 +290,9 @@ class NuevoIncidente(models.Model):
                 return 1
             else:
                 #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
-                if self.guardar_detalle_ambiente(ambiente) == 0:
-                    if self.guardar_detalle_ubicacion(ubicacion) == 0:
-                        if self.guardar_detalle_servicio(servicio) == 0:
+                if self.guardar_detalle_ambiente(ambiente, nuevo_id) == 0:
+                    if self.guardar_detalle_ubicacion(ubicacion, nuevo_id) == 0:
+                        if self.guardar_detalle_servicio(servicio, nuevo_id) == 0:
                             return 0
                         else:
                             return 1
