@@ -5,4 +5,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='login')
 def cargar_incidente(request):
 
-    return render(request, "detalle_incidente.html", {})
+    if request.method == 'GET':
+        print("REQUEST")
+        print(request)
+        contexto = {}
+        return render(request, "detalle_incidente.html", contexto)

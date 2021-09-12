@@ -294,3 +294,16 @@ class NuevoIncidente(models.Model):
                 else:
                     return 1
                 
+class DetalleIncidente(models.Model):
+    print("lkj")
+    def buscar_incidente(self, id_inc):      
+        try:
+            cursorDetalleIncidente = connection.cursor()
+            args = [id_inc,]
+            resDetalleAmbiente = cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
+            connection.close()
+            print(resDetalleAmbiente)
+            return 0
+        except:
+            print("Error al traer detalle de incidente")
+            return 1
