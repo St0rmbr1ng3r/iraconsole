@@ -18,7 +18,7 @@ application = get_wsgi_application()
 
 import os
 import sys
-sys.path.append('/opt/bitnami/Apps/iraconsole/IRA_Server/')
+sys.path.append('/opt/bitnami/Apps/iraconsole/')
 os.environ.setdefault("PYTHON_EGG_CACHE", "/opt/bitnami/Apps/iraconsole/IRA_Server/egg_cache")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "IRA_Server.settings")
 from django.core.wsgi import get_wsgi_application
