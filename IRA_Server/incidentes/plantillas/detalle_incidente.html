@@ -28,28 +28,24 @@
         </tr>
     </thead>
     <tbody>
-            {% for d in detalle %}
-            <tr class="table"></tr>
-                <td>{{d.0}}</td>
-                <td>{{d.1}}</td>
-                <td>{{d.2}}</td>
-                <td>{{d.3}}</td>
-                <td>{{d.4}}</td>
-                <td>{{d.5}}</td>
-                {% for desc in descripciones %}
-                <td>{{desc.0}}</td>
-                <td>{{desc.1}}</td>
-                <td>{{desc.2}}</td>
-                {% endfor %}
-                <td>{{d.9}}</td>
-                <td>{{d.10}}</td>
-                <td>{{d.11}}</td>
-                <td>{{d.12}}</td>
-                <td>{{d.13}}</td>
-                <td>{{d.14}}</td>
-                <td>{{d.15}}</td>
-            </tr>
-            {% endfor %}
+        <tr class="table"></tr>
+            <td>{{detalle.0}}</td>
+            <td>{{detalle.1}}</td>
+            <td>{{detalle.2}}</td>
+            <td>{{detalle.3}}</td>
+            <td>{{detalle.4}}</td>
+            <td>{{detalle.5}}</td>
+            <td>{{descripciones.0}}</td>
+            <td>{{descripciones.1}}</td>
+            <td>{{descripciones.2}}</td>
+            <td>{{detalle.9}}</td>
+            <td>{{detalle.10}}</td>
+            <td>{{detalle.11}}</td>
+            <td>{detalled.12}}</td>
+            <td>{{detalle.13}}</td>
+            <td>{{detalle.14}}</td>
+            <td>{{detalle.15}}</td>
+        </tr>
     </tbody>
 </table>
 
