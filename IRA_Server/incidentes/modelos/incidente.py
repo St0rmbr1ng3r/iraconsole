@@ -198,3 +198,99 @@ class IncidentesActivos(models.Model):
     cursorIncActivos.execute('call GetIncidentesActivosListado()')
     resIncActivos=cursorIncActivos.fetchall()
     connection.close()
+
+#################################################
+#   NUEVO MODELO PARA GUARDAR INCIDENTES
+#################################################
+
+
+class NuevoIncidente(models.Model):
+
+    def guardar_detalle_ambiente(self, ambiente, nuevo_id):      
+        try:
+            cursorDetalleAmbiente = connection.cursor()
+            for a in ambiente:
+                args = [nuevo_id,a,]
+                resDetalleAmbiente = cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
+            connection.close()
+            return 0
+        except:
+            print("Error al guardar detalles de ambientes")
+            return 1
+ 
+    def guardar_detalle_ubicacion(self, ubicacion, nuevo_id):          
+        try:
+            cursorDetalleUbicacion = connection.cursor()
+            for u in ubicacion:
+                args = [nuevo_id,u,]
+                resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleUbicacion', args)
+            connection.close()
+            return 0
+        except:
+            print("Error al guardar detalles de ubicaciones")
+            return 1
+
+    def guardar_detalle_servicio(self, servicio, nuevo_id):          
+        try:
+            cursorDetalleServicio = connection.cursor()
+            for s in servicio:
+                args = [nuevo_id,s,]
+                resDetalleServicio = cursorDetalleServicio.callproc('GuardarDetalleServicio', args)
+            connection.close()
+            return 0
+        except:
+            print("Error al guardar detalles de servicios")
+            return 1
+
+    def guardar_incidente(self, formulario, formulariomulti):
+
+        id_etapa = formulario['id_etapa']
+        id_tipo = formulario['id_tipo']
+        id_origen = formulario['id_origen']
+        desc_inc = formulario['desc_inc']
+        cli_afectados = formulario['cli_afectados']
+        prov_involucrado = formulario['prov_involucrado']
+        act_afectados = formulario['act_afectados']
+        id_impacto = formulario['id_impacto']
+        id_urgencia = formulario['id_urgencia']
+        id_severidad = formulario['id_severidad']
+
+        nuevo_id = 0
+
+        ambiente = formulariomulti['ambiente']
+        ubicacion = formulariomulti['ubicacion']
+        servicio = formulariomulti['servicio']
+        
+        #SE COMIENZA GUARDANDO LA PARTE CENTRAL DEL INCIDENTE Y LUEGO LOS DETALLES
+        try:
+            cursorGuardarIncidente=connection.cursor()
+            args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
+            resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
+            connection.close()
+        except:
+            print("Error guardando incidente principal")
+            return 1
+        else:
+            try:
+                #OBTENGO EL ID DEL NUEVO INCIDENTE
+                cursorUltimoIncidente=connection.cursor()
+                cursorUltimoIncidente.execute('call GetUltimoIncidente()')
+                res = cursorUltimoIncidente.fetchall()
+                nuevo_id = res[0][0] 
+                connection.close()
+            except:
+                print("Error al obtener el ultimo ID de incidente")
+                return 1
+            else:
+                #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
+                if self.guardar_detalle_ambiente(ambiente, nuevo_id) == 0:
+                    if self.guardar_detalle_ubicacion(ubicacion, nuevo_id) == 0:
+                        if self.guardar_detalle_servicio(servicio, nuevo_id) == 0:
+                            return 0
+                        else:
+                            return 1
+                    else:
+                        return 1
+                else:
+                    return 1
+                

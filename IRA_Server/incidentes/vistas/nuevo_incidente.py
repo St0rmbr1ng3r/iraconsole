@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from ..modelos.incidente import Incidentes
+from django.shortcuts import render, redirect
+from ..modelos.incidente import Incidentes, NuevoIncidente
 from django.db import connection
 from ..form import FormNuevoIncidente
 import datetime
@@ -18,10 +18,12 @@ def crear_incidente(request):
 
         if formulario.is_valid():
             if formulariomulti.is_valid():
-                print('REQUEST COMPLETO ES VALIDO: ', request.POST)
+                ni = NuevoIncidente()
+                if ni.guardar_incidente(formulario.cleaned_data, formulariomulti.cleaned_data) == 1:
+                    return redirect('nuevo')
+                else:
+                    return redirect('dashboard')
             else:
-                print('FALLO VALIDACION') 
-                print (formulario.errors)
                 print (formulariomulti.errors)
         else:
             print (formulario.errors)
