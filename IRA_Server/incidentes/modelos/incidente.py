@@ -298,10 +298,10 @@ class DetalleIncidente(models.Model):
     def buscar_incidente(self, id_inc):      
         try:
             cursorDetalleIncidente = connection.cursor()
-            args = [id_inc,]
+            args = [2,]
             resDetalleAmbiente = cursorDetalleIncidente.callproc('GetDetalleIncidente', args)
             connection.close()
-            print("RESULTADO DEL PROC: ",resDetalleAmbiente[1])
+            print("RESULTADO DEL PROC: ",resDetalleAmbiente[0][0])
             return 0
         except:
             print("Error al traer detalle de incidente")
