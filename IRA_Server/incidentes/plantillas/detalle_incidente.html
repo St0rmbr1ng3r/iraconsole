@@ -36,9 +36,11 @@
                 <td>{{d.3}}</td>
                 <td>{{d.4}}</td>
                 <td>{{d.5}}</td>
-                <td>{{d.6}}</td>
-                <td>{{d.7}}</td>
-                <td>{{d.8}}</td>
+                {% for desc in descripcion %}
+                <td>{{desc.0}}</td>
+                <td>{{desc.1}}</td>
+                <td>{{desc.2}}</td>
+                {% endfor %}
                 <td>{{d.9}}</td>
                 <td>{{d.10}}</td>
                 <td>{{d.11}}</td>
