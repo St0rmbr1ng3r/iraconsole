@@ -284,9 +284,9 @@ class NuevoIncidente(models.Model):
                 return 1
             else:
                 #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
-                if guardar_detalle_ambiente(ambiente):
-                    if guardar_detalle_ubicacion(ubicacion):
-                        if guardar_detalle_servicio(servicio):
+                if self.guardar_detalle_ambiente(ambiente):
+                    if self.guardar_detalle_ubicacion(ubicacion):
+                        if self.guardar_detalle_servicio(servicio):
                             return 0
                         else:
                             return 1
