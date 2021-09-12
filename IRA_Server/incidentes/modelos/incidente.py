@@ -216,7 +216,7 @@ class NuevoIncidente(models.Model):
             for a in ambiente:
                 args = [nuevo_id,a,]
                 print(args)
-                cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
+                resDetalleAmbiente = cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
             connection.close()
             return 0
         except:
@@ -229,7 +229,7 @@ class NuevoIncidente(models.Model):
             for u in ubicacion:
                 args = [nuevo_id,a,]
                 print(args)
-                cursorDetalleUbicacion.callproc('GuardarDetalleAmbiente', args)
+                resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleAmbiente', args)
             connection.close()
             return 0
         except:
@@ -242,7 +242,7 @@ class NuevoIncidente(models.Model):
             for s in servicio:
                 args = [nuevo_id,a,]
                 print(args)
-                cursorDetalleServicio.callproc('GuardarDetalleAmbiente', args)
+                resDetalleServicio = cursorDetalleServicio.callproc('GuardarDetalleAmbiente', args)
             connection.close()
             return 0
         except:
