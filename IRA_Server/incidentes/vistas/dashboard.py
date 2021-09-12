@@ -10,9 +10,6 @@ def cargar_dashboard(request):
     severidades = DashboardSeveridades()
     topValores = DashboardTop()
 
-    print(severidades)
-    print(topValores)
-
     contexto = {'severidad':severidades,'servicio':topValores.contServicio,'ubicacion':topValores.contUbicacion,
     'ambiente':topValores.contAmbiente,'tipo':topValores.contTipo,'origen':topValores.contOrigen}
     return render(request, "dashboard.html", contexto)
