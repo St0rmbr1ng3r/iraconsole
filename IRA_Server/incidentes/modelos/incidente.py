@@ -221,7 +221,7 @@ class NuevoIncidente(models.Model):
     def guardar_detalle_ubicacion(self, ubicacion, nuevo_id):          
         try:
             cursorDetalleUbicacion = connection.cursor()
-            for u in ubicacion:
+            for u in ubicacion: #ITERO POR CADA UBICACION AGREGADA
                 args = [nuevo_id,u,]
                 resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleUbicacion', args)
             connection.close()
