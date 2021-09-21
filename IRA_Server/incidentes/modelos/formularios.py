@@ -164,5 +164,5 @@ class FormularioMulti(ModelForm):
     opc_severidades=[('','--------')]
     for o in resSeveridadess:
         opc_severidades.append([o[0],o[1]])
-    severidad  = forms.MultipleChoiceField(choices=opc_severidades,label='10- Servicios Afectados',widget=forms.CheckboxSelectMultiple)
+    id_severidad  = forms.ChoiceField(choices=opc_severidades,label='12- Severidad del Incidente')
     connection.close()
