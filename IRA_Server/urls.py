@@ -25,6 +25,7 @@ from .incidentes.vistas.reportes import *
 from .incidentes.vistas.perfil_usuario import *
 from .incidentes.vistas.incidentes_activos import *
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 

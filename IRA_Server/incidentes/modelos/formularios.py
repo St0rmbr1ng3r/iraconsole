@@ -153,3 +153,16 @@ class FormularioMulti(ModelForm):
         opc_servicios.append([o[0],o[1]])
     servicio  = forms.MultipleChoiceField(choices=opc_servicios,label='10- Servicios Afectados',widget=forms.CheckboxSelectMultiple)
     connection.close()
+
+    #########################################
+    # 11- CARGA MENU SEVERIDADES
+    #########################################
+
+    cursorSeveridades=connection.cursor()
+    cursorSeveridades.execute('call GetSeveridades()')
+    resSeveridadess=cursorSeveridades.fetchall()
+    opc_severidades=[('','--------')]
+    for o in resSeveridadess:
+        opc_severidades.append([o[0],o[1]])
+    severidad  = forms.MultipleChoiceField(choices=opc_severidades,label='10- Servicios Afectados',widget=forms.CheckboxSelectMultiple)
+    connection.close()
