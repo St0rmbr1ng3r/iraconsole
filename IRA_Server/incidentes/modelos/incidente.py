@@ -307,7 +307,7 @@ class DetalleIncidente(models.Model):
             args = [int(id_inc)]
             cursorDetalleIncidente.callproc('GetDetalleIncidente',args)
             result=cursorDetalleIncidente.fetchall()
-            print("RESULTADO DE LA QUERY: ",result)
+            print("RESULTADO DE LA QUERY: ",type(result) )
             return result
         except:
             print("Error al traer detalle de incidente")
