@@ -24,6 +24,7 @@ from .incidentes.vistas.nuevo_incidente import *
 from .incidentes.vistas.reportes import *
 from .incidentes.vistas.perfil_usuario import *
 from .incidentes.vistas.incidentes_activos import *
+from .incidentes.vistas.panel_administracion import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -53,5 +54,8 @@ urlpatterns = [
 
     #URL PARA INCIDENTE NO ENCONTRADO
     path('NoEncontrado/', no_encontrado, name='noencontrado'),
+
+    #URL PARA EL PANEL DE ADMINISTRACIÓN
+    path('Administracion/', cargar_admin, name='administracion'),
 
 ]
