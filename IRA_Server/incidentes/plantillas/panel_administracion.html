@@ -6,35 +6,41 @@
 
 <h1>ADMINISTRACIÓN DE USUARIOS</h1>
 
-<a href="http://www.google.com/"><button type="button" class="btn btn-primary btn-lg">Crear Nuevo Usuario</button></a>
+<div class="row justify-content-center">
+    <div class="col-8">
 
-<h3>Usuario Existentes</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Usuario</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Fecha de Creación</th>
-            <th scope="col">Ultimo Inicio de Sesión</th>
-            <th scope="col">Detalle</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for u in usuarios %}
-        <tr class="table"></tr>
-            <td>{{u.0}}</td>
-            <td>{{u.1}}</td>
-            <td>{{u.2}}</td>
-            <td>{{u.3}}</td>
-            <td>Boton detalle</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        <a href="http://www.google.com/"><button type="button" class="btn btn-primary btn-lg">Crear Nuevo Usuario</button></a>
+
+        <h3>Usuario Existentes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha de Creación</th>
+                    <th scope="col">Ultimo Inicio de Sesión</th>
+                    <th scope="col">Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in usuarios %}
+                <tr class="table"></tr>
+                    <td>{{u.0}}</td>
+                    <td>{{u.1}}</td>
+                    <td>{{u.2}}</td>
+                    <td>{{u.3}}</td>
+                    <td>Boton detalle</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
 
-<p>Crear Nuevo Usuario</p>
-<p>Modificar Usuario Existente</p>
-<p>Eliminar Usuario Existente</p>
+        <p>Crear Nuevo Usuario</p>
+        <p>Modificar Usuario Existente</p>
+        <p>Eliminar Usuario Existente</p>
+
+    </div>
+</div>
 
 {%endblock%}
