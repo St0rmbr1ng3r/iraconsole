@@ -294,3 +294,52 @@ class NuevoIncidente(models.Model):
                 else:
                     return 1
                 
+
+
+class DetalleIncidente(models.Model):
+    def buscar_incidente(self, id_inc):      
+        try:
+            cursorDetalleIncidente = connection.cursor()
+            args = [int(id_inc)]
+            cursorDetalleIncidente.callproc('GetDetalleIncidente',args)
+            result=cursorDetalleIncidente.fetchall()
+            return result
+        except:
+            print("Error al traer detalle de incidente")
+            return 1
+
+    def buscar_detalle_incidente(self, id_inc):
+        detallesMultiples = []
+        print("PRIMERA: ",detallesMultiples)
+        print("ID INCIDENTE: ", id_inc)
+        try:
+            cursorDetalleAmbienteInc = connection.cursor()
+            args = [int(id_inc)]
+            cursorDetalleAmbienteInc.callproc('GetDetalleAmbiente',args)
+            resultado=cursorDetalleAmbienteInc.fetchall()
+            detallesMultiples.append(resultado)
+            print("PRIMER ELEMENTO ", detallesMultiples)
+            try:
+                cursorDetalleUbicacionInc = connection.cursor()
+                args = [int(id_inc)]
+                cursorDetalleUbicacionInc.callproc('GetDetalleUbicacion',args)
+                resultado=cursorDetalleUbicacionInc.fetchall()
+                detallesMultiples.append(resultado)
+                print("SEGUNDO ELEMENTO ", detallesMultiples)
+                try:
+                    cursorDetalleServicioInc = connection.cursor()
+                    args = [int(id_inc)]
+                    cursorDetalleServicioInc.callproc('GetDetalleServicio',args)
+                    resultado=cursorDetalleServicioInc.fetchall()
+                    detallesMultiples.append(resultado)
+                    print("TERCER ELEMENTO ", detallesMultiples)
+                    return detallesMultiples
+                except:
+                    print("FALLO SERVICIOS")
+                    return 1
+            except:
+                print("FALLO UBICACION")
+                return 1
+        except:
+            print("FALLO AMBIENTE")
+            return 1
