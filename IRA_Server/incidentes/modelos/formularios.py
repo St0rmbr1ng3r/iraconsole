@@ -27,7 +27,7 @@ class FormularioIncidente(ModelForm):
     connection.close()
 
     #########################################
-    # 2- CARGA MENU TIPOSINCIDENTES
+    # 2- CARGA MENU TIPOS DE INCIDENTE
     #########################################
 
     cursorTipo=connection.cursor()
@@ -40,13 +40,13 @@ class FormularioIncidente(ModelForm):
     connection.close()
 
     #########################################
-    # 3- DESCRIPCION DE EVENTOS
+    # 3- CUADRO DESCRIPCIÓN INCIDENTE
     #########################################
 
     desc_inc = forms.CharField(max_length=200, widget=forms.Textarea,label='3- Descripción del Incidente')
 
     #########################################
-    # 4- REGISTROS DE LA TABLA ETAPAS
+    # 4- CARGA MENU ETAPAS
     #########################################
 
     cursorEtapa=connection.cursor()
@@ -59,13 +59,13 @@ class FormularioIncidente(ModelForm):
     connection.close()
 
     #########################################
-    # 5- AFECTACION DE CLIENTES
+    # 5- CARGA MENU AFECTACION DE CLIENTES
     #########################################
 
     cli_afectados = forms.ChoiceField(choices=BASICA,label='5- ¿Existe afectación de Cliente?')
 
     #########################################
-    # 6- PROVEEDOR INVOLUCRADO
+    # 6- CARGA MENU PROVEEDOR INVOLUCRADO
     #########################################
 
     prov_involucrado = forms.ChoiceField(choices=BASICA,label='6- ¿Existen Proveedores Involucrados?')
@@ -84,7 +84,7 @@ class FormularioIncidente(ModelForm):
     connection.close()
 
     #########################################
-    # 11-  REGISTROS DE LA TABLA IMPACTOS
+    # 11-  CARGA MENU IMPACTOS
     #########################################
 
     cursorImpacto=connection.cursor()
@@ -97,7 +97,7 @@ class FormularioIncidente(ModelForm):
     connection.close()
 
     #########################################
-    # 12- REGISTROS DE LA TABLA URGENCIAS
+    # 12- CARGA MENU URGENCIAS
     #########################################
 
     cursorUrgencia=connection.cursor()
@@ -107,6 +107,19 @@ class FormularioIncidente(ModelForm):
     for o in resUrgencias:
         opc_urgencias.append([o[0],o[1]])
     id_urgencia  = forms.ChoiceField(choices=opc_urgencias,label='12- Urgencia del Incidente')
+    connection.close()
+
+    #########################################
+    # 13- CARGA MENU SEVERIDADES
+    #########################################
+
+    cursorSeveridades=connection.cursor()
+    cursorSeveridades.execute('call GetSeveridades()')
+    resSeveridadess=cursorSeveridades.fetchall()
+    opc_severidades=[('','--------')]
+    for o in resSeveridadess:
+        opc_severidades.append([o[0],o[1]])
+    id_severidad  = forms.ChoiceField(choices=opc_severidades,label='12- Severidad del Incidente')
     connection.close()
 
 class FormularioMulti(ModelForm):
@@ -154,15 +167,4 @@ class FormularioMulti(ModelForm):
     servicio  = forms.MultipleChoiceField(choices=opc_servicios,label='10- Servicios Afectados',widget=forms.CheckboxSelectMultiple)
     connection.close()
 
-    #########################################
-    # 11- CARGA MENU SEVERIDADES
-    #########################################
-
-    cursorSeveridades=connection.cursor()
-    cursorSeveridades.execute('call GetSeveridades()')
-    resSeveridadess=cursorSeveridades.fetchall()
-    opc_severidades=[('','--------')]
-    for o in resSeveridadess:
-        opc_severidades.append([o[0],o[1]])
-    id_severidad  = forms.ChoiceField(choices=opc_severidades,label='12- Severidad del Incidente')
-    connection.close()
+   
