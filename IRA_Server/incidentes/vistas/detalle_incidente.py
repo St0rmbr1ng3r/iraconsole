@@ -2,10 +2,14 @@ from django.shortcuts import render#, redirect
 #from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 <<<<<<< HEAD
+<<<<<<< HEAD
 from ..modelos.incidente import DetalleIncidente
 =======
 from modelos.incidente import *
 >>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
+=======
+from ..modelos.incidente import *
+>>>>>>> 3e031a8 (modulo no importado)
 
 @login_required(login_url='login')
 def cargar_incidente(request):
