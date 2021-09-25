@@ -1,12 +1,20 @@
 from django.shortcuts import render#, redirect
 #from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from ..modelos.incidente import DetalleIncidente
+=======
+from modelos.incidente import *
+>>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
 
 @login_required(login_url='login')
 def cargar_incidente(request):
 
+<<<<<<< HEAD
     if request.method == 'GET':
+=======
+     if request.method == 'GET':
+>>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
         id_inc=request.GET.get('id_inc', '0')
         di = DetalleIncidente()
         detalle = di.buscar_incidente(id_inc)

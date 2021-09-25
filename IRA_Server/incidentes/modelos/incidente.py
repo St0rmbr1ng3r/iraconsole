@@ -295,6 +295,11 @@ class NuevoIncidente(models.Model):
                     return 1
                 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
 class DetalleIncidente(models.Model):
     def buscar_incidente(self, id_inc):      
         try:
@@ -341,6 +346,10 @@ class DetalleIncidente(models.Model):
                 return 1
         except:
             print("FALLO AMBIENTE")
+<<<<<<< HEAD
             return 1
 =======
 >>>>>>> faefcd1 (Modulo de Nuevo Incidente y redireccion al dashboard 12-09 JM)
+=======
+            return 1
+>>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
