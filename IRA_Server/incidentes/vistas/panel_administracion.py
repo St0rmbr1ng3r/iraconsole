@@ -1,13 +1,17 @@
 
 from io import UnsupportedOperation
+from django.forms.models import model_to_dict
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from ..modelos.usuario import Usuario
 
 @login_required(login_url='login')
 def cargar_admin(request):
     if request.user.is_superuser:
-        usuarios = [["username","correo@correo.com","22-09-2021 12:25:25","24-09-2021 16:35:15"],["username2","correo2@correo.com","22-09-2020 12:25:25","24-09-2020 16:35:15"]]
+        ua = Usuario()
+        usuarios = ua.listar_usuarios_activos()
         contexto = {'usuarios':usuarios}
+
         return render(request, "panel_administracion.html", contexto)
 
     return redirect('dashboard')

@@ -193,6 +193,10 @@ class Multicheck(models.Model):
     ubicacion = models.CharField(max_length=45)
     servicio = models.CharField(max_length=45)
 
+#################################################
+#   MODELO PARA TABLA DE INCIDENTES ACTIVOS
+#################################################
+
 class IncidentesActivos(models.Model):
     cursorIncActivos=connection.cursor()
     cursorIncActivos.execute('call GetIncidentesActivosListado()')
@@ -200,9 +204,8 @@ class IncidentesActivos(models.Model):
     connection.close()
 
 #################################################
-#   NUEVO MODELO PARA GUARDAR INCIDENTES
+#   MODELO PARA GUARDAR INCIDENTES
 #################################################
-
 
 class NuevoIncidente(models.Model):
 
@@ -298,6 +301,9 @@ class NuevoIncidente(models.Model):
 <<<<<<< HEAD
 =======
 
+#################################################
+#   MODELO PARA DETALLE DE UN INCIDENTE
+#################################################
 
 >>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
 class DetalleIncidente(models.Model):
