@@ -46,6 +46,6 @@ urlpatterns = [
     path('DetalleUsuario/', cargar_usuario, name='detalleusuario'),
 
     #URL PARA USUARIO NO ENCONTRADO
-    path('UsuarioInvalido/', cargar_usuario, name='usuarioinvalido'),
+    path('UsuarioInvalido/', usuario_invalido, name='usuarioinvalido'),
 
 ]
