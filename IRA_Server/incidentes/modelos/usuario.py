@@ -7,7 +7,7 @@ from django.db import connection
 
 class Usuario(models.Model):
 
-    def listar_usuarios_activos():
+    def listar_usuarios_activos(self):
         cursorUsuariosActivos=connection.cursor()
         cursorUsuariosActivos.execute('call GetUsuariosActivos()')
         resUsuariosActivos=cursorUsuariosActivos.fetchall()
