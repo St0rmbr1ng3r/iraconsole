@@ -42,7 +42,10 @@ urlpatterns = [
     #URL PARA EL PANEL DE ADMINISTRACIÓN
     path('Administracion/', cargar_admin, name='administracion'),
 
-    #URL PARA VER EL DETALLE DE UN INCIDENTE
+    #URL PARA VER EL DETALLE DE UN USUARIO
     path('DetalleUsuario/', cargar_usuario, name='detalleusuario'),
+
+    #URL PARA USUARIO NO ENCONTRADO
+    path('UsuarioInvalido/', cargar_usuario, name='usuarioinvalido'),
 
 ]

@@ -9,7 +9,14 @@ def cargar_usuario(request):
             id_usuario=request.GET.get('id_usuario', '0')
             da = Usuario()
             detalle = da.cargar_detalle_usuario(id_usuario)
+            if detalle == 1:
+                return redirect('usuarioinvalido')
             contexto = {'detalle':detalle}
             return render(request, "detalle_usuario.html", contexto)
 
     return redirect('dashboard')
+
+
+@login_required(login_url='login')
+def usuario_invalido(request):
+    return render(request, "usuarioinvalido.html")
