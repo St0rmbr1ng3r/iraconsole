@@ -212,10 +212,9 @@ class NuevoIncidente(models.Model):
     def guardar_detalle_ambiente(self, ambiente, nuevo_id):      
         try:
             cursorDetalleAmbiente = connection.cursor()
+            connection.commit()
             for a in ambiente:
                 args = [nuevo_id,a,]
-                resDetalleAmbiente = cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
-            connection.commit()
             connection.close()
             return 0
         except:
@@ -225,10 +224,10 @@ class NuevoIncidente(models.Model):
     def guardar_detalle_ubicacion(self, ubicacion, nuevo_id):          
         try:
             cursorDetalleUbicacion = connection.cursor()
+            connection.commit()
             for u in ubicacion: #ITERO POR CADA UBICACION AGREGADA
                 args = [nuevo_id,u,]
                 resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleUbicacion', args)
-            connection.commit()
             connection.close()
             return 0
         except:
@@ -238,10 +237,10 @@ class NuevoIncidente(models.Model):
     def guardar_detalle_servicio(self, servicio, nuevo_id):          
         try:
             cursorDetalleServicio = connection.cursor()
+            connection.commit()
             for s in servicio:
                 args = [nuevo_id,s,]
                 resDetalleServicio = cursorDetalleServicio.callproc('GuardarDetalleServicio', args)
-            connection.commit()
             connection.close()
             return 0
         except:
@@ -270,9 +269,9 @@ class NuevoIncidente(models.Model):
         #SE COMIENZA GUARDANDO LA PARTE CENTRAL DEL INCIDENTE Y LUEGO LOS DETALLES
         try:
             cursorGuardarIncidente=connection.cursor()
+            connection.commit()
             args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
             resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
-            connection.commit()
             connection.close()
         except:
             print("Error guardando incidente principal")
