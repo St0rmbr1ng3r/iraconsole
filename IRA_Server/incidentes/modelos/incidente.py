@@ -215,6 +215,7 @@ class NuevoIncidente(models.Model):
             for a in ambiente:
                 args = [nuevo_id,a,]
                 resDetalleAmbiente = cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
+            connection.commit()
             connection.close()
             return 0
         except:
@@ -227,6 +228,7 @@ class NuevoIncidente(models.Model):
             for u in ubicacion: #ITERO POR CADA UBICACION AGREGADA
                 args = [nuevo_id,u,]
                 resDetalleUbicacion = cursorDetalleUbicacion.callproc('GuardarDetalleUbicacion', args)
+            connection.commit()
             connection.close()
             return 0
         except:
@@ -239,6 +241,7 @@ class NuevoIncidente(models.Model):
             for s in servicio:
                 args = [nuevo_id,s,]
                 resDetalleServicio = cursorDetalleServicio.callproc('GuardarDetalleServicio', args)
+            connection.commit()
             connection.close()
             return 0
         except:
@@ -269,6 +272,7 @@ class NuevoIncidente(models.Model):
             cursorGuardarIncidente=connection.cursor()
             args = [id_etapa, id_tipo, id_origen, desc_inc, cli_afectados, prov_involucrado,	act_afectados,	id_impacto,	id_urgencia, id_severidad,]
             resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
+            connection.commit()
             connection.close()
         except:
             print("Error guardando incidente principal")
