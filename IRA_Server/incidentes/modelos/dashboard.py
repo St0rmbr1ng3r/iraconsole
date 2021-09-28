@@ -12,6 +12,7 @@ class DashboardSeveridades(models.Model):
     cursorBaja.execute('call GetIncidentesBaja()')
     resBaja=cursorBaja.fetchall()
     contBaja=resBaja[0][0]
+    cursorBaja.close()
     connection.close()
 
 
@@ -23,6 +24,7 @@ class DashboardSeveridades(models.Model):
     cursorMedia.execute('call GetIncidentesMedia()')
     resMedia=cursorMedia.fetchall()
     contMedia=resMedia[0][0]
+    cursorMedia.close()
     connection.close()
 
 
@@ -34,6 +36,7 @@ class DashboardSeveridades(models.Model):
     cursorAlta.execute('call GetIncidentesAlta()')
     resAlta=cursorAlta.fetchall()
     contAlta=resAlta[0][0]
+    cursorAlta.close()
     connection.close()
 
 
