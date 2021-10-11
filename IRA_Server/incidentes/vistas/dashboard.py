@@ -3,10 +3,6 @@ from django.shortcuts import render#, redirect
 from django.contrib.auth.decorators import login_required
 from ..modelos.dashboard import DashboardSeveridades, DashboardTop
 #from django.template import Context
-<<<<<<< HEAD
-
-=======
->>>>>>> 345c36aa0fc6c31cfc25f6011884933cc60a6bf2
 
 @login_required(login_url='login')
 def cargar_dashboard(request):
