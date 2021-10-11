@@ -10,7 +10,7 @@ from django import forms
 
 class Usuario(models.Model):
     id = models.IntegerField()
-    password = models.CharField(Widget=forms.PasswordInput)
+    password = models.CharField(widget=forms.PasswordInput)
     last_login = models.DateTimeField()
     is_superuser = models.IntegerField()
     username = models.CharField(max_length=150, widget=forms.TextInput)
