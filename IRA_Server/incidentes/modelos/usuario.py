@@ -1,11 +1,28 @@
 from django.db import models
 from django.db import connection
+from django.forms import widgets
+from django.forms.widgets import Widget
+from django import forms
 
 #################################################
-#   MODELO PARA TABLA DE INCIDENTES ACTIVOS
+#   MODELO PARA USUARIO
 #################################################
 
 class Usuario(models.Model):
+    id = models.IntegerField()
+    password = models.CharField(Widget=forms.PasswordInput)
+    last_login = models.DateTimeField()
+    is_superuser = models.IntegerField()
+    username = models.CharField(max_length=150, widget=forms.TextInput)
+    first_name = models.CharField(max_length=150, widget=forms.TextInput)
+    last_name = models.CharField(max_length=150, widget=forms.TextInput)
+    email = models.EmailField(max_length=254, widget=forms.EmailInput)
+    is_active = models.IntegerField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
 
     def listar_usuarios_activos(self):
         cursorUsuariosActivos=connection.cursor()
@@ -27,3 +44,6 @@ class Usuario(models.Model):
         except:
             print("Error al traer detalle de Usuario")
             return 1
+
+    def guardar_usuario(self):
+        print ("formulario de usuario es valido")

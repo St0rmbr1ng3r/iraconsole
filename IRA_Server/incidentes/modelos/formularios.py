@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from .incidente import Incidentes
 from .incidente import Multicheck
+from .usuario import Usuario
 from django.db import connection
 from django import forms
 
@@ -168,3 +169,16 @@ class FormularioMulti(ModelForm):
     connection.close()
 
    
+
+class FormularioUsuario(ModelForm):
+    class Meta:
+        model = Usuario
+        fields =  ['password','is_superuser','username','first_name','last_name','is_active','email'] 
+
+    BASICA=[('','--------'),(1,'NO'),(2,'SI')]
+
+    #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
+    is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
+
+    #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
+    is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
