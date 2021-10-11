@@ -177,8 +177,15 @@ class FormularioUsuario(ModelForm):
 
     BASICA=[('','--------'),(1,'NO'),(2,'SI')]
 
+    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(max_length=150, widget=forms.TextInput)
+    first_name = forms.CharField(max_length=150, widget=forms.TextInput)
+    last_name = forms.CharField(max_length=150, widget=forms.TextInput)
+    email = forms.EmailField(max_length=254, widget=forms.EmailInput)
+
     #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
     is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
 
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
     is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
+

@@ -10,13 +10,13 @@ from django import forms
 
 class Usuario(models.Model):
     id = models.IntegerField()
-    password = models.CharField(widget=forms.PasswordInput)
+    password = models.CharField()
     last_login = models.DateTimeField()
     is_superuser = models.IntegerField()
-    username = models.CharField(max_length=150, widget=forms.TextInput)
-    first_name = models.CharField(max_length=150, widget=forms.TextInput)
-    last_name = models.CharField(max_length=150, widget=forms.TextInput)
-    email = models.EmailField(max_length=254, widget=forms.EmailInput)
+    username = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=254)
     is_active = models.IntegerField()
     date_joined = models.DateTimeField()
 
