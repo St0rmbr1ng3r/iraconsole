@@ -302,13 +302,19 @@ class NuevoIncidente(models.Model):
                 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 345c36aa0fc6c31cfc25f6011884933cc60a6bf2
 
 #################################################
 #   MODELO PARA DETALLE DE UN INCIDENTE
 #################################################
 
+<<<<<<< HEAD
 >>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
+=======
+>>>>>>> 345c36aa0fc6c31cfc25f6011884933cc60a6bf2
 class DetalleIncidente(models.Model):
     def buscar_incidente(self, id_inc):      
         try:
@@ -359,9 +365,13 @@ class DetalleIncidente(models.Model):
         except:
             print("FALLO AMBIENTE")
 <<<<<<< HEAD
+<<<<<<< HEAD
             return 1
 =======
 >>>>>>> faefcd1 (Modulo de Nuevo Incidente y redireccion al dashboard 12-09 JM)
 =======
             return 1
 >>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
+=======
+            return 1
+>>>>>>> 345c36aa0fc6c31cfc25f6011884933cc60a6bf2
