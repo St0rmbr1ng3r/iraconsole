@@ -20,8 +20,53 @@
           {% csrf_token %}
 
           <div class="form-group">
-            <label for="exampleInputEmail1">ID</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ usuario.id }}" disabled>
+            <label for="idusuario">ID</label>
+            <input type="number" class="form-control" id="idusuario" value="{{ usuario.id }}" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="passwd">ID</label>
+            <input type="number" class="form-control" id="passwd" value="{{ usuario.password }}" hidden>
+          </div>
+
+          <div class="form-group">
+            <label for="lastlogin">ID</label>
+            <input type="number" class="form-control" id="lastlogin" value="{{ usuario.last_login }}" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="superuser">ID</label>
+            <input type="number" class="form-control" id="superuser" value="{{ usuario.is_superuser }}" >
+          </div>
+
+          <div class="form-group">
+            <label for="username">ID</label>
+            <input type="number" class="form-control" id="username" value="{{ usuario.username }}" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="firstname">ID</label>
+            <input type="number" class="form-control" id="firstname" value="{{ usuario.first_name }}" >
+          </div>
+
+          <div class="form-group">
+            <label for="lastname">ID</label>
+            <input type="number" class="form-control" id="lastname" value="{{ usuario.last_name }}" >
+          </div>
+
+          <div class="form-group">
+            <label for="email">ID</label>
+            <input type="number" class="form-control" id="email" value="{{ usuario.email }}" >
+          </div>
+
+          <div class="form-group">
+            <label for="active">ID</label>
+            <input type="number" class="form-control" id="active" value="{{ usuario.is_active }}">
+          </div>
+
+          <div class="form-group">
+            <label for="joined">ID</label>
+            <input type="number" class="form-control" id="joined" value="{{ usuario.date_joined }}" disabled>
           </div>
             
 
