@@ -175,7 +175,7 @@ class FormularioUsuario(ModelForm):
         model = Usuario
         fields =  ['password','is_superuser','username','first_name','last_name','is_active','email'] 
 
-    BASICA=[('','--------'),(1,'NO'),(2,'SI')]
+    BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
     password = forms.CharField(widget=forms.PasswordInput)
     username = forms.CharField(max_length=150, widget=forms.TextInput)
