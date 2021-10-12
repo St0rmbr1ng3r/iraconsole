@@ -204,16 +204,23 @@ class FormularioModificarUsuario(ModelForm):
         model = Usuario
         fields = '__all__'
 
+    BASICA=[('','--------'),(0,'NO'),(1,'SI')]
+
     id = forms.IntegerField()
     password = forms.CharField(widget=forms.PasswordInput, disabled=True)
     last_login = forms.DateTimeField(disabled=True)
-    is_superuser = forms.IntegerField()
     username = forms.CharField(widget=forms.TextInput, disabled=True)
     first_name = forms.CharField(widget=forms.TextInput)
     last_name = forms.CharField(widget=forms.TextInput)
     email = forms.EmailField(widget=forms.EmailInput)
-    is_active = forms.IntegerField()
     date_joined = forms.DateTimeField(disabled=True)
+
+
+    #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
+    is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
+
+    #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
+    is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
 
     def cargar_detalle_usuario(self,id_usuario):
         try:
