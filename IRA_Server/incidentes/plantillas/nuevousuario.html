@@ -28,18 +28,23 @@
             {{ formulario.last_name|bootstrap }}
         </div>
 
-        <!-- INPUT PARA NOMBRE DE USUARIO-->
+        <!-- INPUT PARA APELLIDO DE USUARIO-->
+        <div class="mb-3 col-8">
+            {{ formulario.password|bootstrap }}
+        </div>
+
+        <!-- INPUT PARA CORREO DE USUARIO-->
         <div class="mb-3 col-8">
             {{ formulario.email|bootstrap }}
         </div>
 
-        <!-- INPUT PARA NOMBRE DE USUARIO-->
+        <!-- INPUT PARA DAR PERMISOS DE ADMINISTRADOR-->
         <div class="mb-3 col-8">
             {{ formulario.is_superuser|bootstrap }}
         </div>
 
 
-        <!-- INPUT PARA NOMBRE DE USUARIO-->
+        <!-- INPUT PARA HABILITAR EL USUARIO-->
         <div class="mb-3 col-8">
             {{ formulario.is_active|bootstrap }}
         </div>
