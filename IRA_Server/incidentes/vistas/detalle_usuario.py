@@ -18,7 +18,7 @@ def cargar_usuario(request):
             
             usuario = Usuario()
 
-            usuario.id = detalle[0]
+            usuario.id = detalle['id']
 
             print(usuario.id)
 
