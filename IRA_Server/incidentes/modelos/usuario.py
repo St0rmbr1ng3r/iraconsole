@@ -49,5 +49,5 @@ class Usuario(models.Model):
 #   MODELO PARA CREACION DE USUARIO
 #################################################
 class NuevoUsuario(models.Model):
-    def guardar_usuario(self):
+    def guardar_usuario(self, formulario):
         print ("formulario de usuario es valido")
