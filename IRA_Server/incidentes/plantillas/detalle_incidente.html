@@ -49,14 +49,74 @@
     </tbody>
 </table>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-{%endblock%}
 
 
-=======
-{%endblock%}
->>>>>>> 8ca3a83 (Busqueda de Incidnetes y Detalle)
-=======
-{%endblock%}
->>>>>>> 345c36aa0fc6c31cfc25f6011884933cc60a6bf2
+<div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-8">
+        <form action="" method=POST> 
+          {% csrf_token %}
+        
+          <!-- DROPDOWN ORÍGEN DEL INCIDENTE -->
+          <div class="mb-3 col-6">
+            {{ detalle.0.4|bootstrap }}
+          </div>
+  
+          <!-- DROPDOWN TIPO DE INCIDENTE -->
+          <div class="mb-3 col-6">
+            {{ detalle.0.3|bootstrap }}
+          </div>
+  
+          <!-- CUADRO PARA DESCRIPCIÓN DEL INCIDENTE-->
+          <div class="mb-3 col-8">
+            {{ detalle.0.5|bootstrap }}
+            <label for="descripcioninncidente" class="form-label">Máximo 200 Caracteres</label>
+          </div>
+  
+          <!-- DROPDOWN ETAPA DEL INCIDENTE -->
+          <div class="mb-3 col-6">
+            {{ detalle.0.2|bootstrap }}
+          </div>
+  
+          <!-- DROPDOWN CLIENTES -->
+          <div class="mb-3 col-6">
+            {{ descripciones.0|bootstrap }}
+          </div>
+  
+          <!-- DROPDOWN PROVEEDOR -->
+          <div class="mb-3 col-6">
+            {{ descripciones.1|bootstrap }}
+          </div>
+  
+          <!-- DROPDOWN ACTIVOS -->
+          <div class="mb-3 col-6">
+            {{ descripciones.2|bootstrap }}
+          </div>
+  
+          <!-- DROPDOWN IMPACTO -->
+          <div class="mb-3 col-6">
+            {{ detalle.0.9|bootstrap }}
+          </div>
+  
+          <!-- DROPDOWN URGENCIA -->
+          <div class="mb-3 col-6">
+            {{ detalle.0.10|bootstrap }}
+          </div>            
+  
+          <!-- DROPDOWN SEVERIDAD -->
+          <div class="mb-3 col-6">
+            {{ detalle.0.11|bootstrap }}
+          </div>  
+  
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col">
+      </div>
+      
+    </div>
+  </div>
+
+{%endblock%

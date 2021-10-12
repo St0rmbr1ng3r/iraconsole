@@ -189,3 +189,12 @@ class FormularioUsuario(ModelForm):
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
     is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
 
+
+class FormularioModificarIncidente(ModelForm):
+    class Meta:
+        model = Incidentes
+        fields = '__all__'
+
+    BASICA=[('','--------'),(1,'NO'),(2,'SI')]
+
+    
