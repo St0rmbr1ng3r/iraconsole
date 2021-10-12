@@ -43,6 +43,9 @@ class Usuario(models.Model):
             print("Error al traer detalle de Usuario")
             return 1
 
+    def eliminar_usuario(self,id_usuario):
+        return 0
+
 #################################################
 #   MODELO PARA CREACION DE USUARIO
 #################################################
@@ -58,10 +61,10 @@ class NuevoUsuario(models.Model):
         is_active = formulario['is_active']
 
 
-        if len(formulario['password']) < 8:
+        if len(passwd) < 8:
             return 1            
         else:
-            print(make_password(formulario['password']))
+            passwd = make_password(passwd)
             try:
                 cursorCrearUsuario=connection.cursor()
                 connection.commit()
@@ -69,7 +72,6 @@ class NuevoUsuario(models.Model):
                 resCrearUsuario = cursorCrearUsuario.callproc('CrearUsuario', args)
                 connection.close()
             except:
-                print("Error guardando incidente principal")
                 return 1
 
         
