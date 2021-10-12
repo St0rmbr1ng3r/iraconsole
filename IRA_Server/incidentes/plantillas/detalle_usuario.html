@@ -19,12 +19,13 @@
         <form action="" method=POST> 
           {% csrf_token %}
 
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">{{usuario.0}}</small>
+          </div>
+            
 
-
-            <!-- INPUT PARA ID DE USUARIO-->
-            <div class="mb-3 col-8">
-            {{ usuario.0 | bootstrap}}
-            </div>
           
             
 
