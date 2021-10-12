@@ -215,6 +215,7 @@ class NuevoIncidente(models.Model):
             connection.commit()
             for a in ambiente:
                 args = [nuevo_id,a,]
+                resDetalleAmbiente = cursorDetalleAmbiente.callproc('GuardarDetalleAmbiente', args)
             connection.close()
             return 0
         except:
