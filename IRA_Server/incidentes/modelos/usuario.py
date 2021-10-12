@@ -45,5 +45,9 @@ class Usuario(models.Model):
             print("Error al traer detalle de Usuario")
             return 1
 
+#################################################
+#   MODELO PARA CREACION DE USUARIO
+#################################################
+class NuevoUsuario(models.Model):
     def guardar_usuario(self):
         print ("formulario de usuario es valido")
