@@ -48,6 +48,29 @@ class Usuario(models.Model):
 #################################################
 class NuevoUsuario(models.Model):
     def guardar_usuario(self, formulario):
-        print ("formulario de usuario es valido")
-        print(formulario['password'])
-        print(make_password(formulario['password']))
+
+        passwd = formulario['password']
+        is_superuser = formulario['is_superuser']
+        username = formulario['username']
+        first_name = formulario['first_name']
+        last_name = formulario['last_name']
+        email = formulario['email']
+        is_active = formulario['is_active']
+
+
+        if len(formulario['password']) < 8:
+            return 1            
+        else:
+            print(make_password(formulario['password']))
+            try:
+                cursorCrearUsuario=connection.cursor()
+                connection.commit()
+                args = [passwd,is_superuser,username,first_name,last_name,email,is_active,]
+                resCrearUsuario = cursorCrearUsuario.callproc('CrearUsuario', args)
+                connection.close()
+            except:
+                print("Error guardando incidente principal")
+                return 1
+
+        
+        
