@@ -29,20 +29,6 @@ class Usuario(models.Model):
         connection.close()
         return resUsuariosActivos
 
-    def cargar_detalle_usuario(self,id_usuario):
-        try:
-            cursorDetalleUsuario = connection.cursor()
-            args = [int(id_usuario)]
-            cursorDetalleUsuario.callproc('GetDetalleUsuario',args)
-            result=cursorDetalleUsuario.fetchall()
-            if result:
-                return result
-            else:
-                return 1
-        except:
-            print("Error al traer detalle de Usuario")
-            return 1
-
     def eliminar_usuario(self,id_usuario):
         return 0
 

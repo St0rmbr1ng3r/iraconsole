@@ -1,3 +1,4 @@
+from django.db.models import fields
 from django.forms import ModelForm
 from .incidente import Incidentes
 from .incidente import Multicheck
@@ -197,4 +198,33 @@ class FormularioModificarIncidente(ModelForm):
 
     BASICA=[('','--------'),(1,'NO'),(2,'SI')]
 
-    
+
+class FormularioModificarUsuario(ModelForm):
+    class Meta:
+        model = Usuario
+        fields = '__all__'
+
+    id = forms.IntegerField(primary_key=True)
+    password = forms.CharField(widget=forms.PasswordInput, disabled=True)
+    last_login = forms.DateTimeField(attrs={'readonly':'readonly'})
+    is_superuser = forms.IntegerField()
+    username = forms.CharField(widget=forms.TextInput, attrs={'readonly':'readonly'})
+    first_name = forms.CharField(widget=forms.TextInput)
+    last_name = forms.CharField(widget=forms.TextInput)
+    email = forms.EmailField(widget=forms.EmailInput)
+    is_active = forms.IntegerField()
+    date_joined = forms.DateTimeField(attrs={'readonly':'readonly'})
+
+    def cargar_detalle_usuario(self,id_usuario):
+        try:
+            cursorDetalleUsuario = connection.cursor()
+            args = [int(id_usuario)]
+            cursorDetalleUsuario.callproc('GetDetalleUsuario',args)
+            result=cursorDetalleUsuario.fetchall()
+            if result:
+                return result
+            else:
+                return 1
+        except:
+            print("Error al traer detalle de Usuario")
+            return 1

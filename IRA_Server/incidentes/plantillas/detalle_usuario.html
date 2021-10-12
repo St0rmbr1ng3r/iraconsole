@@ -8,4 +8,74 @@
 
 {{detalle}}
 
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-8">
+        <form action="" method=POST> 
+          {% csrf_token %}
+
+           <!-- INPUT PARA ID DE USUARIO-->
+           <div class="mb-3 col-8">
+            {{ detalle.id|bootstrap }}
+          </div>
+  
+          <!-- INPUT PARA NOMBRE DE USUARIO-->
+          <div class="mb-3 col-8">
+            {{ detalle.username|bootstrap }}
+          </div>
+  
+          <!-- INPUT PARA NOMBRE DE PILA DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ detalle.first_name|bootstrap }}
+          </div>
+  
+          <!-- INPUT PARA APELLIDO DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ detalle.last_name|bootstrap }}
+          </div>
+  
+          <!-- INPUT PARA APELLIDO DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ detalle.password|bootstrap }}
+          </div>
+  
+          <!-- INPUT PARA CORREO DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ detalle.email|bootstrap }}
+          </div>
+  
+          <!-- INPUT PARA DAR PERMISOS DE ADMINISTRADOR-->
+          <div class="mb-3 col-8">
+              {{ detalle.is_superuser|bootstrap }}
+          </div>
+  
+  
+          <!-- INPUT PARA HABILITAR EL USUARIO-->
+          <div class="mb-3 col-8">
+              {{ detalle.is_active|bootstrap }}
+          </div>
+      
+            <!-- INPUT PARA FECHA DE CREACION-->
+            <div class="mb-3 col-8">
+                {{ detalle.date_joined|bootstrap }}
+            </div>
+
+
+            <!-- INPUT PARA ULTIMO LOGIN-->
+           <div class="mb-3 col-8">
+            {{ detalle.last_login|bootstrap }}
+            </div>
+         
+          <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </form>
+      </div>
+      <div class="col">
+      </div>
+      
+    </div>
+  </div>
+
 {%endblock%}
