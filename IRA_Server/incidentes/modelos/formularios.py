@@ -204,7 +204,7 @@ class FormularioModificarUsuario(ModelForm):
         model = Usuario
         fields = '__all__'
 
-    id = forms.IntegerField(primary_key=True)
+    id = forms.IntegerField()
     password = forms.CharField(widget=forms.PasswordInput, disabled=True)
     last_login = forms.DateTimeField(attrs={'readonly':'readonly'})
     is_superuser = forms.IntegerField()
