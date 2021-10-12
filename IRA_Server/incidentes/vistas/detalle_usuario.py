@@ -10,6 +10,9 @@ def cargar_usuario(request):
             id_usuario=request.GET.get('id_usuario', '0')
             da = FormularioModificarUsuario()
             detalle = da.cargar_detalle_usuario(id_usuario)
+
+            print(detalle)
+            
             if detalle == 1:
                 return redirect('usuarioinvalido')
             contexto = {'detalle':detalle}
