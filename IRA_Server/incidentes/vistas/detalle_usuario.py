@@ -27,7 +27,7 @@ def cargar_usuario(request):
             usuario.last_name = detalle[0][6]
             usuario.email = detalle[0][7]
             usuario.is_active = detalle[0][8]
-            usuario.date_joined = detalle[0][9]
+            usuario.date_joined = detalle[0][10]
 
 
 
