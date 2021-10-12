@@ -26,26 +26,26 @@
 
           <div class="form-group">
             <label for="username">Usuario</label>
-            <input type="number" class="form-control" id="username" value="{{ usuario.username }}" disabled>
+            <input type="text" class="form-control" id="username" value="{{ usuario.username }}" disabled>
           </div>
 
           <div class="form-group">
-            <input type="number" class="form-control" id="passwd" value="{{ usuario.password }}" hidden>
+            <input type="text" class="form-control" id="passwd" value="{{ usuario.password }}" hidden>
           </div>
 
           <div class="form-group">
             <label for="firstname">Nombre</label>
-            <input type="number" class="form-control" id="firstname" value="{{ usuario.first_name }}" >
+            <input type="text" class="form-control" id="firstname" value="{{ usuario.first_name }}" >
           </div>
 
           <div class="form-group">
             <label for="lastname">Apellido</label>
-            <input type="number" class="form-control" id="lastname" value="{{ usuario.last_name }}" >
+            <input type="text" class="form-control" id="lastname" value="{{ usuario.last_name }}" >
           </div>
 
           <div class="form-group">
             <label for="email">Correo Electrónico</label>
-            <input type="number" class="form-control" id="email" value="{{ usuario.email }}" >
+            <input type="email" class="form-control" id="email" value="{{ usuario.email }}" >
           </div>
 
           <div class="form-group">
@@ -60,12 +60,12 @@
 
           <div class="form-group">
             <label for="joined">Fecha de Creación</label>
-            <input type="number" class="form-control" id="joined" value="{{ usuario.date_joined }}" disabled>
+            <input type="text" class="form-control" id="joined" value="{{ usuario.date_joined }}" disabled>
           </div>
 
           <div class="form-group">
             <label for="lastlogin">Ultimo Inicio de Sesión</label>
-            <input type="number" class="form-control" id="lastlogin" value="{{ usuario.last_login }}" disabled>
+            <input type="text" class="form-control" id="lastlogin" value="{{ usuario.last_login }}" disabled>
           </div>     
 
           <button type="submit" class="btn btn-primary">Crear Usuario</button>
