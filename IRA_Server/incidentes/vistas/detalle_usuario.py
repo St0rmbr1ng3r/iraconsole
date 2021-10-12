@@ -11,7 +11,7 @@ def cargar_usuario(request):
             da = FormularioModificarUsuario()
             detalle = da.cargar_detalle_usuario(id_usuario)
 
-            print(detalle)
+            print(type(detalle))
 
             if detalle == 1:
                 return redirect('usuarioinvalido')
