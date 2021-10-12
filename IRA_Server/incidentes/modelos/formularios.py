@@ -206,14 +206,14 @@ class FormularioModificarUsuario(ModelForm):
 
     id = forms.IntegerField()
     password = forms.CharField(widget=forms.PasswordInput, disabled=True)
-    last_login = forms.DateTimeField(attrs={'readonly':'readonly'})
+    last_login = forms.DateTimeField(disabled=True)
     is_superuser = forms.IntegerField()
-    username = forms.CharField(widget=forms.TextInput, attrs={'readonly':'readonly'})
+    username = forms.CharField(widget=forms.TextInput, disabled=True)
     first_name = forms.CharField(widget=forms.TextInput)
     last_name = forms.CharField(widget=forms.TextInput)
     email = forms.EmailField(widget=forms.EmailInput)
     is_active = forms.IntegerField()
-    date_joined = forms.DateTimeField(attrs={'readonly':'readonly'})
+    date_joined = forms.DateTimeField(disabled=True)
 
     def cargar_detalle_usuario(self,id_usuario):
         try:
