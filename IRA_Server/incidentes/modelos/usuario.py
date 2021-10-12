@@ -49,5 +49,5 @@ class Usuario(models.Model):
 class NuevoUsuario(models.Model):
     def guardar_usuario(self, formulario):
         print ("formulario de usuario es valido")
-        print(formulario)
+        print(formulario[0])
         #print(make_password(formulario.password))
