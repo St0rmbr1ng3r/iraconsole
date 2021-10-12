@@ -19,8 +19,19 @@ def cargar_usuario(request):
             usuario = Usuario()
 
             usuario.id = detalle[0][0]
+            usuario.password = detalle[0][0]
+            usuario.last_login = detalle[0][0]
+            usuario.is_superuser = detalle[0][0]
+            usuario.username = detalle[0][0]
+            usuario.first_name = detalle[0][0]
+            usuario.last_name = detalle[0][0]
+            usuario.email = detalle[0][0]
+            usuario.is_active = detalle[0][0]
+            usuario.date_joined = detalle[0][0]
 
-            print(usuario.id)
+
+
+            print(usuario)
 
             contexto = {'usuario':usuario}
             return render(request, "detalle_usuario.html", contexto)
