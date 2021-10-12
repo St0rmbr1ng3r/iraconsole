@@ -60,6 +60,7 @@ class NuevoUsuario(models.Model):
         email = formulario['email']
         is_active = formulario['is_active']
 
+        print(formulario)
 
         if len(passwd) < 8:
             return 1            

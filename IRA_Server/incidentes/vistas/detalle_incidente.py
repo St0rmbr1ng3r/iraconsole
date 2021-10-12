@@ -33,8 +33,6 @@ def cargar_incidente(request):
         else:
             descripciones.append("Mayor a 25%")
 
-        print(multiples)
-
         contexto = {'detalle':detalle, 'descripciones':descripciones}
         return render(request, "detalle_incidente.html", contexto)
 
