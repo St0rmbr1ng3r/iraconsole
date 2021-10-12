@@ -9,8 +9,8 @@ from django import forms
 #################################################
 
 class Usuario(models.Model):
-    id = models.IntegerField()
-    password = models.CharField()
+    id = models.IntegerField(primary_key=True)
+    password = models.CharField(max_length=128)
     last_login = models.DateTimeField()
     is_superuser = models.IntegerField()
     username = models.CharField(max_length=150)
