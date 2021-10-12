@@ -1,8 +1,6 @@
 from django.db import models
 from django.db import connection
-from django.forms import widgets
-from django.forms.widgets import Widget
-from django import forms
+from django.contrib.auth.hashers import make_password
 
 #################################################
 #   MODELO PARA USUARIO
@@ -51,3 +49,5 @@ class Usuario(models.Model):
 class NuevoUsuario(models.Model):
     def guardar_usuario(self, formulario):
         print ("formulario de usuario es valido")
+        print(formulario.password)
+        print(make_password(formulario.password))

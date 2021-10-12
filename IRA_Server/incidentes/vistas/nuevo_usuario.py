@@ -15,7 +15,6 @@ def crear_usuario(request):
                 if nu.guardar_usuario(formulario.cleaned_data) == 1:
                     return redirect('nuevousuario')
                 else:
-                    print("El Formulario de Usuario tiene data no valida")
                     return redirect('administracion')
         else:
             print (formulario.errors)
