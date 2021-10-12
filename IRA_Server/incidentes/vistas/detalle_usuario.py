@@ -42,7 +42,7 @@ def cargar_usuario(request):
             print(usuario.is_active)
             print(usuario.date_joined)
 
-            contexto = {'usuario':usuario}
+            contexto = {'detalle':detalle}
             return render(request, "detalle_usuario.html", contexto)
 
     return redirect('dashboard')
