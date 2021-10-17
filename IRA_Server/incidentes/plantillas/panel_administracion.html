@@ -4,22 +4,6 @@
 
 {% block contenido %}
 
-
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <div class="container-fluid p-0">
-          <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
-            <span type="button" class="close" data-dismiss="alert" aria-label="Close">
-              x
-            </span>
-            {{ message }}
-          </div>
-        </div>
-        {% endfor %}
-    </ul>
-{% endif %}
-
 <h1>ADMINISTRACIÓN DE USUARIOS</h1>
 
 <div class="row justify-content-center">

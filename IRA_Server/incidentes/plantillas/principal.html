@@ -21,6 +21,21 @@
 
   </head>
   <body>
+    
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <div class="container-fluid p-0">
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+          <span type="button" class="close" data-dismiss="alert" aria-label="Close">
+            x
+          </span>
+          {{ message }}
+        </div>
+      </div>
+      {% endfor %}
+  </ul>
+  {% endif %}
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/img/IRA_Logo.png" width="50" height="55">&emsp; IRA - Incident Response Assistant</a>
