@@ -67,6 +67,7 @@
             <label for="lastlogin">Ultimo Inicio de Sesión</label>
             <input type="text" class="form-control" id="lastlogin" value="{{ usuario.last_login }}" disabled>
           </div>     
+          {{ usuario.is_superuser }}
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button><button type="button" class="btn btn-warning"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
         </form>
