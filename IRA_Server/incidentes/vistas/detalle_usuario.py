@@ -54,7 +54,7 @@ def cargar_usuario(request):
                 'last_name' : u.last_name,
                 'email' : u.email,
                 'is_active' : u.is_active,
-                'date_joined' : u.date_joined 
+                'date_joined' : u.date_joined, 
                 'last_login' : u.last_login           
                 })
 
