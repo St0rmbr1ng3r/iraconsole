@@ -18,11 +18,6 @@
       <div class="col-8">
         <form action="" method=POST> 
           {% csrf_token %}
-          
-          <!-- INPUT PARA ID DE USUARIO-->
-          <div class="mb-3 col-8">
-            {{ formulario.id|bootstrap }}
-          </div>
 
           <input class="form-control" type="number" value="{{ formulario.id.value }}" readonly name="id" id="id">
 
