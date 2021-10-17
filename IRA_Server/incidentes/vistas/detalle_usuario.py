@@ -39,9 +39,12 @@ def cargar_usuario(request):
                 'date_joined' : detalle[0][10], 
                 'last_login' : detalle[0][2]           
                 })
+
+            contexto = {'formulario':formulario1} 
+            return render(request, "detalle_usuario.html", contexto)
         #AGREGADO CON METODO POST
         if request.method == 'POST':
-            formulario = FormularioModificarUsuario(request.POST, initial=formulario1)
+            formulario = FormularioModificarUsuario(request.POST)
             print(formulario.has_changed())
             print(formulario)
 
@@ -65,8 +68,7 @@ def cargar_usuario(request):
 
         
 
-        contexto = {'formulario':formulario1} 
-        return render(request, "detalle_usuario.html", contexto)
+
 
 
         
