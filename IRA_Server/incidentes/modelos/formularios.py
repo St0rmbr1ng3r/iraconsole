@@ -219,19 +219,3 @@ class FormularioModificarUsuario(ModelForm):
     is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
     is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
-
-    '''
-    def cargar_detalle_usuario(self,id_usuario):
-        try:
-            cursorDetalleUsuario = connection.cursor()
-            args = [int(id_usuario)]
-            cursorDetalleUsuario.callproc('GetDetalleUsuario',args)
-            result=cursorDetalleUsuario.fetchall()
-            if result:
-                return result
-            else:
-                return 1
-        except:
-            print("Error al traer detalle de Usuario")
-            return 1
-    '''
