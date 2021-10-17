@@ -5,6 +5,20 @@
 {% block contenido %}
 
 
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+          <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+            <span type="button" class="close" data-dismiss="alert" aria-label="Close">
+              x
+            </span>
+            {{ message }}
+          </div>
+        </div>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 <h1>ADMINISTRACIÓN DE USUARIOS</h1>
 
@@ -21,7 +35,7 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Fecha de Creación</th>
                     <th scope="col">Ultimo Inicio de Sesión</th>
-                    <th scope="col">Detalle</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
