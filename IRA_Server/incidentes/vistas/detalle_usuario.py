@@ -56,8 +56,11 @@ def cargar_usuario(request):
             da.is_active = int(detalle[0][8])
             da.date_joined = detalle[0][10]
 
-            print(da)
+            
             '''
+            da.id = u.id
+            print(da)
+
             contexto = {'usuario':u, 'formulario':da} #MODIFICADO
             return render(request, "detalle_usuario.html", contexto)
 
