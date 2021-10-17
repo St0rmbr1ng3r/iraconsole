@@ -49,19 +49,20 @@ def cargar_usuario(request):
             formulario = FormularioModificarUsuario(request.POST)
 
             if formulario.is_valid():
-                    print("Formulario Valido",formulario)
-                    '''
-                    ua = UsuarioModificado()
-                    if ua.actualizar_usuario(formulario.cleaned_data) == 1:
-                        messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
-                        return redirect('administracion')
-                    else:
-                        messages.success(request, "Usuario Actualizdo Correctamente" )
-                        return redirect('administracion')
-                    '''
-            else:
+                print("Formulario Valido",formulario)
+                '''
+                ua = UsuarioModificado()
+                if ua.actualizar_usuario(formulario.cleaned_data) == 1:
                     messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
                     return redirect('administracion')
+                else:
+                    messages.success(request, "Usuario Actualizdo Correctamente" )
+                    return redirect('administracion')
+                '''
+            else:
+                print (formulario.errors)
+                messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
+                return redirect('administracion')
 
     return redirect('dashboard')
 
