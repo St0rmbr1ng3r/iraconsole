@@ -18,7 +18,7 @@
       <div class="col-8">
         <form action="" method=POST> 
           {% csrf_token %}
-          <!-- 
+        
           <div class="form-group">
             <label for="idusuario">ID</label>
             <input type="number" class="form-control" id="idusuario" value="{{ usuario.id }}" disabled>
@@ -69,39 +69,7 @@
           </div>     
           {{ usuario.is_superuser }}
 
-          -->
-
           
-          <div class="mb-3 col-8">
-            {{ usuario.id | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.username | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.first_name | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.last_name | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.email | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.is_superuser | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.is_active | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.date_joined | bootstrap}}
-          </div>
-          <div class="mb-3 col-8">
-            {{ usuario.last_login | bootstrap}}
-          </div>
-
-
-
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button><button type="button" class="btn btn-warning"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
         </form>
