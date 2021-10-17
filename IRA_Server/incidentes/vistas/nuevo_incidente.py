@@ -3,7 +3,7 @@ from ..modelos.incidente import NuevoIncidente #Incidentes,
 #from django.db import connection
 #import datetime
 from django.contrib.auth.decorators import login_required
-#from django.contrib import messages
+from django.contrib import messages
 from ..modelos.formularios import FormularioMulti, FormularioIncidente
 
 @login_required(login_url='login')
