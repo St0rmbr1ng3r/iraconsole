@@ -46,7 +46,7 @@ def cargar_usuario(request):
             u.is_active = int(detalle[0][8])
             u.date_joined = detalle[0][10]
 
-            da = FormularioModificarUsuario(initial={'id':'u.id'})
+            da = FormularioModificarUsuario(initial={'id':'usuario.id'})
 
             '''
             da.id = int(detalle[0][0])
