@@ -202,12 +202,13 @@ class FormularioModificarIncidente(ModelForm):
 class FormularioModificarUsuario(ModelForm):
     class Meta:
         model = Usuario
-        fields = '__all__'
+        #fields = '__all__'
+        fields =  ['id','is_superuser','username','first_name','last_name','is_active','email','date_joined'] 
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
     id = forms.IntegerField()
-    password = forms.CharField(widget=forms.PasswordInput, disabled=True)
+    #password = forms.CharField(widget=forms.PasswordInput, disabled=True)
     last_login = forms.DateTimeField(disabled=True)
     username = forms.CharField(widget=forms.TextInput, disabled=True)
     first_name = forms.CharField(widget=forms.TextInput)
@@ -219,6 +220,7 @@ class FormularioModificarUsuario(ModelForm):
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
     is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
 
+    '''
     def cargar_detalle_usuario(self,id_usuario):
         try:
             cursorDetalleUsuario = connection.cursor()
@@ -232,3 +234,4 @@ class FormularioModificarUsuario(ModelForm):
         except:
             print("Error al traer detalle de Usuario")
             return 1
+    '''

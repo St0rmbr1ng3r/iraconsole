@@ -39,6 +39,27 @@ class Usuario(models.Model):
                 return 0
         except:
             return 1
+
+    #AGREGADO PARA PROBAR EL FORMULARIO BORRALOOOOO
+    ###############################################
+         ###################################
+              #########################
+                   ###############
+                       #######
+                          #
+    def cargar_detalle_usuario(self,id_usuario):
+        try:
+            cursorDetalleUsuario = connection.cursor()
+            args = [int(id_usuario)]
+            cursorDetalleUsuario.callproc('GetDetalleUsuario',args)
+            result=cursorDetalleUsuario.fetchall()
+            if result:
+                return result
+            else:
+                return 1
+        except:
+            print("Error al traer detalle de Usuario")
+            return 1
         
 
 #################################################
