@@ -9,6 +9,7 @@ def eliminar_usuario(request):
     if request.user.is_superuser:
         if request.method == 'GET':
             id_usuario = request.GET.get('id_usuario', '0')
+            print("id:usuario: ",id_usuario)
             u = Usuario()
             eliminacion = u.eliminar_usuario(id_usuario)
             if eliminacion == 0:
@@ -16,7 +17,5 @@ def eliminar_usuario(request):
                 return redirect('administracion')
             else:
                 messages.error(request, "No se Pudo eliminar el Usuario Seleccionado")
-        else:
-            print("VA POR POST")
     messages.error(request, "No Tiene permisos para ver el recurso")
     return redirect('dashboard')
