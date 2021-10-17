@@ -203,7 +203,7 @@ class FormularioModificarUsuario(ModelForm):
     class Meta:
         model = Usuario
         #fields = '__all__'
-        fields =  ['id','is_superuser','username','first_name','last_name','is_active','email','date_joined'] 
+        fields =  ['id','is_superuser','username','first_name','last_name','is_active','email','date_joined','last_login'] 
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
