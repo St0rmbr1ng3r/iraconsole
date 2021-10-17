@@ -54,6 +54,11 @@
               <li>
                 <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
               </li>
+              {% if request.user.is_superuser %}
+              <li>
+                <a class="dropdown-item" href="{% url 'administracion' %}">Administración</a>
+              </li>
+              {% endif %}
               <li>
                 <hr class="dropdown-divider">
               </li>
