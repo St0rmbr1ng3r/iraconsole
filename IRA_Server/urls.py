@@ -54,7 +54,7 @@ urlpatterns = [
     path('CrearUsuario/', crear_usuario, name='crearusuario'),
 
     #URL PARA USUARIO NUEVO
-    path('/EliminarUsuario', eliminar_usuario, name='eliminarusuario'),
+    path('EliminarUsuario/', eliminar_usuario, name='eliminarusuario'),
     
 
 ]
