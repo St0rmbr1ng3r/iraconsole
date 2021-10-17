@@ -56,7 +56,7 @@ def cargar_usuario(request):
             da.is_active = int(detalle[0][8])
             da.date_joined = detalle[0][10]
 
-
+            print(da)
             contexto = {'usuario':da} #MODIFICADO
             return render(request, "detalle_usuario.html", contexto)
 
