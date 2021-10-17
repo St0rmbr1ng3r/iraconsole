@@ -16,5 +16,7 @@ def eliminar_usuario(request):
                 return redirect('administracion')
             else:
                 messages.error(request, "No se Pudo eliminar el Usuario Seleccionado")
+        else:
+            print("VA POR POST")
     messages.error(request, "No Tiene permisos para ver el recurso")
     return redirect('dashboard')
