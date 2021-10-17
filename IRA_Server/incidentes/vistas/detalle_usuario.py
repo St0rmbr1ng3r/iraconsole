@@ -44,7 +44,7 @@ def cargar_usuario(request):
             return render(request, "detalle_usuario.html", contexto)
         #AGREGADO CON METODO POST
         if request.method == 'POST':
-            formulario = FormularioModificarUsuario(request.POST)
+            formulario = FormularioModificarUsuario(request.POST, initial=formulario1)
             print(formulario.has_changed())
             print(formulario)
 
