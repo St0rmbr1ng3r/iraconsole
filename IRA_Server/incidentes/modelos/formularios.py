@@ -214,11 +214,8 @@ class FormularioModificarUsuario(ModelForm):
     last_name = forms.CharField(widget=forms.TextInput)
     email = forms.EmailField(widget=forms.EmailInput)
     date_joined = forms.DateTimeField(disabled=True)
-
-
     #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
     is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
-
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
     is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
 

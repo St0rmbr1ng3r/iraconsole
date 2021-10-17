@@ -63,6 +63,10 @@
             <input type="text" class="form-control" id="joined" value="{{ usuario.date_joined }}" disabled>
           </div>
 
+          <div class="mb-3 col-8">
+            {{ usuario.is_superuser|bootstrap }}
+          </div>
+
           <div class="form-group">
             <label for="lastlogin">Ultimo Inicio de Sesión</label>
             <input type="text" class="form-control" id="lastlogin" value="{{ usuario.last_login }}" disabled>

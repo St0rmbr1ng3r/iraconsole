@@ -31,16 +31,13 @@ class Usuario(models.Model):
 
     def eliminar_usuario(self,id_usuario):
         try:
-                print("Ingreso a la funcion eliminar")
                 cursorEliminarUsuario=connection.cursor()
                 connection.commit()
                 args = [id_usuario,]
                 resEliminarUsuario = cursorEliminarUsuario.callproc('EliminarUsuario', args)
                 connection.close()
-                print("Funciona Eliminacion")
                 return 0
         except:
-            print("FALLA Eliminacion")
             return 1
         
 
