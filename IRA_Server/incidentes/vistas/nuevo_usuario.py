@@ -14,8 +14,10 @@ def crear_usuario(request):
         if formulario.is_valid():
                 nu = NuevoUsuario()
                 if nu.guardar_usuario(formulario.cleaned_data) == 1:
-                    return redirect('nuevousuario')
+                    messages.error(request, "No se puede crear el Usuario. Verifique el largo de la ontraseña" )
+                    return redirect('crearusuario')
                 else:
+                    messages.success(request, "Usuario Creado Correctamente" )
                     return redirect('administracion')
         else:
             print (formulario.errors)
