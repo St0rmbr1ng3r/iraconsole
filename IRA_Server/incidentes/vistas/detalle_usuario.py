@@ -7,6 +7,31 @@ from django.contrib import messages
 @login_required(login_url='login')
 def cargar_usuario(request):
     if request.user.is_superuser:
+
+        #AGREGADO CON METODO POST
+        if request.method == 'POST':
+            formulario = FormularioModificarUsuario(request.POST, initial=formulario1)
+            print(formulario.has_changed())
+            print(formulario)
+
+            print("ID USUARIO: ", formulario['id'])
+
+            if formulario.is_valid():
+                print("Formulario Valido",formulario)
+                '''
+                ua = UsuarioModificado()
+                if ua.actualizar_usuario(formulario.cleaned_data) == 1:
+                    messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
+                    return redirect('administracion')
+                else:
+                    messages.success(request, "Usuario Actualizdo Correctamente" )
+                    return redirect('administracion')
+                '''
+            else:
+                print (formulario.errors)
+                messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
+                return redirect('administracion')
+                
         #if request.method == 'GET':
         id_usuario=request.GET.get('id_usuario', '0')
         u = Usuario() #AGREGADO HAY QUE BORRAR
@@ -44,29 +69,7 @@ def cargar_usuario(request):
         return render(request, "detalle_usuario.html", contexto)
 
 
-        #AGREGADO CON METODO POST
-        if request.method == 'POST':
-            formulario = FormularioModificarUsuario(request.POST, initial=formulario1)
-            print(formulario.has_changed())
-            print(formulario)
-
-            print("ID USUARIO: ", formulario['id'])
-
-            if formulario.is_valid():
-                print("Formulario Valido",formulario)
-                '''
-                ua = UsuarioModificado()
-                if ua.actualizar_usuario(formulario.cleaned_data) == 1:
-                    messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
-                    return redirect('administracion')
-                else:
-                    messages.success(request, "Usuario Actualizdo Correctamente" )
-                    return redirect('administracion')
-                '''
-            else:
-                print (formulario.errors)
-                messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
-                return redirect('administracion')
+        
 
     return redirect('dashboard')
 
