@@ -19,8 +19,10 @@ def crear_incidente(request):
             if formulariomulti.is_valid():
                 ni = NuevoIncidente()
                 if ni.guardar_incidente(formulario.cleaned_data, formulariomulti.cleaned_data) == 1:
+                    messages.error(request, "Erro al guardar el incidente. Por favor intente nuevamente" )
                     return redirect('nuevo')
                 else:
+                    messages.success(request, "Incidente Creado Correctamente" )
                     return redirect('activos')
             else:
                 print (formulariomulti.errors)

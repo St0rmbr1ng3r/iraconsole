@@ -293,12 +293,16 @@ class NuevoIncidente(models.Model):
                 if self.guardar_detalle_ambiente(ambiente, nuevo_id) == 0:
                     if self.guardar_detalle_ubicacion(ubicacion, nuevo_id) == 0:
                         if self.guardar_detalle_servicio(servicio, nuevo_id) == 0:
+                            print("Detalles guardados correctamente")
                             return 0
                         else:
+                            print("Fallo el detalle del servicio")
                             return 1
                     else:
+                        print("Fallo el detalle de la ubicacion")
                         return 1
                 else:
+                    print("Fallo el detalle del ambiente")
                     return 1
                 
 
