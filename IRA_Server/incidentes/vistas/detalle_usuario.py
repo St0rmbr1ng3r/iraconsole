@@ -46,7 +46,6 @@ def cargar_usuario(request):
 
         #AGREGADO CON METODO POST
         if request.method == 'POST':
-            print("Ingreso a METODO POST")
             formulario = FormularioModificarUsuario(request.POST)
 
             print("ID USUARIO: ", formulario['id'])

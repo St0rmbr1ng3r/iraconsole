@@ -16,7 +16,7 @@
       <div class="col">
       </div>
       <div class="col-8">
-        <form action="" method=POST> 
+        <form action="/DetalleUsuario" method=POST> 
           {% csrf_token %}
           
           <!-- INPUT PARA ID DE USUARIO-->
@@ -62,7 +62,7 @@
           <!-- INPUT PARA FECHA DE ULTIMO LOGIN DEL USUARIO-->
           <div class="mb-3 col-8">
             {{ formulario.last_login|bootstrap }}
-        </div>
+          </div>
 
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
