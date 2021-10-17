@@ -69,9 +69,9 @@
           </li>
         </ul>
       </div>
-      <form class="d-flex" action="" method="POST">
+      <form class="d-flex" action="/DetalleIncidente" method="GET">
         {% csrf_token %}
-        <input class="form-control me-2" type="search" placeholder="ID de Incidente" aria-label="busqueda">
+        <input class="form-control me-2" type="search" placeholder="ID de Incidente" aria-label="busqueda" id="id_inc" name="id_inc">
         <button class="btn btn-outline-primary" type="submit">Buscar</button>
       </form>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarbar" aria-expanded="false" aria-label="Toggle navigation">
