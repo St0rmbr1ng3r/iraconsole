@@ -24,10 +24,6 @@
             <input type="number" class="form-control" id="idusuario" value="{{ usuario.id }}" disabled>
           </div>
 
-          <div class="mb-3 col-8">
-            {{ formulario.id|bootstrap }}
-          </div>
-
           <div class="form-group">
             <label for="username">Usuario</label>
             <input type="text" class="form-control" id="username" value="{{ usuario.username }}" disabled>
@@ -57,10 +53,6 @@
             <input type="number" class="form-control" id="superuser" value="{{ usuario.is_superuser }}" >
           </div>
 
-          <div class="mb-3 col-8">
-            {{ formulario.is_superuser|bootstrap }}
-          </div>
-
           <div class="form-group">
             <label for="active">Usuario Activo</label>
             <input type="number" class="form-control" id="active" value="{{ usuario.is_active }}">
@@ -74,8 +66,53 @@
           <div class="form-group">
             <label for="lastlogin">Ultimo Inicio de Sesión</label>
             <input type="text" class="form-control" id="lastlogin" value="{{ usuario.last_login }}" disabled>
-          </div>     
-  
+          </div> 
+          
+          <!-- INPUT PARA ID DE USUARIO-->
+          <div class="mb-3 col-8">
+            {{ formulario.id|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA NOMBRE DE USUARIO-->
+          <div class="mb-3 col-8">
+            {{ formulario.username|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA NOMBRE DE PILA DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ formulario.first_name|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA APELLIDO DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ formulario.last_name|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA CORREO DE USUARIO-->
+          <div class="mb-3 col-8">
+              {{ formulario.email|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA DAR PERMISOS DE ADMINISTRADOR-->
+          <div class="mb-3 col-8">
+              {{ formulario.is_superuser|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA HABILITAR EL USUARIO-->
+          <div class="mb-3 col-8">
+              {{ formulario.is_active|bootstrap }}
+          </div>
+
+          <!-- INPUT PARA FECHA DE CREACIÓN DEL USUARIO-->
+          <div class="mb-3 col-8">
+            {{ formulario.date_joined|bootstrap }}
+        </div>
+
+          <!-- INPUT PARA FECHA DE ULTIMO LOGIN DEL USUARIO-->
+          <div class="mb-3 col-8">
+            {{ formulario.last_login|bootstrap }}
+        </div>
+
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button><button type="button" class="btn btn-warning"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
         </form>

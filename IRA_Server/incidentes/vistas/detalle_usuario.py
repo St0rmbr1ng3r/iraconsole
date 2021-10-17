@@ -46,24 +46,19 @@ def cargar_usuario(request):
             u.is_active = int(detalle[0][8])
             u.date_joined = detalle[0][10]
 
-            da = FormularioModificarUsuario(initial={'id':u.id, 'is_superuser':u.is_superuser})
+            formulario = FormularioModificarUsuario(initial={
+                'id':u.id, 
+                'is_superuser': u.is_superuser,
+                'username' : u.username,
+                'first_name' : u.first_name,
+                'last_name' : u.last_name,
+                'email' : u.email,
+                'is_active' : u.is_active,
+                'date_joined' : u.date_joined 
+                'last_login' : u.last_login           
+                })
 
-            '''
-            da.id = int(detalle[0][0])
-            da.last_login = detalle[0][2]
-            da.is_superuser = int(detalle[0][3])
-            da.username = detalle[0][4]
-            da.first_name = detalle[0][5]
-            da.last_name = detalle[0][6]
-            da.email = detalle[0][7]
-            da.is_active = int(detalle[0][8])
-            da.date_joined = detalle[0][10]
-
-            
-            '''
-            print(da)
-
-            contexto = {'usuario':u, 'formulario':da} #MODIFICADO
+            contexto = {'formulario':formulario} #MODIFICADO
             return render(request, "detalle_usuario.html", contexto)
 
 
