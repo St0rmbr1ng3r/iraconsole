@@ -9,7 +9,7 @@ def cargar_usuario(request):
     if request.user.is_superuser:
         if request.method == 'GET':
             id_usuario=request.GET.get('id_usuario', '0')
-            u = Usuario() #AGREGADO HAY QUE BORRAR
+            u = Usuario() 
             detalle = u.cargar_detalle_usuario(id_usuario)
 
             if detalle == 1:
