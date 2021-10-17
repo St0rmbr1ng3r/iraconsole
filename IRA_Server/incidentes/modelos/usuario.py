@@ -35,7 +35,7 @@ class Usuario(models.Model):
                 cursorEliminarUsuario=connection.cursor()
                 connection.commit()
                 args = [id_usuario,]
-                resEliminarUsuario = cursorEliminarUsuario.callproc('ElimianrUsuario', args)
+                resEliminarUsuario = cursorEliminarUsuario.callproc('EliminarUsuario', args)
                 connection.close()
                 print("Funciona Eliminacion")
                 return 0
