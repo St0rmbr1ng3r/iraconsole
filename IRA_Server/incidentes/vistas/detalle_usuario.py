@@ -28,7 +28,7 @@ def cargar_usuario(request):
             u.is_active = int(detalle[0][8])
             u.date_joined = detalle[0][10]
             '''
-            formulario1 = FormularioModificarUsuario(initial={
+            formulario = FormularioModificarUsuario(initial={
                 'id':int(detalle[0][0]), 
                 'is_superuser': int(detalle[0][3]),
                 'username' : detalle[0][4],
@@ -40,13 +40,12 @@ def cargar_usuario(request):
                 'last_login' : detalle[0][2]           
                 })
 
-            contexto = {'formulario':formulario1} 
+            contexto = {'formulario':formulario} 
             return render(request, "detalle_usuario.html", contexto)
         #AGREGADO CON METODO POST
         if request.method == 'POST':
-            formulario = FormularioModificarUsuario(request.POST, initial=formulario1)
-            print(formulario.has_changed())
-            print(formulario)
+            formulario = FormularioModificarUsuario(request.POST)
+            print(formulario.cleaned_data['id'])
 
             print("ID USUARIO: ", formulario['id'])
 
