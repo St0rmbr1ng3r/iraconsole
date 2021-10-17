@@ -207,7 +207,7 @@ class FormularioModificarUsuario(ModelForm):
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
-    id = forms.IntegerField()
+    id = forms.IntegerField(disabled=True)
     #password = forms.CharField(widget=forms.PasswordInput, disabled=True)
     last_login = forms.DateTimeField(disabled=True)
     username = forms.CharField(widget=forms.TextInput, disabled=True)
