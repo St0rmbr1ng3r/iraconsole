@@ -10,6 +10,7 @@ from .incidentes.vistas.incidentes_activos import *
 from .incidentes.vistas.panel_administracion import *
 from .incidentes.vistas.detalle_usuario import *
 from .incidentes.vistas.nuevo_usuario import *
+from .incidentes.vistas.eliminar_usuario import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -51,5 +52,9 @@ urlpatterns = [
 
     #URL PARA USUARIO NUEVO
     path('CrearUsuario/', crear_usuario, name='crearusuario'),
+
+    #URL PARA USUARIO NUEVO
+    path('/EliminarUsuario', eliminar_usuario, name='eliminarusuario'),
+    
 
 ]

@@ -30,7 +30,16 @@ class Usuario(models.Model):
         return resUsuariosActivos
 
     def eliminar_usuario(self,id_usuario):
-        return 0
+        try:
+                cursorEliminarUsuario=connection.cursor()
+                connection.commit()
+                args = [id_usuario,]
+                resEliminarUsuario = cursorEliminarUsuario.callproc('ElimianrUsuario', args)
+                connection.close()
+                return 0
+        except:
+            return 1
+        
 
 #################################################
 #   MODELO PARA CREACION DE USUARIO
