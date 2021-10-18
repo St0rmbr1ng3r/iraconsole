@@ -14,20 +14,8 @@ def cargar_usuario(request):
 
             if detalle == 1:
                 messages.error(request, "Usuario Invalido")
-                #return redirect('usuarioinvalido')
                 return redirect('administracion')
-            '''
-            u.id = int(detalle[0][0])
-            #u.password = detalle[0][1]
-            u.last_login = detalle[0][2]
-            u.is_superuser = int(detalle[0][3])
-            u.username = detalle[0][4]
-            u.first_name = detalle[0][5]
-            u.last_name = detalle[0][6]
-            u.email = detalle[0][7]
-            u.is_active = int(detalle[0][8])
-            u.date_joined = detalle[0][10]
-            '''
+
             formulario = FormularioModificarUsuario(initial={
                 'id':int(detalle[0][0]), 
                 'is_superuser': int(detalle[0][3]),
@@ -45,7 +33,7 @@ def cargar_usuario(request):
         #AGREGADO CON METODO POST
         if request.method == 'POST':
             formulario = FormularioModificarUsuario(request.POST)
-            print(formulario)
+            print(request.POST)
 
             print("ID USUARIO: ", formulario['id'])
 
