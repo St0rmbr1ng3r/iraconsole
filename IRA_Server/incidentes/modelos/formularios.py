@@ -230,7 +230,7 @@ class FormularioModificarUsuario(ModelForm):
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
-    #id = forms.IntegerField(widget=forms.TextInput,label='ID de Usuario')
+    id = forms.IntegerField(widget=forms.TextInput,label='ID de Usuario')
     first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
     last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
     email = forms.EmailField(widget=forms.EmailInput,label='Correo Electrónico')
