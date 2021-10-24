@@ -16,8 +16,9 @@ def cargar_usuario(request):
                 messages.error(request, "Usuario Invalido")
                 return redirect('administracion')
 
+            print(detalle)
             formulario = FormularioDetalleUsuario(initial={
-                'id':int(id_usuario), 
+                'id':int(detalle[0][0]), 
                 'is_superuser': int(detalle[0][3]),
                 'username' : detalle[0][4],
                 'first_name' : detalle[0][5],

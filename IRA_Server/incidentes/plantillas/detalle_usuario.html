@@ -19,9 +19,7 @@
         <form action="" method=POST> 
           {% csrf_token %}
 
-          <input type="number" name="id" value={{formulario.id}} required disabled id="id">
-
-          {{formulario|bootstrap}}
+          {{formulario}}
 
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
