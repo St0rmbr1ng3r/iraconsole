@@ -17,7 +17,7 @@ def cargar_usuario(request):
                 return redirect('administracion')
 
             formulario = FormularioDetalleUsuario(initial={
-                'id':int(detalle[0][0]), 
+                'id':int(id_usuario), 
                 'is_superuser': int(detalle[0][3]),
                 'username' : detalle[0][4],
                 'first_name' : detalle[0][5],
