@@ -7,6 +7,8 @@ from django.contrib import messages
 
 @login_required(login_url='login')
 def cargar_incidentes_activos(request):
-    incActivos = IncidentesActivos()
-    contexto = {'inc_activos':incActivos.resIncActivos}
+    ia = IncidentesActivos()
+    incActivos = ia.listar_incidentes_activos
+    contexto = {'inc_activos':incActivos}
     return render(request, "incidentes_activos.html", contexto)
+

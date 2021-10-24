@@ -1,7 +1,7 @@
 from django.db import models
 #from django.forms import ModelForm
 from django.db import connection
-
+'''
 class Activos(models.Model):
     id_activo = models.IntegerField()
     desc_activo = models.CharField(max_length=45)
@@ -18,7 +18,7 @@ class Ambientes(models.Model):
     class Meta:
         managed = False
         db_table = 'ambientes'
-
+'''
 class Comentarios(models.Model):
     id_comentario = models.IntegerField()
     id_inc = models.IntegerField()
@@ -30,7 +30,7 @@ class Comentarios(models.Model):
         managed = False
         db_table = 'comentarios'
 
-
+'''
 class Criticidadesservicios(models.Model):
     id_criticidad_serv = models.IntegerField()
     desc_criticidad_serv = models.CharField(max_length=45)
@@ -69,7 +69,7 @@ class Detallesubicacion(models.Model):
         managed = False
         db_table = 'detallesubicacion'
 
-
+'''
 class Documentos(models.Model):
     id_documento = models.IntegerField()
     id_inc = models.IntegerField()
@@ -81,8 +81,7 @@ class Documentos(models.Model):
     class Meta:
         managed = False
         db_table = 'documentos'
-
-
+'''
 class Estados(models.Model):
     id_estado = models.IntegerField()
     desc_estado = models.CharField(max_length=45)
@@ -109,7 +108,7 @@ class Impactos(models.Model):
         managed = False
         db_table = 'impactos'
 
-
+'''
 class Incidentes(models.Model):
 
     id_inc = models.IntegerField()
@@ -133,7 +132,7 @@ class Incidentes(models.Model):
         managed = False
         db_table = 'incidentes'
 
-
+'''
 class Origenes(models.Model):
     id_origen = models.IntegerField()
     desc_origen = models.CharField(max_length=45)
@@ -187,7 +186,7 @@ class Urgencias(models.Model):
     class Meta:
         managed = False
         db_table = 'urgencias'
-
+'''
 class Multicheck(models.Model):
     ambiente = models.CharField(max_length=45)
     ubicacion = models.CharField(max_length=45)
@@ -198,10 +197,13 @@ class Multicheck(models.Model):
 #################################################
 
 class IncidentesActivos(models.Model):
-    cursorIncActivos=connection.cursor()
-    cursorIncActivos.execute('call GetIncidentesActivosListado()')
-    resIncActivos=cursorIncActivos.fetchall()
-    connection.close()
+    def listar_incidentes_activos(self)
+        cursorIncActivos=connection.cursor()
+        cursorIncActivos.execute('call GetIncidentesActivosListado()')
+        resIncActivos=cursorIncActivos.fetchall()
+        connection.close()
+        return resIncActivos
+
 
 #################################################
 #   MODELO PARA GUARDAR INCIDENTES
@@ -275,7 +277,6 @@ class NuevoIncidente(models.Model):
             resGuardarIncidente = cursorGuardarIncidente.callproc('GuardarNuevoIncidente', args)
             connection.close()
         except:
-            print("Error guardando incidente principal")
             return 1
         else:
             try:
@@ -286,7 +287,6 @@ class NuevoIncidente(models.Model):
                 nuevo_id = res[0][0] 
                 connection.close()
             except:
-                print("Error al obtener el ultimo ID de incidente")
                 return 1
             else:
                 #GUARDADO DE LOS DETALLES DE AMBIENTES; UBICACION Y SERVICIOS
