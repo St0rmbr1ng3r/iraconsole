@@ -207,9 +207,9 @@ class FormularioDetalleUsuario(ModelForm):
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
-    id = forms.IntegerField(disabled=True,label='ID de Usuario')
+    id = forms.IntegerField(label='ID de Usuario')
     #password = forms.CharField(widget=forms.PasswordInput, disabled=True)
-    last_login = forms.DateTimeField(widget=forms.TextInput,disabled=True)
+    last_login = forms.DateTimeField(widget=forms.TextInput, disabled=True)
     username = forms.CharField(widget=forms.TextInput, disabled=True,label='Nombre de Usuario')
     first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
     last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
@@ -229,7 +229,7 @@ class FormularioModificarUsuario(ModelForm):
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
-    id = forms.IntegerField(widget=forms.TextInput,disabled=True,label='ID de Usuario')
+    id = forms.IntegerField(widget=forms.TextInput, disabled=True,label='ID de Usuario')
     first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
     last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
     email = forms.EmailField(widget=forms.EmailInput,label='Correo Electrónico')

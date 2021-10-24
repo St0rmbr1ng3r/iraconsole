@@ -16,15 +16,9 @@
     <div class="col-8">
       <form action="" method=POST> 
         {% csrf_token %}
-          <!-- INPUT PARA NOMBRE DE USUARIO-->
-
+          <!-- INPUT PARA ID DE USUARIO-->
           <div class="mb-3 col-8">
-            <div class="form-group">
-              <label class="control-label  " for="id_id">Nombre de Usuario</label>
-
-              <div class=" ">
-                <input type="text" name="id" value='{{ formulario.id.value }}' class="form-control" required="" disabled="" id="id_id">  
-            </div>  
+            {{ formulario.id|bootstrap }}
           </div>
 
           <!-- INPUT PARA NOMBRE DE USUARIO-->
@@ -60,7 +54,7 @@
           <!-- INPUT PARA FECHA DE CREACIÓN DEL USUARIO-->
           <div class="mb-3 col-8">
             {{ formulario.date_joined|bootstrap }}
-        </div>
+          </div>
 
           <!-- INPUT PARA FECHA DE ULTIMO LOGIN DEL USUARIO-->
           <div class="mb-3 col-8">

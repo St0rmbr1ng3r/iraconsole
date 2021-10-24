@@ -37,11 +37,7 @@ def cargar_usuario(request):
             formulario = FormularioDetalleUsuario(request.POST)
             print("POST REQUEST")
             print(request.POST)
-            '''
-            formulario = FormularioDetalleUsuario(initial={
-                'id':int(request.POST.get('id_usuario', '0')),        
-                })
-            '''
+
             print("FORMULARIO COMPLETO ENVIADO")
             print(formulario)
 
