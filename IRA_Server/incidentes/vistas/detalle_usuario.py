@@ -66,14 +66,7 @@ def cargar_usuario(request):
                 print (formulario.errors)
                 messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
                 return redirect('administracion')
-
         
-
-
-
-
-        
-
     return redirect('dashboard')
 
 

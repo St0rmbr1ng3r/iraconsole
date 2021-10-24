@@ -8,9 +8,6 @@
 
 <h1>DETALLE DE USUARIO</h1>
 
-{{detalle}}
-
-
 <div class="container">
     <div class="row">
       <div class="col">
@@ -18,11 +15,8 @@
       <div class="col-8">
         <form action="" method=POST> 
           {% csrf_token %}
-          <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Disabled input</label>
-            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" value="{{formulario.id}}">
-          </div>
-          {{formulario}}
+
+          {{formulario | bootstrap}}
 
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
