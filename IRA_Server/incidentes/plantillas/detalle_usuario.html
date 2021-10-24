@@ -9,23 +9,25 @@
 <h1>DETALLE DE USUARIO</h1>
 
 <div class="container">
-    <div class="row">
-      <div class="col">
-      </div>
-      <div class="col-8">
-        <form action="" method=POST> 
-          {% csrf_token %}
-
-          {{formulario | bootstrap}}
-
-          <br>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
-        </form>
-      </div>
-      <div class="col">
-      </div>
-      
+  <div class="row">
+    <div class="col">
     </div>
+
+    <div class="col-8">
+      <form action="" method=POST> 
+        {% csrf_token %}
+
+        {{formulario | bootstrap}}
+
+        <br>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
+      </form>
+    </div>
+    
+    <div class="col">
+    </div>
+    
   </div>
+</div>
 
 {%endblock%}
