@@ -19,7 +19,10 @@
         <form action="" method=POST> 
           {% csrf_token %}
 
-          <input class="form-control" type="number" value="{{ formulario.id.value }}" readonly name="id" id="id">
+          <!-- INPUT PARA NOMBRE DE USUARIO-->
+          <div class="mb-3 col-8">
+            {{ formulario.id|bootstrap }}
+          </div>
 
           <!-- INPUT PARA NOMBRE DE USUARIO-->
           <div class="mb-3 col-8">
