@@ -199,7 +199,7 @@ class FormularioModificarIncidente(ModelForm):
     BASICA=[('','--------'),(1,'NO'),(2,'SI')]
 
 
-class FormularioModificarUsuario(ModelForm):
+class FormularioDetalleUsuario(ModelForm):
     class Meta:
         model = Usuario
         #fields = '__all__'
@@ -215,6 +215,24 @@ class FormularioModificarUsuario(ModelForm):
     last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
     email = forms.EmailField(widget=forms.EmailInput,label='Correo Electrónico')
     date_joined = forms.DateTimeField(disabled=True)
+    #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
+    is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
+    #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
+    is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
+
+
+class FormularioModificarUsuario(ModelForm):
+    class Meta:
+        model = Usuario
+        #fields = '__all__'
+        fields =  ['id','is_superuser','first_name','last_name','is_active','email'] 
+
+    BASICA=[('','--------'),(0,'NO'),(1,'SI')]
+
+    id = forms.IntegerField(disabled=True,label='ID de Usuario')
+    first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
+    last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
+    email = forms.EmailField(widget=forms.EmailInput,label='Correo Electrónico')
     #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
     is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR

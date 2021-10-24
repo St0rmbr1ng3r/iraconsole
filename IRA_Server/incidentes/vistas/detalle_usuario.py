@@ -16,7 +16,7 @@ def cargar_usuario(request):
                 messages.error(request, "Usuario Invalido")
                 return redirect('administracion')
 
-            formulario = FormularioModificarUsuario(initial={
+            formulario = FormularioDetalleUsuario(initial={
                 'id':int(detalle[0][0]), 
                 'is_superuser': int(detalle[0][3]),
                 'username' : detalle[0][4],
@@ -30,35 +30,27 @@ def cargar_usuario(request):
 
             contexto = {'formulario':formulario} 
             return render(request, "detalle_usuario.html", contexto)
+
         #AGREGADO CON METODO POST
         if request.method == 'POST':
             formulario = FormularioModificarUsuario(request.POST)
             print("POST REQUEST")
             print(request.POST)
-            print("CAMPO DESDE EL POST")
-            print(request.POST.get('username', '0'))
-            print(request.POST.get('date_joined', '0'))
-            print(request.POST.get('last_login', '0'))
-
-
+            '''
             formulario = FormularioModificarUsuario(initial={
                 'id':int(request.POST.get('id', '0')), 
                 'is_superuser': int(request.POST.get('is_superuser', '0')),
-                'username' : request.POST.get('username', '0'),
                 'first_name' : request.POST.get('first_name', '0'),
                 'last_name' : request.POST.get('last_name', '0'),
                 'email' : request.POST.get('email', '0'),
-                'is_active' : int(request.POST.get('is_active', '0')),
-                'date_joined' : request.POST.get('date_joined', '0'), 
-                'last_login' : request.POST.get('last_login', '0')           
+                'is_active' : int(request.POST.get('is_active', '0')),        
                 })
-
+            '''
             print("FORMULARIO COMPLETO ENVIADO")
             print(formulario)
-            print("ID USUARIO: ", formulario['id'])
 
             if formulario.is_valid():
-                print("Formulario Valido",formulario)
+                print("Formulario Valido",formulario.cleaned_data)
                 '''
                 ua = UsuarioModificado()
                 if ua.actualizar_usuario(formulario.cleaned_data) == 1:
