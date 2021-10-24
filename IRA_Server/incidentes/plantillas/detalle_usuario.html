@@ -18,7 +18,9 @@
       <div class="col-8">
         <form action="" method=POST> 
           {% csrf_token %}
-          <input type="number" name="id" value={{formulario.id}} required disabled id="id"></td></tr>
+
+          <input type="number" name="id" value={{formulario.id}} required disabled id="id">
+
           {{formulario|bootstrap}}
 
           <br>
