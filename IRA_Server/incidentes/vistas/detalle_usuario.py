@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from ..modelos.usuario import Usuario
+from ..modelos.usuario import Usuario, UsuarioModificado
 from ..modelos.formularios import FormularioModificarUsuario, FormularioDetalleUsuario
 from django.contrib import messages
 
