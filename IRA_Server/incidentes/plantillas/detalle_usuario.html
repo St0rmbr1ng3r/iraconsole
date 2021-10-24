@@ -18,8 +18,14 @@
         {% csrf_token %}
           <!-- INPUT PARA NOMBRE DE USUARIO-->
 
-          <label for="id_id">ID de Usuario:</label>
-          <input type="text" name="id_id" required disabled id="id_id" value="24">
+          <div class="mb-3 col-8">
+            <div class="form-group">
+              <label class="control-label  " for="id_id">Nombre de Usuario</label>
+
+              <div class=" ">
+                <input type="text" name="id" value="{{ formulario.id }}" class=" form-control" required="" disabled="" id="id_id">  
+            </div>  
+          </div>
 
           <!-- INPUT PARA NOMBRE DE USUARIO-->
           <div class="mb-3 col-8">
