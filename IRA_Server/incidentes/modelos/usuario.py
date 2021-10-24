@@ -92,16 +92,14 @@ class NuevoUsuario(models.Model):
         
         
 class UsuarioModificado(models.Model):
-    def actualizar_usuario(self, formulario):
+    def actualizar_usuario(self, formulario, id_usuario):
 
-        id = formulario['id']
+        id = id_usuario
         is_superuser = formulario['is_superuser']
         first_name = formulario['first_name']
         last_name = formulario['last_name']
         email = formulario['email']
         is_active = formulario['is_active']
-
-        print(formulario)
 
         try:
             cursorActualizarUsuario=connection.cursor()

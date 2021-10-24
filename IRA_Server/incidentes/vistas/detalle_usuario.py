@@ -35,29 +35,17 @@ def cargar_usuario(request):
         #AGREGADO CON METODO POST
         if request.method == 'POST':
             formulario = FormularioModificarUsuario(request.POST)
-            print("POST REQUEST")
-            print(request.POST)
-            print("CAMPO ID COULTO: ",request.POST['id_usuario'])
-
-            print("FORMULARIO COMPLETO ENVIADO")
-            print(formulario)
+            id_usuario = request.POST['id_usuario']
 
             if formulario.is_valid():
-                print("Formulario Valido",formulario.cleaned_data)
-                messages.success(request, "Usuario Actualizado Correctamente" )
-                return redirect('administracion')
-                '''
                 ua = UsuarioModificado()
-                if ua.actualizar_usuario(formulario.cleaned_data) == 1:
+                if ua.actualizar_usuario(formulario.cleaned_data, id_usuario) == 1:
                     messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
                     return redirect('administracion')
                 else:
-                    messages.success(request, "Usuario Actualizdo Correctamente" )
+                    messages.success(request, "Usuario Actualizado Correctamente" )
                     return redirect('administracion')
-                '''
             else:
-                print("ERRORES DEL FORMULARIO")
-                print (formulario.errors)
                 messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
                 return redirect('administracion')
         
