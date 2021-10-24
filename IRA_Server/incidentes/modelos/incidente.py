@@ -197,7 +197,7 @@ class Multicheck(models.Model):
 #################################################
 
 class IncidentesActivos(models.Model):
-    def listar_incidentes_activos(self)
+    def listar_incidentes_activos(self):
         cursorIncActivos=connection.cursor()
         cursorIncActivos.execute('call GetIncidentesActivosListado()')
         resIncActivos=cursorIncActivos.fetchall()
