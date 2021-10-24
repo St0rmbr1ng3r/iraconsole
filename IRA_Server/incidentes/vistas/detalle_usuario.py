@@ -37,9 +37,6 @@ def cargar_usuario(request):
             print(request.POST)
             print("CAMPO DESDE EL POST")
             print(request.POST.get('id', '0'))
-            print("ID USUARIO: ", formulario['id'])
-            print("FORMULARIO COMPLETO ENVIADO")
-            print(formulario)
 
 
             formulario = FormularioModificarUsuario(initial={
@@ -54,6 +51,9 @@ def cargar_usuario(request):
                 'last_login' : request.POST.get('last_login', '0')           
                 })
 
+            print("FORMULARIO COMPLETO ENVIADO")
+            print(formulario)
+            print("ID USUARIO: ", formulario['id'])
 
             if formulario.is_valid():
                 print("Formulario Valido",formulario)
