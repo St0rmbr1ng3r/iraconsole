@@ -18,7 +18,10 @@
       <div class="col-8">
         <form action="" method=POST> 
           {% csrf_token %}
-
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Disabled input</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" value="{{formulario.id}}">
+          </div>
           {{formulario}}
 
           <br>
