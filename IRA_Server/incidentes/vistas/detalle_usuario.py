@@ -37,16 +37,11 @@ def cargar_usuario(request):
             formulario = FormularioModificarUsuario(request.POST)
             print("POST REQUEST")
             print(request.POST)
-            '''
+
             formulario = FormularioModificarUsuario(initial={
-                'id':int(request.POST.get('id', '0')), 
-                'is_superuser': int(request.POST.get('is_superuser', '0')),
-                'first_name' : request.POST.get('first_name', '0'),
-                'last_name' : request.POST.get('last_name', '0'),
-                'email' : request.POST.get('email', '0'),
-                'is_active' : int(request.POST.get('is_active', '0')),        
+                'id':int(request.POST.get('id_usuario', '0')),        
                 })
-            '''
+
             print("FORMULARIO COMPLETO ENVIADO")
             print(formulario)
 
