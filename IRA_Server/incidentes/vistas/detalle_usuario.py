@@ -34,7 +34,7 @@ def cargar_usuario(request):
 
         #AGREGADO CON METODO POST
         if request.method == 'POST':
-            formulario = FormularioDetalleUsuario(request.POST)
+            formulario = FormularioModificarUsuario(request.POST)
             print("POST REQUEST")
             print(request.POST)
 
@@ -43,6 +43,8 @@ def cargar_usuario(request):
 
             if formulario.is_valid():
                 print("Formulario Valido",formulario.cleaned_data)
+                messages.success(request, "Usuario Actualizado Correctamente" )
+                return redirect('administracion')
                 '''
                 ua = UsuarioModificado()
                 if ua.actualizar_usuario(formulario.cleaned_data) == 1:
