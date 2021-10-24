@@ -36,7 +36,9 @@ def cargar_usuario(request):
             print("POST REQUEST")
             print(request.POST)
             print("CAMPO DESDE EL POST")
-            print(request.POST.get('id', '0'))
+            print(request.POST.get('username', '0'))
+            print(request.POST.get('date_joined', '0'))
+            print(request.POST.get('last_login', '0'))
 
 
             formulario = FormularioModificarUsuario(initial={
