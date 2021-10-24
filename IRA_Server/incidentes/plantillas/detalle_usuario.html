@@ -19,50 +19,7 @@
         <form action="" method=POST> 
           {% csrf_token %}
 
-          <!-- INPUT PARA NOMBRE DE USUARIO-->
-          <div class="mb-3 col-8">
-            {{ formulario.id|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA NOMBRE DE USUARIO-->
-          <div class="mb-3 col-8">
-            {{ formulario.username|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA NOMBRE DE PILA DE USUARIO-->
-          <div class="mb-3 col-8">
-              {{ formulario.first_name|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA APELLIDO DE USUARIO-->
-          <div class="mb-3 col-8">
-              {{ formulario.last_name|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA CORREO DE USUARIO-->
-          <div class="mb-3 col-8">
-              {{ formulario.email|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA DAR PERMISOS DE ADMINISTRADOR-->
-          <div class="mb-3 col-8">
-              {{ formulario.is_superuser|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA HABILITAR EL USUARIO-->
-          <div class="mb-3 col-8">
-              {{ formulario.is_active|bootstrap }}
-          </div>
-
-          <!-- INPUT PARA FECHA DE CREACIÓN DEL USUARIO-->
-          <div class="mb-3 col-8">
-            {{ formulario.date_joined|bootstrap }}
-        </div>
-
-          <!-- INPUT PARA FECHA DE ULTIMO LOGIN DEL USUARIO-->
-          <div class="mb-3 col-8">
-            {{ formulario.last_login|bootstrap }}
-          </div>
+          {{formulario|bootstrap}}
 
           <br>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'administracion' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
