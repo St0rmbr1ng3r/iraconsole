@@ -16,7 +16,7 @@ def cargar_usuario(request):
                 messages.error(request, "Usuario Invalido")
                 return redirect('administracion')
 
-            print(detalle)
+            print(detalle[0][0])
             formulario = FormularioDetalleUsuario(initial={
                 'id':int(detalle[0][0]), 
                 'is_superuser': int(detalle[0][3]),
@@ -34,7 +34,7 @@ def cargar_usuario(request):
 
         #AGREGADO CON METODO POST
         if request.method == 'POST':
-            formulario = FormularioModificarUsuario(request.POST,initial={'id':request.POST['id_usuario']})
+            formulario = FormularioModificarUsuario(request.POST)
             print("POST REQUEST")
             print(request.POST)
             print("CAMPO ID COULTO: ",request.POST['id_usuario'])

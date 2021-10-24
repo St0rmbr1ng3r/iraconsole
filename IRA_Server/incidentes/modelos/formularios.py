@@ -209,12 +209,12 @@ class FormularioDetalleUsuario(ModelForm):
 
     id = forms.IntegerField(widget=forms.TextInput,disabled=True,label='ID de Usuario')
     #password = forms.CharField(widget=forms.PasswordInput, disabled=True)
-    last_login = forms.DateTimeField(widget=forms.TextInput, disabled=True)
+    last_login = forms.DateTimeField(widget=forms.TextInput, disabled=True,label='Ultimo inicio de Sesión')
     username = forms.CharField(widget=forms.TextInput, disabled=True,label='Nombre de Usuario')
     first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
     last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
     email = forms.EmailField(widget=forms.EmailInput,label='Correo Electrónico')
-    date_joined = forms.DateTimeField(disabled=True)
+    date_joined = forms.DateTimeField(disabled=True, label='Fecha de creación')
     #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
     is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
@@ -225,16 +225,12 @@ class FormularioModificarUsuario(ModelForm):
     class Meta:
         model = Usuario
         #fields = '__all__'
-        #fields =  ['is_superuser','first_name','last_name','is_active','email'] 
-        fields =  ['id','is_superuser','first_name','last_name','is_active','email'] 
+        fields =  ['is_superuser','first_name','last_name','is_active','email'] 
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
-    id = forms.IntegerField(widget=forms.TextInput,label='ID de Usuario')
-    first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
-    last_name = forms.CharField(widget=forms.TextInput,label='Apellidos')
-    email = forms.EmailField(widget=forms.EmailInput,label='Correo Electrónico')
-    #SELECCION PARA DEJAR USUARIO ACTIVO EN EL SISTEMA
-    is_active = forms.ChoiceField(choices=BASICA,label='Habilitar Usuario?')
-    #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
-    is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
+    first_name = forms.CharField(widget=forms.TextInput)
+    last_name = forms.CharField(widget=forms.TextInput)
+    email = forms.EmailField(widget=forms.EmailInput)
+    is_active = forms.ChoiceField(choices=BASICA)
+    is_superuser = forms.ChoiceField(choices=BASICA)
