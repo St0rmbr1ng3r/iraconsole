@@ -50,9 +50,10 @@ class Usuario(models.Model):
     def cargar_detalle_usuario(self,id_usuario):
         try:
             cursorDetalleUsuario = connection.cursor()
-            args = [int(id_usuario)]
+            args = [int(id_usuario),]
             cursorDetalleUsuario.callproc('GetDetalleUsuario',args)
             result=cursorDetalleUsuario.fetchall()
+            connection.close()
             if result:
                 return result
             else:

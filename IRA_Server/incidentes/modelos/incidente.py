@@ -135,9 +135,10 @@ class Incidentes(models.Model):
     def cargar_detalle_incidente(self,id_inc):
         try:
             cursorDetalleIncidente = connection.cursor()
-            args = [int(id_inc)]
+            args = [int(id_inc),]
             cursorDetalleIncidente.callproc('GetDetalleIncidente',args)
             result=cursorDetalleIncidente.fetchall()
+            connection.close()
             if result:
                 return result
             else:
