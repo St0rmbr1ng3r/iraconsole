@@ -305,14 +305,26 @@ class FormularioDetalleIncidente(ModelForm):
     connection.close()
 
 
-
-
 class FormularioModificarIncidente(ModelForm):
     class Meta:
         model = Incidentes
-        fields = '__all__'
+        fields =  ['id_inc','id_etapa','id_tipo','id_origen','desc_inc','cli_afectados','prov_involucrado','act_afectados','id_impacto',
+        'id_urgencia','id_severidad'] 
+        #fields = '__all__' PARA UTILIZAR TODOS LOS CAMPOS
 
     BASICA=[('','--------'),(1,'NO'),(2,'SI')]
+
+    id_inc = forms.IntegerField(widget=forms.TextInput)
+    id_etapa = forms.IntegerField(widget=forms.TextInput)
+    id_tipo = forms.IntegerField(widget=forms.TextInput)
+    id_origen = forms.IntegerField(widget=forms.TextInput)
+    desc_inc = models.CharField(max_length=200)
+    cli_afectados = forms.IntegerField(widget=forms.TextInput)
+    prov_involucrado = forms.IntegerField(widget=forms.TextInput)
+    act_afectados = forms.IntegerField(widget=forms.TextInput)
+    id_impacto = forms.IntegerField(widget=forms.TextInput)
+    id_urgencia = forms.IntegerField(widget=forms.TextInput)
+    id_severidad = forms.IntegerField(widget=forms.TextInput)
 
 
 class FormularioUsuario(ModelForm):
@@ -344,7 +356,6 @@ class FormularioDetalleUsuario(ModelForm):
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
 
     id = forms.IntegerField(widget=forms.TextInput,disabled=True,label='ID de Usuario')
-    #password = forms.CharField(widget=forms.PasswordInput, disabled=True)
     last_login = forms.DateTimeField(widget=forms.TextInput, disabled=True,label='Ultimo inicio de Sesión')
     username = forms.CharField(widget=forms.TextInput, disabled=True,label='Nombre de Usuario')
     first_name = forms.CharField(widget=forms.TextInput,label='Nombres')
@@ -360,7 +371,6 @@ class FormularioDetalleUsuario(ModelForm):
 class FormularioModificarUsuario(ModelForm):
     class Meta:
         model = Usuario
-        #fields = '__all__'
         fields =  ['is_superuser','first_name','last_name','is_active','email'] 
 
     BASICA=[('','--------'),(0,'NO'),(1,'SI')]
