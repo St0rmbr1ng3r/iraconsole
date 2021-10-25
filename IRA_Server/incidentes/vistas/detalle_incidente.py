@@ -45,6 +45,8 @@ def cargar_incidente(request):
             messages.error(request, "Incidente Invalido")
             return redirect('activos')
         
+        print(detalle)
+        
         formulario = FormularioDetalleIncidente(initial={
             'id_inc' : int(detalle[0][0]), 
             'id_estado' : int(detalle[0][1]), 
