@@ -2,53 +2,11 @@
 
 {% block titulo %} Detalle de Incidente {% endblock %}
 
+{% load bootstrap %}
+
 {% block contenido %}
 
 <h1>DETALLE INCIDENTE</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID Incidente</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Etapa</th>
-            <th scope="col">Tipo de Incidente</th>
-            <th scope="col">Origen de la Notificación</th>
-            <th scope="col">Descripción del Incidente</th>
-            <th scope="col">Clientes Afectados</th>
-            <th scope="col">Proveedores Involucrados</th>
-            <th scope="col">% de Activos Afectados</th>
-            <th scope="col">Impacto</th>
-            <th scope="col">Urgencia</th>
-            <th scope="col">Severidad</th>
-            <th scope="col">Comentarios</th>
-            <th scope="col">Documentos</th>
-            <th scope="col">Fecha de Registro</th>
-            <th scope="col">Fecha de Cierre</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="table"></tr>
-            <td>{{detalle.0.0}}</td>
-            <td>{{detalle.0.1}}</td>
-            <td>{{detalle.0.2}}</td>
-            <td>{{detalle.0.3}}</td>
-            <td>{{detalle.0.4}}</td>
-            <td>{{detalle.0.5}}</td>
-            <td>{{descripciones.0}}</td>
-            <td>{{descripciones.1}}</td>
-            <td>{{descripciones.2}}</td>
-            <td>{{detalle.0.9}}</td>
-            <td>{{detalle.0.10}}</td>
-            <td>{{detalle.0.11}}</td>
-            <td>{{detalle.0.12}}</td>
-            <td>{{detalle.0.13}}</td>
-            <td>{{detalle.0.14}}</td>
-            <td>{{detalle.0.15}}</td>
-        </tr>
-    </tbody>
-</table>
-
 
 
 <div class="container">
