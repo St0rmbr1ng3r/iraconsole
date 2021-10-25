@@ -318,7 +318,7 @@ class FormularioModificarIncidente(ModelForm):
     id_etapa = forms.IntegerField(widget=forms.TextInput)
     id_tipo = forms.IntegerField(widget=forms.TextInput)
     id_origen = forms.IntegerField(widget=forms.TextInput)
-    desc_inc = models.CharField(max_length=200)
+    desc_inc = forms.CharField(widget=forms.TextInput)
     cli_afectados = forms.IntegerField(widget=forms.TextInput)
     prov_involucrado = forms.IntegerField(widget=forms.TextInput)
     act_afectados = forms.IntegerField(widget=forms.TextInput)
