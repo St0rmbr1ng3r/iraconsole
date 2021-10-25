@@ -126,11 +126,7 @@ class Incidentes(models.Model):
     cont_comentarios = models.IntegerField()
     cont_documentos = models.IntegerField()
     ts_inc = models.DateTimeField()
-    ts_cierre = models.DateTimeField(blank=True, null=True)
-   
-    class Meta:
-        managed = False
-        db_table = 'incidentes'
+    ts_cierre = models.DateTimeField()
 
     def cargar_detalle_incidente(self,id_inc):
         try:
