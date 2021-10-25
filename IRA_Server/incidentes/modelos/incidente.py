@@ -111,7 +111,7 @@ class Impactos(models.Model):
 '''
 class Incidentes(models.Model):
 
-    id_inc = models.IntegerField()
+    id_inc = models.IntegerField(primary_key=True)
     id_estado = models.IntegerField()
     id_etapa = models.IntegerField()
     id_tipo = models.IntegerField()
@@ -131,6 +131,20 @@ class Incidentes(models.Model):
     class Meta:
         managed = False
         db_table = 'incidentes'
+
+    def cargar_detalle_incidente(self,id_inc):
+    try:
+        cursorDetalleIncidente = connection.cursor()
+        args = [int(id_inc)]
+        cursorDetalleIncidente.callproc('GetDetalleIncidente',args)
+        result=cursorDetalleIncidente.fetchall()
+        if result:
+            return result
+        else:
+            return 1
+    except:
+        print("Error al traer detalle de Incidente")
+        return 1
 
 '''
 class Origenes(models.Model):

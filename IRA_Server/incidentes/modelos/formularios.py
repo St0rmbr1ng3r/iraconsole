@@ -169,7 +169,151 @@ class FormularioMulti(ModelForm):
     servicio  = forms.MultipleChoiceField(choices=opc_servicios,label='10- Servicios Afectados',widget=forms.CheckboxSelectMultiple)
     connection.close()
 
-   
+class FormularioDetalleIncidente(ModelForm):
+    class Meta:
+        model = Incidentes
+        #fields =  ['id_inc','id_estado','id_etapa','id_tipo','id_origen','desc_inc','cli_afectados','prov_involucrado','act_afectados','id_impacto',
+        #'id_urgencia','id_severidad'] 
+        fields = '__all__' #PARA UTILIZAR TODOS LOS CAMPOS
+
+    BASICA=[('','--------'),(1,'NO'),(2,'SI')]
+
+    id_inc = forms.IntegerField(widget=forms.TextInput,disabled=True,label='ID de Incidente')
+    id_estado = forms.IntegerField(widget=forms.TextInput,disabled=True,label='Estado del Incidente')
+    id_etapa = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    id_tipo = forms.IntegerField(widget=forms.TextInput,label='Tipo de Incidente')
+    id_origen = forms.IntegerField(widget=forms.TextInput,label='Origen del Incidente')
+    desc_inc = models.CharField(max_length=200)
+    cli_afectados = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    prov_involucrado = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    act_afectados = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    id_impacto = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    id_urgencia = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    id_severidad = forms.IntegerField(widget=forms.TextInput,label='Etapa Actual del Incidente')
+    cont_comentarios = forms.IntegerField(widget=forms.TextInput,disabled=True,label='Etapa Actual del Incidente')
+    cont_documentos = forms.IntegerField(widget=forms.TextInput,disabled=True,label='Etapa Actual del Incidente')
+    ts_inc = forms.DateTimeField(disabled=True, label='Fecha de creación')
+    ts_cierre = forms.DateTimeField(disabled=True, label='Fecha de cierre')
+
+    ###############################
+    # 1- CARGA MENU DE ORIGENES
+    ###############################
+
+    cursorOrigen=connection.cursor()
+    cursorOrigen.execute('call GetOrigenes()')
+    resOrigen=cursorOrigen.fetchall()
+    opc_origenes=[('','--------')]
+    for o in resOrigen:
+        opc_origenes.append([o[0],o[1]])
+    id_origen  = forms.ChoiceField(choices=opc_origenes,label='1- Orígen del Incidente')
+    connection.close()
+
+    #########################################
+    # 2- CARGA MENU TIPOS DE INCIDENTE
+    #########################################
+
+    cursorTipo=connection.cursor()
+    cursorTipo.execute('call GetTiposIncidentes()')
+    resTipos=cursorTipo.fetchall()
+    opc_tipos=[('','--------')]
+    for o in resTipos:
+        opc_tipos.append([o[0],o[1]])
+    id_tipo  = forms.ChoiceField(choices=opc_tipos,label='2- Tipo de Incidente')
+    connection.close()
+
+    #########################################
+    # 3- CUADRO DESCRIPCIÓN INCIDENTE
+    #########################################
+
+    desc_inc = forms.CharField(max_length=200, widget=forms.Textarea,label='3- Descripción del Incidente')
+
+    #########################################
+    # 4- CARGA MENU ETAPAS
+    #########################################
+
+    cursorEtapa=connection.cursor()
+    cursorEtapa.execute('call GetEtapas()')
+    resEtapas=cursorEtapa.fetchall()
+    opc_etapas=[('','--------')]
+    for o in resEtapas:
+        opc_etapas.append([o[0],o[1]])
+    id_etapa  = forms.ChoiceField(choices=opc_etapas,label='4- Etapa actual del Incidente')
+    connection.close()
+
+    #########################################
+    # 5- CARGA MENU AFECTACION DE CLIENTES
+    #########################################
+
+    cli_afectados = forms.ChoiceField(choices=BASICA,label='5- ¿Existe afectación de Cliente?')
+
+    #########################################
+    # 6- CARGA MENU PROVEEDOR INVOLUCRADO
+    #########################################
+
+    prov_involucrado = forms.ChoiceField(choices=BASICA,label='6- ¿Existen Proveedores Involucrados?')
+
+    #########################################
+    # 7- CARGA MENU ACTIVOS
+    #########################################
+
+    cursorActivo=connection.cursor()
+    cursorActivo.execute('call GetActivos()')
+    resActivos=cursorActivo.fetchall()
+    opc_activos=[('','--------')]
+    for o in resActivos:
+        opc_activos.append([o[0],o[1]])
+    act_afectados  = forms.ChoiceField(choices=opc_activos,label='7- Activos Afectados')
+    connection.close()
+
+    #########################################
+    # 11-  CARGA MENU IMPACTOS
+    #########################################
+
+    cursorImpacto=connection.cursor()
+    cursorImpacto.execute('call GetImpactos()')
+    resImpactos=cursorImpacto.fetchall()
+    opc_impactos=[('','--------')]
+    for o in resImpactos:
+        opc_impactos.append([o[0],o[1]])
+    id_impacto  = forms.ChoiceField(choices=opc_impactos,label='11- Impacto del Incidente')
+    connection.close()
+
+    #########################################
+    # 12- CARGA MENU URGENCIAS
+    #########################################
+
+    cursorUrgencia=connection.cursor()
+    cursorUrgencia.execute('call GetUrgencias()')
+    resUrgencias=cursorUrgencia.fetchall()
+    opc_urgencias=[('','--------')]
+    for o in resUrgencias:
+        opc_urgencias.append([o[0],o[1]])
+    id_urgencia  = forms.ChoiceField(choices=opc_urgencias,label='12- Urgencia del Incidente')
+    connection.close()
+
+    #########################################
+    # 13- CARGA MENU SEVERIDADES
+    #########################################
+
+    cursorSeveridades=connection.cursor()
+    cursorSeveridades.execute('call GetSeveridades()')
+    resSeveridadess=cursorSeveridades.fetchall()
+    opc_severidades=[('','--------')]
+    for o in resSeveridadess:
+        opc_severidades.append([o[0],o[1]])
+    id_severidad  = forms.ChoiceField(choices=opc_severidades,label='12- Severidad del Incidente')
+    connection.close()
+
+
+
+
+class FormularioModificarIncidente(ModelForm):
+    class Meta:
+        model = Incidentes
+        fields = '__all__'
+
+    BASICA=[('','--------'),(1,'NO'),(2,'SI')]
+
 
 class FormularioUsuario(ModelForm):
     class Meta:
@@ -189,14 +333,6 @@ class FormularioUsuario(ModelForm):
 
     #SELECCION PARA DEJAR USUARIO COMO ADMINISTRADOR
     is_superuser = forms.ChoiceField(choices=BASICA,label='Usuario Administrador?')
-
-
-class FormularioModificarIncidente(ModelForm):
-    class Meta:
-        model = Incidentes
-        fields = '__all__'
-
-    BASICA=[('','--------'),(1,'NO'),(2,'SI')]
 
 
 class FormularioDetalleUsuario(ModelForm):
