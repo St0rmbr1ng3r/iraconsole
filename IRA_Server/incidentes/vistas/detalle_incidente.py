@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 #from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from ..modelos.incidente import *
+from ..modelos.incidente import Incidentes
+from ..modelos.formularios import FormularioDetalleIncidente,FormularioModificarIncidente
 from django.contrib import messages
 
 
@@ -38,7 +39,7 @@ def cargar_incidente(request):
         contexto = {'detalle':detalle, 'descripciones':descripciones}
         '''
 
-        i = Incidente()
+        i = Incidentes()
         detalle = i.cargar_detalle_incidente(id_inc)
         if detalle == 1:
             messages.error(request, "Incidente Invalido")
