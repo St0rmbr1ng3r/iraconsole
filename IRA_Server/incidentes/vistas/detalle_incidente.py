@@ -10,6 +10,7 @@ from django.contrib import messages
 def cargar_incidente(request):
     if request.method == 'GET':
         id_inc=request.GET.get('id_inc', '0')
+        print("ID DE INCIDENTE EN EL GET: ",id_inc)
         
         '''
         di = DetalleIncidente()
