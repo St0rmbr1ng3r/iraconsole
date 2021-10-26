@@ -33,13 +33,13 @@ def cargar_incidente(request):
             return redirect('activos')
 
         for a in ambientes:
-        print(a)
+            print(a)
 
         for u in ubicaciones:
-        print(u)
+            print(u)
 
         for s in servicios:
-        print(s)
+            print(s)
         
         print(ambientes)
         print(ubicaciones)
