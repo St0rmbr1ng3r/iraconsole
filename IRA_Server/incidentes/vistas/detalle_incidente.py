@@ -10,35 +10,6 @@ from django.contrib import messages
 def cargar_incidente(request):
     if request.method == 'GET':
         id_inc=request.GET.get('id_inc', '0')
-        print("ID DE INCIDENTE EN EL GET: ",id_inc)
-        
-        '''
-        di = DetalleIncidente()
-        detalle = di.buscar_incidente(id_inc)
-        if detalle == 1:
-            return redirect('noencontrado')
-
-        multiples = di.buscar_detalle_incidente(id_inc)
-        
-        descripciones = []
-
-        if detalle[0][6] == 1:
-            descripciones.append("No hubo Clientes Afectados")
-        else:
-            descripciones.append("Hay Clientes Afectados")
-
-        if detalle[0][7] == 1:
-            descripciones.append("No hubo Proveedores Involucrados")
-        else:
-            descripciones.append("Hay Proveedores Involucrados")
-
-        if detalle[0][8] == 1:
-            descripciones.append("Activos Afectados 0-25%")
-        else:
-            descripciones.append("Mayor a 25%")
-        
-        contexto = {'detalle':detalle, 'descripciones':descripciones}
-        '''
 
         i = Incidentes()
         detalle = i.cargar_detalle_incidente(id_inc)

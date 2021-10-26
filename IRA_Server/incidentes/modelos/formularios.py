@@ -303,6 +303,46 @@ class FormularioDetalleIncidente(ModelForm):
         opc_severidades.append([o[0],o[1]])
     id_severidad  = forms.ChoiceField(choices=opc_severidades,label='Severidad del Incidente')
     connection.close()
+    #AGREGADO MULTI
+    #########################################
+    # 8- CARGA MENU AMBIENTES
+    #########################################
+
+    cursorAmbiente=connection.cursor()
+    cursorAmbiente.execute('call GetAmbientes()')
+    resAmbientes=cursorAmbiente.fetchall()
+    opc_ambiente=[]
+    for o in resAmbientes:
+        opc_ambiente.append([o[0],o[1]])
+    ambiente  = forms.MultipleChoiceField(choices=opc_ambiente,label='Ambientes Afectados',widget=forms.CheckboxSelectMultiple)
+    connection.close()
+
+    #########################################
+    # 9- CARGA MENU UBICACIONES
+    #########################################
+
+    cursorUbicacion=connection.cursor()
+    cursorUbicacion.execute('call GetUbicaciones()')
+    resUbicaciones=cursorUbicacion.fetchall()
+    opc_ubicaciones=[]
+    for o in resUbicaciones:
+        opc_ubicaciones.append([o[0],o[1]])
+    ubicacion  = forms.MultipleChoiceField(choices=opc_ubicaciones,label='Ubicaciones Afectadas',widget=forms.CheckboxSelectMultiple)
+    connection.close()
+
+    #########################################
+    # 10- CARGA MENU SERVICIOS
+    #########################################
+
+    cursorServicios=connection.cursor()
+    cursorServicios.execute('call GetServicios()')
+    resServicios=cursorServicios.fetchall()
+    opc_servicios=[]
+    for o in resServicios:
+        opc_servicios.append([o[0],o[1]])
+    servicio  = forms.MultipleChoiceField(choices=opc_servicios,label='Servicios Afectados',widget=forms.CheckboxSelectMultiple)
+    connection.close()
+
 
 
 class FormularioModificarIncidente(ModelForm):
@@ -325,6 +365,11 @@ class FormularioModificarIncidente(ModelForm):
     id_impacto = forms.IntegerField(widget=forms.TextInput)
     id_urgencia = forms.IntegerField(widget=forms.TextInput)
     id_severidad = forms.IntegerField(widget=forms.TextInput)
+
+
+#########################################################
+#            FORMULARIOS PARA USUARIOS                  #
+#########################################################
 
 
 class FormularioUsuario(ModelForm):
