@@ -12,6 +12,10 @@ def cargar_incidente(request):
         id_inc=request.GET.get('id_inc', '0')
 
         i = Incidentes()
+        iaambiente = []
+        iubicacion = []
+        iservicio = []
+        
         detalle = i.cargar_detalle_incidente(id_inc)
         if detalle == 1:
             messages.error(request, "Incidente Invalido")
