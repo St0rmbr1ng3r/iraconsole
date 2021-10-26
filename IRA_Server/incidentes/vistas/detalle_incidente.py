@@ -69,6 +69,7 @@ def cargar_incidente(request):
             'cont_documentos' : int(detalle[0][13]), 
             'ts_inc' : detalle[0][14],
             'ts_cierre' : detalle[0][15],
+            'ambiente' : iambiente
             
         })
         contexto = {'formulario':formulario}
