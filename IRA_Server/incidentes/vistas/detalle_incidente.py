@@ -33,9 +33,10 @@ def cargar_incidente(request):
             return redirect('activos')
 
         for a in ambientes:
+            ia.append(a[0])
             print(a[0])
-            detalle[0].append(a[0])
-            print(detalle)
+        print(ia)
+
         for u in ubicaciones:
             print(u[0])
 
