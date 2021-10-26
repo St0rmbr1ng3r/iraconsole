@@ -32,7 +32,14 @@ def cargar_incidente(request):
             messages.error(request, "Error al cargar el detalle del Incidente")
             return redirect('activos')
 
+        for a in ambientes:
+        print(a)
 
+        for u in ubicaciones:
+        print(u)
+
+        for s in servicios:
+        print(s)
         
         print(ambientes)
         print(ubicaciones)
