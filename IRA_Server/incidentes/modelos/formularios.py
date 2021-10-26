@@ -303,6 +303,8 @@ class FormularioDetalleIncidente(ModelForm):
         opc_severidades.append([o[0],o[1]])
     id_severidad  = forms.ChoiceField(choices=opc_severidades,label='Severidad del Incidente')
     connection.close()
+
+
     #AGREGADO MULTI
     #########################################
     # 8- CARGA MENU AMBIENTES

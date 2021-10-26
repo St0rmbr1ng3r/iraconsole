@@ -1,24 +1,7 @@
 from django.db import models
-#from django.forms import ModelForm
 from django.db import connection
-'''
-class Activos(models.Model):
-    id_activo = models.IntegerField()
-    desc_activo = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'activos'
 
 
-class Ambientes(models.Model):
-    id_ambiente = models.IntegerField()
-    desc_ambiente = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'ambientes'
-'''
 class Comentarios(models.Model):
     id_comentario = models.IntegerField()
     id_inc = models.IntegerField()
@@ -30,46 +13,7 @@ class Comentarios(models.Model):
         managed = False
         db_table = 'comentarios'
 
-'''
-class Criticidadesservicios(models.Model):
-    id_criticidad_serv = models.IntegerField()
-    desc_criticidad_serv = models.CharField(max_length=45)
 
-    class Meta:
-        managed = False
-        db_table = 'criticidadesservicios'
-
-
-class Detallesambientes(models.Model):
-    id_detalle_ambiente = models.IntegerField()
-    id_inc = models.IntegerField()
-    id_ambiente = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'detallesambientes'
-
-
-class Detallesservicios(models.Model):
-    id_detalle_servicio = models.IntegerField()
-    id_inc = models.IntegerField()
-    id_servicio = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'detallesservicios'
-
-
-class Detallesubicacion(models.Model):
-    id_detalle_ubicacion = models.IntegerField()
-    id_inc = models.IntegerField()
-    id_ubicacion = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'detallesubicacion'
-
-'''
 class Documentos(models.Model):
     id_documento = models.IntegerField()
     id_inc = models.IntegerField()
@@ -81,34 +25,7 @@ class Documentos(models.Model):
     class Meta:
         managed = False
         db_table = 'documentos'
-'''
-class Estados(models.Model):
-    id_estado = models.IntegerField()
-    desc_estado = models.CharField(max_length=45)
 
-    class Meta:
-        managed = False
-        db_table = 'estados'
-
-
-class Etapas(models.Model):
-    id_etapa = models.IntegerField()
-    desc_etapa = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'etapas'
-
-
-class Impactos(models.Model):
-    id_impacto = models.IntegerField()
-    desc_impacto = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'impactos'
-
-'''
 class Incidentes(models.Model):
 
     id_inc = models.IntegerField(primary_key=True)
@@ -136,68 +53,20 @@ class Incidentes(models.Model):
             result=cursorDetalleIncidente.fetchall()
             connection.close()
             if result:
-                return result
+                cursorDetalleAmbiente.callproc('GetDetalleAmbiente',args)
+                resAmbiente=cursorDetalleAmbiente.fetchall()
+                connection.close()
+                if resAmbiente:
+                    result.append(resAmbiente)
+                    return result
+                else:
+                    return 1
             else:
                 return 1
         except:
             print("Error al traer detalle de Incidente")
             return 1
 
-'''
-class Origenes(models.Model):
-    id_origen = models.IntegerField()
-    desc_origen = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'origenes'
-
-
-class Servicios(models.Model):
-    id_servicio = models.IntegerField()
-    desc_servicio = models.CharField(max_length=45)
-    id_criticidad = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'servicios'
-
-
-class Severidades(models.Model):
-    id_severidad = models.IntegerField()
-    desc_severidad = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'severidades'
-
-
-class Tiposincidentes(models.Model):
-    id_tipo = models.IntegerField()
-    desc_tipo = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'tiposincidentes'
-
-
-class Ubicaciones(models.Model):
-    id_ubicacion = models.IntegerField()
-    desc_ubicacion = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'ubicaciones'
-
-
-class Urgencias(models.Model):
-    id_urgencia = models.IntegerField()
-    desc_urgencia = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'urgencias'
-'''
 class Multicheck(models.Model):
     ambiente = models.CharField(max_length=45)
     ubicacion = models.CharField(max_length=45)
