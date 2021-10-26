@@ -72,7 +72,37 @@ class Incidentes(models.Model):
             else:
                 return 1
         except:
-            print("Error al traer detalle del Ambiente")
+            print("Error al traer detalle de los Ambientes")
+            return 1
+
+    def cargar_detalle_ubicacion(self,id_inc):
+        try:
+            cursorDetalleUbicacion = connection.cursor()
+            args = [int(id_inc),]
+            cursorDetalleUbicacion.callproc('GetDetalleUbicacion',args)
+            result=cursorDetalleUbicacion.fetchall()
+            connection.close()
+            if result:
+                return result
+            else:
+                return 1
+        except:
+            print("Error al traer detalle de las Ubicaciones")
+            return 1
+
+    def cargar_detalle_servicio(self,id_inc):
+        try:
+            cursorDetalleServicio = connection.cursor()
+            args = [int(id_inc),]
+            cursorDetalleServicio.callproc('GetDetalleServicio',args)
+            result=cursorDetalleServicio.fetchall()
+            connection.close()
+            if result:
+                return result
+            else:
+                return 1
+        except:
+            print("Error al traer detalle de los Servicios")
             return 1
 
 

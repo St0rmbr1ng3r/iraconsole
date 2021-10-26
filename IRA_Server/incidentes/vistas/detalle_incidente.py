@@ -16,13 +16,27 @@ def cargar_incidente(request):
         if detalle == 1:
             messages.error(request, "Incidente Invalido")
             return redirect('activos')
-            
+
         ambientes = i.cargar_detalle_ambiente(id_inc)
         if ambientes == 1:
             messages.error(request, "Error al cargar el detalle del Incidente")
             return redirect('activos')
         
+        ubicaciones = i.cargar_detalle_ubicacion(id_inc)
+        if ubicaciones == 1:
+            messages.error(request, "Error al cargar el detalle del Incidente")
+            return redirect('activos')
+
+        servicios = i.cargar_detalle_servicio(id_inc)
+        if servicios == 1:
+            messages.error(request, "Error al cargar el detalle del Incidente")
+            return redirect('activos')
+
+
+        
         print(ambientes)
+        print(ubicaciones)
+        print(servicios)
         print(detalle)
         
         formulario = FormularioDetalleIncidente(initial={
