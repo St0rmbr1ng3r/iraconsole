@@ -60,6 +60,22 @@ class Incidentes(models.Model):
             print("Error al traer detalle de Incidente")
             return 1
 
+    def cargar_detalle_ambiente(self,id_inc):
+        try:
+            cursorDetalleAmbiente = connection.cursor()
+            args = [int(id_inc),]
+            cursorDetalleAmbiente.callproc('GetDetalleAmbiente',args)
+            result=cursorDetalleAmbiente.fetchall()
+            connection.close()
+            if result:
+                return result
+            else:
+                return 1
+        except:
+            print("Error al traer detalle del Ambiente")
+            return 1
+
+
 class Multicheck(models.Model):
     ambiente = models.CharField(max_length=45)
     ubicacion = models.CharField(max_length=45)
