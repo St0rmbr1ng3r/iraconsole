@@ -55,9 +55,11 @@ class Incidentes(models.Model):
             if result:
                 cursorDetalleAmbiente.callproc('GetDetalleAmbiente',args)
                 resAmbiente=cursorDetalleAmbiente.fetchall()
+                print("RESULTADO AMBIENTE: ",resAmbiente)
                 connection.close()
                 if resAmbiente:
-                    result.append(resAmbiente)
+                    result[0].append(resAmbiente)
+                    print("RESULTADO CON APPEND: ",result)
                     return result
                 else:
                     return 1
