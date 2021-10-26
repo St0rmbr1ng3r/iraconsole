@@ -38,19 +38,12 @@ def cargar_incidente(request):
 
         for a in ambientes:
             iambiente.append(a[0])
-            print(a[0])
-        print(iambiente)
 
         for u in ubicaciones:
-            print(u[0])
+            iubicacion.append(u[0])
 
         for s in servicios:
-            print(s[0])
-        
-        print(ambientes)
-        print(ubicaciones)
-        print(servicios)
-        print(detalle)
+            iservicio.append(s[0])
         
         formulario = FormularioDetalleIncidente(initial={
             'id_inc' : int(detalle[0][0]), 
