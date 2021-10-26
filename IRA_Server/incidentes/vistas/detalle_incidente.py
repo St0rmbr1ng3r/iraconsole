@@ -34,7 +34,7 @@ def cargar_incidente(request):
 
         for a in ambientes:
             print(a[0])
-            detalle.append(a[0])
+            detalle[0].append(a[0])
             print(detalle)
         for u in ubicaciones:
             print(u[0])
