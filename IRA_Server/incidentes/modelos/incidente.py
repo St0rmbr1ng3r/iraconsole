@@ -112,7 +112,7 @@ class Incidentes(models.Model):
         id_tipo = formulario['id_tipo']
         id_origen = formulario['id_origen']
         desc_inc = formulario['desc_inc']
-        cli_afectados = formulario['cli_afectados'])
+        cli_afectados = formulario['cli_afectados']
         prov_involucrado = formulario['prov_involucrado']
         act_afectados = formulario['act_afectados']
         id_impacto = formulario['id_impacto']
