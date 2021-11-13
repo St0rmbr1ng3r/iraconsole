@@ -78,7 +78,7 @@ def cargar_incidente(request):
         if formulario.is_valid():
             print("FORMULARIO ES VALIDO")
             ia = Incidentes()
-            if ia.actualizar_usuario(formulario.cleaned_data, id_inc) == 1:
+            if ia.actualizar_incidente(formulario.cleaned_data, id_inc) == 1:
                 print("FALLO LA FUNCION")
                 messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
                 return redirect('activos')
