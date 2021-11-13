@@ -9,14 +9,22 @@
 <h1>PERFIL DE USUARIO</h1>
 
 
-{{ user.username }}
-<br>
-{{ user.first_name}}
-<br>
-{{ user.last_name }}
-<br>
-{{ user.email }}
-<br>
-{{ user.last_login }}
-<br>
+<div class="container">
+    <div class="row">
+      <div class="span2">
+        <img src="http://thetransformedmale.files.wordpress.com/2011/06/bruce-wayne-armani.jpg"  alt="" class="img-rounded">
+      </div>
+      <div class="span4">
+        <blockquote>
+          <p>user.username</p>
+          <small><cite title="Source Title">{{ user.last_name }}, {{ user.first_name}} <i class="icon-map-marker"></i></cite></small>
+        </blockquote>
+        <p>
+          <i class="icon-envelope"></i> user.email <br>
+          <i class="icon-globe"></i> user.last_login <br>
+        </p>
+      </div>
+    </div>
+  </div>
+
 {%endblock%}
