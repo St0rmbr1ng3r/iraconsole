@@ -120,7 +120,7 @@ class Incidentes(models.Model):
         id_severidad = formulario['id_severidad']
 
         if int(id_etapa)==7:
-            if user=False:
+            if user==False:
                 return 1
 
         try:
