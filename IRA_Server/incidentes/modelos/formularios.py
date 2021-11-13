@@ -350,13 +350,12 @@ class FormularioDetalleIncidente(ModelForm):
 class FormularioModificarIncidente(ModelForm):
     class Meta:
         model = Incidentes
-        fields =  ['id_inc','id_etapa','id_tipo','id_origen','desc_inc','cli_afectados','prov_involucrado','act_afectados','id_impacto',
+        fields =  ['id_etapa','id_tipo','id_origen','desc_inc','cli_afectados','prov_involucrado','act_afectados','id_impacto',
         'id_urgencia','id_severidad'] 
         #fields = '__all__' PARA UTILIZAR TODOS LOS CAMPOS
 
     BASICA=[('','--------'),(1,'NO'),(2,'SI')]
 
-    id_inc = forms.IntegerField(widget=forms.TextInput)
     id_etapa = forms.IntegerField(widget=forms.TextInput)
     id_tipo = forms.IntegerField(widget=forms.TextInput)
     id_origen = forms.IntegerField(widget=forms.TextInput)
