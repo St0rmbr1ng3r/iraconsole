@@ -70,6 +70,22 @@ def cargar_incidente(request):
         contexto = {'formulario':formulario}
         return render(request, "detalle_incidente.html", contexto)
 
+    if request.method == 'POST':
+        formulario = FormularioModificarIncidente(request.POST)
+        id_inc = request.POST['id_inc']
+
+        if formulario.is_valid():
+            ia = Incidentes()
+            if ia.actualizar_usuario(formulario.cleaned_data, id_inc) == 1:
+                messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
+                return redirect('activos')
+            else:
+                messages.success(request, "Incidente Actualizado Correctamente" )
+                return redirect('activos')
+        else:
+            messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
+            return redirect('activos')
+
 
 @login_required(login_url='login')
 def no_encontrado(request):

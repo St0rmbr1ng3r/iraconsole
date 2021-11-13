@@ -105,6 +105,28 @@ class Incidentes(models.Model):
             print("Error al traer detalle de los Servicios")
             return 1
 
+    def actualizar_incidente(self, formulario, id_inc):
+
+        id_inc = id_inc
+        id_etapa = formulario['id_etapa']
+        id_tipo = formulario['id_tipo']
+        id_origen = formulario['id_origen']
+        desc_inc = formulario['desc_inc']
+        cli_afectados = formulario['cli_afectados'])
+        prov_involucrado = formulario['prov_involucrado']
+        act_afectados = formulario['act_afectados']
+        id_impacto = formulario['id_impacto']
+        id_urgencia = formulario['id_urgencia']
+        id_severidad = formulario['id_severidad']
+
+        try:
+            cursorActualizarIncidente=connection.cursor()
+            connection.commit()
+            args = [id_inc,id_etapa ,id_tipo,id_origen ,desc_inc, cli_afectados ,prov_involucrado ,act_afectados ,id_impacto,id_urgencia ,id_severidad,]
+            resUpdateUsuario = cursorActualizarIncidente.callproc('UpdateIncidente', args)
+            connection.close()
+        except:
+            return 1
 
 class Multicheck(models.Model):
     ambiente = models.CharField(max_length=45)

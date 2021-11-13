@@ -20,6 +20,7 @@
           FORMULARIO ANTERIOR
           -->
           {{ formulario | bootstrap }}
+          <input type="text" name="id_inc" value='{{ formulario.id_inc.value }}' hidden>
 
           <br>
         <button type="submit" class="btn btn-primary">Guardar Cambios</button> &Tab; <button type="button" class="btn btn-danger"><a href="{% url 'activos' %}" style="text-decoration: none; color: inherit;">Volver</a></button>
