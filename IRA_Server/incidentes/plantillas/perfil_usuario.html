@@ -8,26 +8,6 @@
 
 <h1>PERFIL DE USUARIO</h1>
 
-
-<div class="container">
-    <div class="row">
-      <div class="span2">
-        <img src="../static/img/perfil.png" width="124" height="76" alt="" class="img-rounded">
-      </div>
-      <div class="span4">
-        <blockquote>
-          <p>{{user.username}}</p>
-          <small><cite title="Source Title">{{ user.last_name }}, {{ user.first_name}} <i class="icon-map-marker"></i></cite></small>
-        </blockquote>
-        <p>
-          <i class="icon-envelope"></i> {{user.email}} <br>
-          <i class="icon-globe"></i> {{user.last_login}} <br>
-        </p>
-      </div>
-    </div>
-</div>
-
-
 <div class="container emp-profile">
     <div class="row">
         <div class="col-md-4">
@@ -38,12 +18,11 @@
         <div class="col-md-6">
             <div class="profile-head">
                 <h5>
-                    Kshiti Ghelani
+                    {{user.username}}
                 </h5>
                 <h6>
-                    Web Developer and Designer
+                    {{user.last_login}}
                 </h6>
-                <p class="proile-rating">RANKINGS : <span>8/10</span></p>
             </div>
         </div>
     </div>
@@ -53,42 +32,34 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>User Id</label>
+                            <label>Usuario:</label>
                         </div>
                         <div class="col-md-6">
-                            <p>Kshiti123</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Name</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p>Kshiti Ghelani</p>
+                            <p>{{user.username}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Email</label>
+                            <label>Nombre:</label>
                         </div>
                         <div class="col-md-6">
-                            <p>kshitighelani@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Phone</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p>123 456 7890</p>
+                            <p>{{user.first_name}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Profession</label>
+                            <label>Apellido:</label>
                         </div>
                         <div class="col-md-6">
-                            <p>Web Developer and Designer</p>
+                            <p>{{user.last_name}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user.email}}</p>
                         </div>
                     </div>
                 </div>
