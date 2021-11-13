@@ -73,13 +73,11 @@ def cargar_incidente(request):
     if request.method == 'POST':
         formulario = FormularioModificarIncidente(request.POST)
         id_inc = request.POST['id_inc']
-        print(request.POST)
 
         if formulario.is_valid():
-            print("FORMULARIO ES VALIDO")
             ia = Incidentes()
-            if ia.actualizar_incidente(formulario.cleaned_data, id_inc) == 1:
-                print("FALLO LA FUNCION")
+            user=request.user.is_superuser
+            if ia.actualizar_incidente(formulario.cleaned_data, id_inc, user) == 1:
                 messages.error(request, "No se pueden guardar los cambios. Por favor intente nuevamente" )
                 return redirect('activos')
             else:

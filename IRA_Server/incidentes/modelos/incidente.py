@@ -105,7 +105,7 @@ class Incidentes(models.Model):
             print("Error al traer detalle de los Servicios")
             return 1
 
-    def actualizar_incidente(self, formulario, id_inc):
+    def actualizar_incidente(self, formulario, id_inc, user):
 
         id_inc = id_inc
         id_etapa = formulario['id_etapa']
@@ -119,17 +119,17 @@ class Incidentes(models.Model):
         id_urgencia = formulario['id_urgencia']
         id_severidad = formulario['id_severidad']
 
-        print("llega a ejcucion de funcion")
+        if int(id_etapa)==7:
+            if user=False:
+                return 1
 
         try:
             cursorActualizarIncidente=connection.cursor()
             connection.commit()
             args = [id_inc,id_etapa ,id_tipo,id_origen ,desc_inc, cli_afectados ,prov_involucrado ,act_afectados ,id_impacto,id_urgencia ,id_severidad,]
             resUpdateUsuario = cursorActualizarIncidente.callproc('UpdateIncidente', args)
-            print("EJECUTO PROCEDIMIENTO ALMACENADO")
             connection.close()
         except:
-            print("FALLA LA EJECUCION DEL PROCEDIMIENTO")
             return 1
 
 class Multicheck(models.Model):
