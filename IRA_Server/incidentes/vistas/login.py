@@ -11,7 +11,7 @@ def iniciar_sesion(request):
         if request.method == 'POST':
             usuario = request.POST.get('usuario')
             password = request.POST.get('password')
-            print(usuario.is_active)
+            print(request.user.username)
 
             sesion = authenticate(request, username=usuario, password=password)
 
