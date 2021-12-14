@@ -15,7 +15,7 @@ def iniciar_sesion(request):
             sesion = authenticate(request, username=usuario, password=password)
 
             if sesion is not None:
-                if user.is_active:
+                if sesion.is_active:
                     login(request, sesion)
                     return redirect('dashboard')
                 else:
