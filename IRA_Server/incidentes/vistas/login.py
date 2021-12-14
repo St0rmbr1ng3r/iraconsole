@@ -15,8 +15,11 @@ def iniciar_sesion(request):
             sesion = authenticate(request, username=usuario, password=password)
 
             if sesion is not None:
-                login(request, sesion)
-                return redirect('dashboard')
+                if user.is_active:
+                    login(request, sesion)
+                    return redirect('dashboard')
+                else:
+                    messages.info(request, 'La cuenta no se encuentra activa. Verifique con su administrador')
             else: 
                 messages.info(request, 'Usuario o Contraseña incorrectos')
         return render(request, "login.html", {})
