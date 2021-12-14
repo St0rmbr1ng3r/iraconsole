@@ -11,12 +11,15 @@ def iniciar_sesion(request):
         if request.method == 'POST':
             usuario = request.POST.get('usuario')
             password = request.POST.get('password')
-            
+
             sesion = authenticate(request, username=usuario, password=password)
 
             if sesion is not None:
                 login(request, sesion)
-                return redirect('dashboard')
+                if sesion.is_active:
+                    return redirect('dashboard')
+                else:
+                    messages.info(request, 'Usuario No Habilitado!')
             else: 
                 messages.info(request, 'Usuario o Contraseña incorrectos')
         return render(request, "login.html", {})
