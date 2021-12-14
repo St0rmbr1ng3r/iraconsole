@@ -16,10 +16,7 @@ def iniciar_sesion(request):
 
             if sesion is not None:
                 login(request, sesion)
-                if sesion.is_active:
-                    return redirect('dashboard')
-                else:
-                    messages.info(request, 'Usuario No Habilitado!')
+                return redirect('dashboard')
             else: 
                 messages.info(request, 'Usuario o Contraseña incorrectos')
         return render(request, "login.html", {})
